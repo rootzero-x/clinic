@@ -1,0 +1,93 @@
+/* Fintruck — Color tokens
+ * Dark-first bookkeeping/AP UI. Near-black surfaces, a single confident green
+ * accent, and a soft red reserved for reconciliation deltas / errors.
+ */
+:root {
+  /* ---- Base neutrals (raw) ---- */
+  --black: #000000;
+  --gray-1000: #0a0a0a;
+  --gray-950: #101010;  /* deepest surface — modals, header chrome */
+  --gray-900: #181818;  /* page background */
+  --gray-850: #1d1d1d;  /* row / inset */
+  --gray-800: #202020;  /* card & panel surface */
+  --gray-750: #262626;  /* raised / hover surface */
+  --gray-700: #303030;  /* hairline borders */
+  --gray-650: #383838;  /* stronger border / divider */
+  --gray-600: #484848;  /* disabled stroke */
+  --gray-500: #6e6e6e;  /* muted text / placeholder */
+  --gray-400: #8a8a8a;  /* secondary icon */
+  --gray-300: #b0b0b0;  /* secondary text */
+  --gray-200: #c8c8c8;  /* body text on dark */
+  --gray-100: #e6e6e6;  /* high-contrast body */
+  --white: #ffffff;
+
+  /* ---- Brand green (raw) ---- */
+  --green-700: #167346;
+  --green-600: #1b8a55;
+  --green-500: #22a05f;  /* primary accent — buttons, active */
+  --green-400: #2cb56e;
+  --green-300: #60d090;  /* light accent — links, callout headings */
+  --green-200: #8fe0b0;
+  --green-soft: rgba(34, 160, 95, 0.14);  /* tinted fill */
+
+  /* ---- Semantic red (raw) ---- */
+  --red-500: #e5484d;
+  --red-400: #ff6b6b;
+  --red-300: #ff8787;  /* delta / negative figures */
+  --red-soft: rgba(255, 135, 135, 0.12);
+
+  /* ---- Amber (raw) — warnings ---- */
+  --amber-400: #e2a336;
+  --amber-300: #f0c674;
+  --amber-soft: rgba(226, 163, 54, 0.13);
+
+  /* ---- Blue (raw) — informational, sparingly ---- */
+  --blue-400: #4f8cff;
+  --blue-soft: rgba(79, 140, 255, 0.12);
+
+  /* ================= Semantic aliases ================= */
+  /* Surfaces */
+  --surface-page: var(--gray-900);
+  --surface-card: var(--gray-800);
+  --surface-inset: var(--gray-850);
+  --surface-raised: var(--gray-750);
+  --surface-overlay: var(--gray-950);
+  --surface-scrim: rgba(0, 0, 0, 0.6);
+
+  /* Text */
+  --text-primary: var(--white);
+  --text-body: var(--gray-200);
+  --text-secondary: var(--gray-300);
+  --text-muted: var(--gray-500);
+  --text-placeholder: var(--gray-500);
+  --text-disabled: var(--gray-600);
+  --text-on-accent: var(--white);
+  --text-link: var(--green-300);
+
+  /* Borders */
+  --border-subtle: var(--gray-700);
+  --border-default: var(--gray-650);
+  --border-strong: var(--gray-600);
+  --border-focus: var(--green-500);
+
+  /* Accent / actions */
+  --accent: var(--green-500);
+  --accent-hover: var(--green-400);
+  --accent-active: var(--green-600);
+  --accent-fill: var(--green-soft);
+  --accent-text: var(--green-300);
+
+  /* Status */
+  --danger: var(--red-300);
+  --danger-strong: var(--red-500);
+  --danger-fill: var(--red-soft);
+  --warning: var(--amber-300);
+  --warning-fill: var(--amber-soft);
+  --info: var(--blue-400);
+  --info-fill: var(--blue-soft);
+  --success: var(--green-300);
+  --success-fill: var(--green-soft);
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 2px var(--surface-page), 0 0 0 4px var(--green-500);
+}

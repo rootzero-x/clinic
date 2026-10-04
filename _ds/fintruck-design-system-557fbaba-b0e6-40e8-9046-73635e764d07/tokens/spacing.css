@@ -1,0 +1,56 @@
+/* Fintruck — Spacing, radii, shadows, layout
+ * 4px base grid. Generous outer padding, tight intra-row rhythm for tables.
+ */
+:root {
+  /* Spacing scale (4px base) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii — soft, not pill (except chips/badges) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;    /* default: cards, inputs, buttons */
+  --radius-lg: 12px;   /* large panels */
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* Borders */
+  --border-width: 1px;
+  --border-width-strong: 1.5px;
+
+  /* Shadows — restrained on dark; mostly elevation via surface lightening */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-focus: 0 0 0 3px rgba(34, 160, 95, 0.35);
+
+  /* Control sizing */
+  --control-h-sm: 28px;
+  --control-h-md: 36px;
+  --control-h-lg: 44px;
+  --control-px: 14px;
+
+  /* Layout */
+  --header-h: 56px;
+  --page-max: 2400px;
+  --page-pad-x: 24px;
+  --page-pad-y: 24px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast: 120ms; /* @kind other */
+  --dur-base: 180ms; /* @kind other */
+  --dur-slow: 260ms; /* @kind other */
+}

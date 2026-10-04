@@ -1,0 +1,6 @@
+/* Fintruck — Webfonts
+ * SUBSTITUTION FLAGGED: the product screenshot uses a clean neo-grotesque that
+ * closely matches Inter. Until the real face is provided, Inter (UI) +
+ * JetBrains Mono (incidental mono) are loaded from Google Fonts.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
