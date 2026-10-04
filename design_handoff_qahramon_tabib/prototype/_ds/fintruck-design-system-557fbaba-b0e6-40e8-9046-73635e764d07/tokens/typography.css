@@ -1,0 +1,46 @@
+/* Fintruck — Typography tokens
+ * One grotesque sans (Inter) for UI + tabular numerics for money columns.
+ * Substitution flagged: best match to the product screenshot pending the real face.
+ */
+:root {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* Numeric / money — tabular figures so columns align */
+  --font-numeric: "Inter", -apple-system, sans-serif;
+
+  /* Weights */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+
+  /* Type scale (px) — compact, data-dense UI */
+  --fs-display: 28px;   /* page-level rare */
+  --fs-h1: 22px;        /* screen title ("Match Transaction") */
+  --fs-h2: 18px;        /* section heading */
+  --fs-h3: 15px;        /* sub-section / strong label */
+  --fs-body: 14px;      /* default body & table cells */
+  --fs-sm: 13px;        /* secondary / meta */
+  --fs-xs: 12px;        /* labels, badges, captions */
+  --fs-2xs: 11px;       /* dense micro-labels */
+
+  /* Line heights */
+  --lh-tight: 1.2; /* @kind font */
+  --lh-snug: 1.35; /* @kind font */
+  --lh-normal: 1.5; /* @kind font */
+  --lh-relaxed: 1.6; /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight: -0.01em; /* @kind font */
+  --ls-normal: 0; /* @kind font */
+  --ls-wide: 0.02em; /* @kind font */
+  --ls-caps: 0.06em; /* @kind font */
+
+  /* Semantic text roles */
+  --text-title-size: var(--fs-h1);
+  --text-title-weight: var(--fw-bold);
+  --text-section-size: var(--fs-h2);
+  --text-section-weight: var(--fw-semibold);
+  --text-body-size: var(--fs-body);
+  --text-label-size: var(--fs-xs);
+}

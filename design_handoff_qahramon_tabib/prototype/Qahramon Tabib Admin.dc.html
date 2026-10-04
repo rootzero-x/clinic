@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/colors.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/typography.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/base.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/styles.css">
+<script src="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/_ds_bundle.js"></script>
+<style>
+html:root{color-scheme:light;--gray-1000:#faf7f0;--gray-950:#fffdf8;--gray-900:#f4f0e6;--gray-850:#ece6d8;--gray-800:#fffdf8;--gray-750:#efe9dc;--gray-700:#e0d8c6;--gray-650:#d8cfbb;--gray-600:#bfb49c;--gray-500:#6f766c;--gray-400:#858b80;--gray-300:#535c54;--gray-200:#2c362f;--gray-100:#18241c;--surface-page:#f4f0e6;--surface-card:#fffdf8;--surface-inset:#ece6d8;--surface-raised:#efe9dc;--surface-overlay:#fffdf8;--surface-scrim:rgba(18,30,22,.42);--text-primary:#18241c;--text-body:#2c362f;--text-secondary:#535c54;--text-muted:#6f766c;--text-placeholder:#8f9488;--text-on-accent:#ffffff;--border-subtle:#e6dfcf;--border-default:#d8cfbb;--border-strong:#bfb49c;--accent:#2f5a40;--accent-hover:#264b35;--accent-active:#1e3c2a;--accent-fill:rgba(47,90,64,.10);--accent-text:#2a5139;--text-link:#2a5139;--success:#2a6b44;--success-fill:rgba(47,120,72,.11);--danger:#b5403a;--danger-strong:#b5403a;--danger-fill:rgba(181,64,58,.09);--warning:#7f5f12;--warning-fill:rgba(200,160,70,.18);--info:#2d5f9a;--info-fill:rgba(60,110,180,.10);--shadow-popover:0 8px 24px rgba(24,36,28,.14);--shadow-focus:0 0 0 3px rgba(47,90,64,.25)}
+body{margin:0;background:#e6e0d2;color:var(--text-body)}
+a{color:#167346}a:hover{color:#12603a}
+*::-webkit-scrollbar{display:none}
+@keyframes ftsheet{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes ftfade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-wrap:wrap;gap:28px;justify-content:center;align-items:flex-start;padding:28px 20px;box-sizing:border-box;font-family:var(--font-sans)">
+  <aside style="width:236px;flex:none;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;border-radius:11px;background:#17301f;border:1px solid #c8a24c;display:flex;align-items:center;justify-content:center;color:#d9b45f;font-weight:800;font-size:13px;flex:none;box-sizing:border-box">QT</div>
+      <div><div style="font-size:15px;font-weight:700;color:var(--text-primary)">Qahramon Tabib Admin</div><div style="font-size:12px;color:var(--text-muted)">Xodimlar ilovasi · iOS va Android</div></div>
+    </div>
+    <a href="Qahramon Tabib.dc.html" style="display:flex;align-items:center;justify-content:space-between;background:#fffdf8;border:1px solid var(--border-subtle);color:var(--text-primary);border-radius:10px;padding:10px 12px;font:600 13px var(--font-sans);text-decoration:none">Mijoz ilovasini ochish<span>→</span></a>
+    <div style="font-size:12.5px;line-height:1.5;color:var(--text-secondary);background:#fffdf8;border:1px solid var(--border-subtle);border-radius:10px;padding:10px 12px">Rol: <b style="color:var(--text-primary)">{{ roleName }}</b>. Rolni Tweaks panelida almashtiring — bo'limlar huquqqa qarab o'zgaradi.</div>
+    <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:0 8px 4px">{{ g.title }}</div>
+        <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="4">
+          <button onClick="{{ n.go }}" style="text-align:left;border:none;background:{{ n.bg }};color:{{ n.color }};font:500 13px var(--font-sans);padding:7px 8px;border-radius:6px;cursor:pointer" style-hover="background:#ddd5c3">{{ n.label }}</button>
+        </sc-for>
+      </div>
+    </sc-for>
+  </aside>
+
+  <div style="flex:none;padding:12px;background:#1c1c1e;border-radius:62px;box-shadow:0 0 0 2px #3a3a3c,0 40px 80px rgba(20,30,22,.22)">
+    <div style="width:393px;height:852px;border-radius:50px;overflow:hidden;position:relative;background:var(--surface-page);display:flex;flex-direction:column">
+      <div style="height:54px;flex:none;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 32px 0 44px;font-size:16px;font-weight:600;color:var(--text-primary);z-index:30;background:var(--surface-page)"><span>9:41</span><div style="position:absolute;left:50%;top:11px;transform:translateX(-50%);width:124px;height:36px;border-radius:20px;background:#000"></div><div style="display:flex;gap:6px;align-items:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:3px;height:4px;background:currentColor;border-radius:1px"></div><div style="width:3px;height:6px;background:currentColor;border-radius:1px"></div><div style="width:3px;height:8px;background:currentColor;border-radius:1px"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px"></div></div><div style="width:25px;height:12px;border:1.2px solid currentColor;border-radius:4px;padding:1.5px;box-sizing:border-box"><div style="width:78%;height:100%;background:currentColor;border-radius:1.5px"></div></div></div></div>
+
+      <div style="flex:1;min-height:0;position:relative">
+        <sc-if value="{{ is.login }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:28px 24px 40px;gap:14px">
+            <div style="width:64px;height:64px;border-radius:20px;background:#17301f;border:1.5px solid #c8a24c;display:flex;align-items:center;justify-content:center;color:#d9b45f;font-weight:800;font-size:20px;flex:none;box-sizing:border-box">QT</div>
+            <div style="margin-top:8px"><div style="font-size:30px;font-weight:700;color:var(--text-primary);letter-spacing:-.02em">Qahramon Tabib Admin</div><div style="font-size:15px;line-height:1.5;color:var(--text-secondary);margin-top:6px">Xodimlar uchun kirish. Login va parolingizni kiriting.</div></div>
+            <div style="height:6px"></div>
+            <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Login" value="{{ login }}" onChange="{{ onLogin }}" hint-size="100%,64px"></x-import>
+            <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Parol" type="password" value="{{ pass }}" onChange="{{ onPass }}" hint-size="100%,64px"></x-import>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:13.5px"><span style="color:var(--text-muted);white-space:nowrap">Rol: {{ roleName }}</span><a href="#" style="white-space:nowrap">Parolni unutdingizmi?</a></div>
+            <div style="flex:1"></div>
+            <x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" onClick="{{ doLogin }}" hint-size="100%,44px">Kirish</x-import>
+            <button onClick="{{ doLogin }}" style="height:48px;border-radius:24px;background:rgba(255,255,255,.62);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(16,24,18,.10),inset 0 1px 0 rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ ic.face }}Face ID bilan kirish</button>
+            <div style="font-size:12.5px;line-height:1.5;color:var(--text-muted);text-align:center">Kirish huquqi faqat Qahramon Tabib xodimlariga beriladi.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ is.app }}" hint-placeholder-val="{{ false }}">
+          <div ref="{{ scrollRef }}" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;padding-top:{{ padTop }};padding-bottom:{{ padBot }};box-sizing:border-box">
+
+            <sc-if value="{{ is.dash }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:4px 16px 0">
+                <div style="display:flex;background:var(--surface-inset);border-radius:12px;padding:3px">
+                  <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3"><button onClick="{{ r.go }}" style="flex:1;height:34px;border:none;border-radius:10px;background:{{ r.bg }};box-shadow:{{ r.sh }};font:600 13.5px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ r.label }}</button></sc-for>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+                    <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:6px">
+                      <div style="font-size:12.5px;color:var(--text-muted)">{{ k.label }}</div>
+                      <div style="font-size:20px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;letter-spacing:-.01em">{{ k.value }}</div>
+                      <div style="font-size:12px;font-weight:600;color:{{ k.dc }}">{{ k.delta }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Savdo</div><div style="font-size:13px;color:var(--text-muted)">{{ chartCap }}</div></div>
+                  <div style="height:130px;display:flex;align-items:flex-end;gap:8px">
+                    <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+                      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:{{ b.h }};background:{{ b.bg }};border-radius:6px"></div><div style="font-size:11px;color:var(--text-muted)">{{ b.l }}</div></div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Diqqat talab qiladi</div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <sc-for list="{{ attention }}" as="a" hint-placeholder-count="4">
+                    <button onClick="{{ a.go }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)">
+                      <div style="width:34px;height:34px;border-radius:10px;background:{{ a.bg }};color:{{ a.fg }};display:flex;align-items:center;justify-content:center;flex:none">{{ a.icon }}</div>
+                      <div style="flex:1;font-size:15px;color:var(--text-primary)">{{ a.label }}</div>
+                      <div style="font-size:15px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ a.count }}</div>
+                      <span style="color:var(--text-placeholder)">{{ ic.chevS }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 4px 0"><div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">So'nggi buyurtmalar</div><button onClick="{{ tabOrders }}" style="border:none;background:none;color:var(--accent-text);font:600 14px var(--font-sans);cursor:pointer">Barchasi</button></div>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <sc-for list="{{ recent }}" as="o" hint-placeholder-count="3">
+                    <button onClick="{{ o.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:16px;text-align:left;cursor:pointer;font-family:var(--font-sans)">
+                      <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ o.name }}</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px">{{ o.id }} · {{ o.time }}</div></div>
+                      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div style="font-size:14px;font-weight:600;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ o.totalF }}</div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ o.tone }}" pill="{{ true }}" hint-size="80px,20px">{{ o.label }}</x-import></div>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.orders }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding-top:4px">
+                <div style="padding:0 16px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" placeholder="Ism, telefon yoki buyurtma raqami" leading-icon="{{ ic.searchS }}" value="{{ oQuery }}" onChange="{{ onOQuery }}" hint-size="100%,40px"></x-import></div>
+                <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 16px">
+                  <sc-for list="{{ oChips }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.go }}" style="flex:none;height:34px;padding:0 14px;border-radius:17px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font:600 13px var(--font-sans);cursor:pointer;white-space:nowrap">{{ c.label }}</button></sc-for>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;padding:0 16px">
+                  <sc-for list="{{ orderList }}" as="o" hint-placeholder-count="5">
+                    <button onClick="{{ o.go }}" style="display:flex;flex-direction:column;gap:8px;padding:14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;text-align:left;cursor:pointer;font-family:var(--font-sans)">
+                      <div style="display:flex;align-items:center;gap:8px;width:100%"><span style="font-size:13px;font-weight:600;color:var(--text-muted);font-variant-numeric:tabular-nums">{{ o.id }}</span><span style="font-size:13px;color:var(--text-muted)">· {{ o.time }}</span><div style="flex:1"></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ o.tone }}" pill="{{ true }}" dot="{{ true }}" hint-size="90px,20px">{{ o.label }}</x-import></div>
+                      <div style="font-size:16px;font-weight:600;color:var(--text-primary)">{{ o.name }}</div>
+                      <div style="display:flex;align-items:center;gap:8px;width:100%"><span style="font-size:13.5px;color:var(--text-secondary)">{{ o.count }} ta mahsulot · {{ o.pay }}</span><sc-if value="{{ o.rx }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="danger" hint-size="50px,20px">Rx</x-import></sc-if><div style="flex:1"></div><span style="font-size:15px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ o.totalF }}</span></div>
+                    </button>
+                  </sc-for>
+                  <sc-if value="{{ ordersEmpty }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:48px 24px"><div style="width:56px;height:56px;border-radius:18px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.bag }}</div><div style="font-size:17px;font-weight:600;color:var(--text-primary)">Buyurtma yo'q</div><div style="font-size:14px;line-height:1.5;color:var(--text-secondary)">Tanlangan filtr bo'yicha buyurtma topilmadi.</div></div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.order }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:8px 16px 0">
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;color:var(--text-muted)">Bugun, {{ ov.time }}</div><div style="font-size:22px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;margin-top:2px">{{ ov.totalF }}</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ ov.tone }}" pill="{{ true }}" dot="{{ true }}" hint-size="100px,22px">{{ ov.label }}</x-import></div>
+                  <sc-if value="{{ ov.notCancelled }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex;gap:4px">
+                      <sc-for list="{{ ov.steps }}" as="s" hint-placeholder-count="4"><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:4px;border-radius:2px;background:{{ s.bg }}"></div><div style="font-size:11px;font-weight:{{ s.fw }};color:{{ s.fg }}">{{ s.l }}</div></div></sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ ov.cancelled }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px;line-height:1.5;color:var(--danger);background:var(--danger-fill);border-radius:12px;padding:10px 12px">Bekor qilingan: {{ ov.reason }}</div></sc-if>
+                </div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;align-items:center;gap:12px"><div style="width:42px;height:42px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">{{ ov.ini }}</div><div style="flex:1"><div style="font-size:16px;font-weight:600;color:var(--text-primary)">{{ ov.name }}</div><div style="font-size:13.5px;color:var(--text-muted);font-variant-numeric:tabular-nums">{{ ov.phone }}</div></div></div>
+                  <div style="display:flex;gap:8px"><button onClick="{{ ov.call }}" style="flex:1;height:40px;border-radius:12px;border:1px solid var(--border-default);background:#fffdf8;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ ic.phoneS }}Qo'ng'iroq</button><button onClick="{{ ov.chat }}" style="flex:1;height:40px;border-radius:12px;border:1px solid var(--border-default);background:#fffdf8;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ ic.chatS }}Yozish</button></div>
+                  <div style="height:1px;background:var(--border-subtle)"></div>
+                  <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--text-muted);margin-top:1px">{{ ic.pinS }}</span><div style="font-size:14px;line-height:1.45;color:var(--text-body)">{{ ov.addr }}</div></div>
+                  <sc-if value="{{ ov.hasCourier }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:center"><span style="color:var(--text-muted)">{{ ic.truckS }}</span><div style="font-size:14px;color:var(--text-body)">Kuryer: <b style="color:var(--text-primary)">{{ ov.courier }}</b></div></div></sc-if>
+                </div>
+                <sc-if value="{{ ov.rx }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ ov.rxGo }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="width:34px;height:34px;border-radius:10px;background:var(--danger-fill);color:var(--danger);display:flex;align-items:center;justify-content:center">{{ ic.rxS }}</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Retsept biriktirilgan</div><div style="font-size:13px;color:var(--text-muted)">{{ ov.rxState }}</div></div><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></button>
+                </sc-if>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:6px 16px">
+                  <sc-for list="{{ ov.items }}" as="it" hint-placeholder-count="2">
+                    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle)"><div style="width:40px;height:40px;border-radius:10px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center;flex:none">{{ ic.pillS }}</div><div style="flex:1;min-width:0"><div style="font-size:14.5px;font-weight:500;color:var(--text-primary)">{{ it.n }}</div><div style="font-size:13px;color:var(--text-muted);font-variant-numeric:tabular-nums">{{ it.q }} × {{ it.pF }}</div></div><div style="font-size:14.5px;font-weight:600;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ it.sumF }}</div></div>
+                  </sc-for>
+                  <div style="display:flex;flex-direction:column;gap:6px;padding:12px 0 10px;font-size:14px;font-variant-numeric:tabular-nums">
+                    <div style="display:flex;justify-content:space-between;color:var(--text-secondary)"><span>Mahsulotlar</span><span>{{ ov.subF }}</span></div>
+                    <div style="display:flex;justify-content:space-between;color:var(--text-secondary)"><span>Yetkazib berish</span><span>{{ ov.delF }}</span></div>
+                    <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;color:var(--text-primary);padding-top:4px"><span>Jami</span><span>{{ ov.totalF }}</span></div>
+                    <div style="display:flex;justify-content:space-between;color:var(--text-secondary)"><span>To'lov</span><span style="color:var(--success);font-weight:600">{{ ov.pay }} · {{ ov.paid }}</span></div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.products }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding-top:4px">
+                <div style="padding:0 16px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" placeholder="Mahsulot qidirish" leading-icon="{{ ic.searchS }}" value="{{ pQuery }}" onChange="{{ onPQuery }}" hint-size="100%,40px"></x-import></div>
+                <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 16px">
+                  <sc-for list="{{ pChips }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.go }}" style="flex:none;height:34px;padding:0 14px;border-radius:17px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font:600 13px var(--font-sans);cursor:pointer;white-space:nowrap">{{ c.label }}</button></sc-for>
+                </div>
+                <div style="margin:0 16px;display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <sc-for list="{{ productList }}" as="p" hint-placeholder-count="6">
+                    <div style="position:relative;overflow:hidden;"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ p.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ p.sw.down }}" onPointerMove="{{ p.sw.move }}" onPointerUp="{{ p.sw.up }}" onPointerLeave="{{ p.sw.up }}" onPointerCancel="{{ p.sw.up }}" onClick="{{ p.sw.click }}" style="position:relative;transform:translateX({{ p.sw.x }});transition:{{ p.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><img src="{{ p.thumb }}" alt="" draggable="false" style="width:52px;height:52px;border-radius:12px;object-fit:cover;flex:none;opacity:{{ p.op }}"><div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:{{ p.nameColor }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.name }}</div><div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span style="font-size:13px;color:var(--text-muted);font-variant-numeric:tabular-nums">{{ p.priceF }}</span><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ p.stockTone }}" hint-size="60px,20px">{{ p.stockL }}</x-import><sc-if value="{{ p.rx }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="danger" hint-size="30px,20px">Rx</x-import></sc-if><sc-if value="{{ p.hidden }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="neutral" hint-size="60px,20px">Yashirin</x-import></sc-if></div></div><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></div></div></div>
+                  </sc-for>
+                </div>
+                <div style="padding:0 16px"><div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-muted);padding:0 4px">{{ ic.swipeS }}Chapga suring: yashirish, arxivlash yoki o'chirish</div></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.product }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px;padding:8px 16px 0">
+                <div style="display:flex;gap:10px">
+                  <sc-for list="{{ imgSlots }}" as="s" hint-placeholder-count="3">
+                    <button onClick="{{ s.go }}" style="flex:1;aspect-ratio:1;border-radius:16px;border:1.5px dashed {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font:500 12px var(--font-sans);cursor:pointer;position:relative">{{ s.icon }}{{ s.label }}</button>
+                  </sc-for>
+                </div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                  <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Nomi" required="{{ true }}" placeholder="Masalan, Tog' asali 500 g" value="{{ draft.name }}" onChange="{{ on.name }}" error="{{ err.name }}" hint="{{ err.nameMsg }}" hint-size="100%,64px"></x-import>
+                  <x-import component-from-global-scope="FintruckDesignSystem_557fba.Select" label="Toifa" options="{{ catOptions }}" value="{{ draft.cat }}" onChange="{{ on.cat }}" hint-size="100%,64px"></x-import>
+                  <div style="display:flex;gap:10px">
+                    <div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Narxi, so'm" required="{{ true }}" inputmode="numeric" placeholder="0" value="{{ draft.price }}" onChange="{{ on.price }}" error="{{ err.price }}" hint="{{ err.priceMsg }}" hint-size="100%,64px"></x-import></div>
+                    <div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Eski narx" inputmode="numeric" placeholder="Ixtiyoriy" value="{{ draft.old }}" onChange="{{ on.old }}" hint-size="100%,64px"></x-import></div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:14px;font-weight:500;color:var(--text-primary)">Ombordagi soni</div><div style="font-size:12.5px;color:var(--text-muted)">10 donadan kam bo'lsa ogohlantiriladi</div></div><div style="display:flex;align-items:center;border:1px solid var(--border-default);border-radius:12px;height:40px"><button onClick="{{ on.dec }}" aria-label="Kamaytirish" style="width:40px;height:40px;border:none;background:none;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center">{{ ic.minusS }}</button><div style="min-width:36px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums">{{ draft.stock }}</div><button onClick="{{ on.inc }}" aria-label="Ko'paytirish" style="width:40px;height:40px;border:none;background:none;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center">{{ ic.plusS }}</button></div></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fffdf8"><div style="flex:1"><div style="font-size:15px;color:var(--text-primary)">Retsept talab qilinadi</div><div style="font-size:12.5px;color:var(--text-muted)">Mijoz buyurtmada retsept yuklaydi</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Switch" checked="{{ draft.rx }}" onChange="{{ on.rx }}" hint-size="36px,20px"></x-import></div>
+                  <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fffdf8"><div style="flex:1;font-size:15px;color:var(--text-primary)">Ilovada ko'rsatish</div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Switch" checked="{{ draft.active }}" onChange="{{ on.active }}" hint-size="36px,20px"></x-import></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:500;color:var(--text-secondary);padding:0 4px">Tavsif</div><textarea value="{{ draft.desc }}" onChange="{{ on.desc }}" rows="4" placeholder="Qo'llanilishi, tarkibi, saqlash shartlari" style="border:1px solid var(--border-default);border-radius:14px;padding:12px 14px;font:400 14.5px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea></div>
+                <sc-if value="{{ draftExisting }}" hint-placeholder-val="{{ false }}"><button onClick="{{ askDelete }}" style="height:48px;border-radius:14px;border:1px solid var(--border-subtle);background:#fffdf8;color:var(--danger);font:600 15px var(--font-sans);cursor:pointer">Mahsulotni o'chirish</button></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.rx }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:4px 16px 0">
+                <div style="display:flex;background:var(--surface-inset);border-radius:12px;padding:3px">
+                  <sc-for list="{{ rxTabs }}" as="r" hint-placeholder-count="3"><button onClick="{{ r.go }}" style="flex:1;height:34px;border:none;border-radius:10px;background:{{ r.bg }};box-shadow:{{ r.sh }};font:600 13px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ r.label }}</button></sc-for>
+                </div>
+                <sc-for list="{{ rxList }}" as="r" hint-placeholder-count="3">
+                  <button onClick="{{ r.go }}" style="display:flex;align-items:center;gap:12px;padding:14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;text-align:left;cursor:pointer;font-family:var(--font-sans)">
+                    <div style="width:48px;height:60px;border-radius:10px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center;flex:none">{{ ic.rx }}</div>
+                    <div style="flex:1;min-width:0"><div style="font-size:15.5px;font-weight:600;color:var(--text-primary)">{{ r.patient }}</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px">{{ r.id }} · {{ r.date }}</div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">{{ r.count }} ta dori · {{ r.doctor }}</div></div>
+                    <x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ r.tone }}" pill="{{ true }}" hint-size="80px,20px">{{ r.label }}</x-import>
+                  </button>
+                </sc-for>
+                <sc-if value="{{ rxEmpty }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:48px 24px"><div style="width:56px;height:56px;border-radius:18px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.check }}</div><div style="font-size:17px;font-weight:600;color:var(--text-primary)">Hammasi ko'rib chiqilgan</div><div style="font-size:14px;line-height:1.5;color:var(--text-secondary)">Yangi retsept kelganda bildirishnoma olasiz.</div></div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.rxd }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:8px 16px 0">
+                <div style="height:240px;border-radius:18px;background:var(--surface-inset);border:1px solid var(--border-subtle);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-muted);font-size:13px">{{ ic.image }}Mijoz yuklagan retsept rasmi<span style="font-size:12px">Kattalashtirish uchun bosing</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px"><div style="font-size:13px;color:var(--text-muted)">{{ rv.date }}</div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ rv.tone }}" pill="{{ true }}" dot="{{ true }}" hint-size="100px,22px">{{ rv.label }}</x-import></div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <sc-for list="{{ rv.rows }}" as="row" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:12px;padding:12px 16px;background:#fffdf8;font-size:14.5px"><span style="color:var(--text-muted)">{{ row.k }}</span><span style="color:var(--text-primary);font-weight:500;text-align:right">{{ row.v }}</span></div></sc-for>
+                </div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">So'ralgan dorilar</div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:4px 16px">
+                  <sc-for list="{{ rv.items }}" as="it" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:10px;padding:11px 0;font-size:14.5px;color:var(--text-primary)"><span style="color:var(--text-muted)">{{ ic.pillS }}</span>{{ it }}</div></sc-for>
+                </div>
+                <sc-if value="{{ rv.rejected }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px;line-height:1.5;color:var(--danger);background:var(--danger-fill);border-radius:12px;padding:10px 12px">Rad etish sababi: {{ rv.reason }}</div></sc-if>
+                <sc-if value="{{ rv.hasOrder }}" hint-placeholder-val="{{ false }}"><button onClick="{{ rv.orderGo }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;text-align:left;cursor:pointer;font:500 15px var(--font-sans);color:var(--text-primary)"><span style="color:var(--text-muted)">{{ ic.bagS }}</span><span style="flex:1">Buyurtma {{ rv.order }}</span><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></button></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.more }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px;padding:4px 16px 0">
+                <div style="display:flex;align-items:center;gap:14px;padding:16px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px"><div style="width:52px;height:52px;border-radius:50%;background:#17301f;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px">DR</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--text-primary)">Dilshod Rasulov</div><div style="font-size:13.5px;color:var(--text-muted)">admin@qahramontabib.uz</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="accent" pill="{{ true }}" hint-size="60px,20px">{{ roleName }}</x-import></div>
+                <sc-for list="{{ moreGroups }}" as="g" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">{{ g.title }}</div><div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <sc-for list="{{ g.rows }}" as="m" hint-placeholder-count="6">
+                    <button onClick="{{ m.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="width:34px;height:34px;border-radius:10px;background:var(--surface-inset);color:var(--text-primary);display:flex;align-items:center;justify-content:center;flex:none">{{ m.icon }}</div><div style="flex:1"><div style="font-size:15px;color:var(--text-primary)">{{ m.label }}</div><div style="font-size:12.5px;color:var(--text-muted)">{{ m.sub }}</div></div><sc-if value="{{ m.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:11px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ m.badge }}</span></sc-if><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></button>
+                  </sc-for>
+                </div></div></sc-for>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <a href="Qahramon Tabib.dc.html" style="display:flex;align-items:center;gap:12px;padding:14px;background:#fffdf8;text-decoration:none;color:var(--text-primary);font-size:15px"><span style="color:var(--text-muted)">{{ ic.extS }}</span><span style="flex:1">Mijoz ilovasini ko'rish</span></a>
+                  <button onClick="{{ logout }}" style="display:flex;align-items:center;gap:12px;padding:14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font:400 15px var(--font-sans);color:var(--danger)">{{ ic.logoutS }}Hisobdan chiqish</button>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.inventory }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:4px 16px 0">
+                <div style="display:flex;background:var(--surface-inset);border-radius:12px;padding:3px">
+                  <sc-for list="{{ invTabs }}" as="r" hint-placeholder-count="2"><button onClick="{{ r.go }}" style="flex:1;height:34px;border:none;border-radius:10px;background:{{ r.bg }};box-shadow:{{ r.sh }};font:600 13px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ r.label }}</button></sc-for>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <sc-for list="{{ invList }}" as="p" hint-placeholder-count="5">
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8">
+                      <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ p.name }}</div><div style="font-size:12.5px;color:{{ p.fg }};margin-top:2px;font-weight:500">{{ p.state }}</div></div>
+                      <div style="display:flex;align-items:center;border:1px solid var(--border-default);border-radius:12px;height:38px"><button onClick="{{ p.dec }}" aria-label="Kamaytirish" style="width:38px;height:38px;border:none;background:none;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center">{{ ic.minusS }}</button><div style="min-width:34px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text-primary)">{{ p.stock }}</div><button onClick="{{ p.inc }}" aria-label="Ko'paytirish" style="width:38px;height:38px;border:none;background:none;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center">{{ ic.plusS }}</button></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.customers }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:1px;margin:4px 16px 0;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                <sc-for list="{{ custList }}" as="c" hint-placeholder-count="6">
+                  <button onClick="{{ c.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="width:40px;height:40px;border-radius:50%;background:{{ c.avBg }};color:{{ c.avFg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none">{{ c.ini }}</div><div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ c.name }}</div><div style="font-size:13px;color:var(--text-muted)">{{ c.orders }} ta buyurtma · {{ c.spentF }}</div></div><sc-if value="{{ c.blocked }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="danger" pill="{{ true }}" hint-size="70px,20px">Bloklangan</x-import></sc-if><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></button>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.customer }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:8px 16px 0">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0"><div style="width:76px;height:76px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px">{{ cv.ini }}</div><div style="font-size:21px;font-weight:700;color:var(--text-primary)">{{ cv.name }}</div><div style="font-size:14px;color:var(--text-muted);font-variant-numeric:tabular-nums">{{ cv.phone }} · {{ cv.since }} dan beri</div></div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+                  <sc-for list="{{ cv.stats }}" as="s" hint-placeholder-count="3"><div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:16px;padding:12px;text-align:center"><div style="font-size:16px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ s.v }}</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">{{ s.k }}</div></div></sc-for>
+                </div>
+                <div style="display:flex;gap:8px"><button onClick="{{ cv.call }}" style="flex:1;height:44px;border-radius:14px;border:1px solid var(--border-default);background:#fffdf8;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ ic.phoneS }}Qo'ng'iroq</button><button onClick="{{ cv.chat }}" style="flex:1;height:44px;border-radius:14px;border:1px solid var(--border-default);background:#fffdf8;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ ic.chatS }}Yozish</button></div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fffdf8"><div style="flex:1"><div style="font-size:15px;color:var(--text-primary)">Hisobni bloklash</div><div style="font-size:12.5px;color:var(--text-muted)">Mijoz yangi buyurtma bera olmaydi</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Switch" checked="{{ cv.blocked }}" onChange="{{ cv.toggleBlock }}" hint-size="36px,20px"></x-import></div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.chats }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:1px;margin:4px 16px 0;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                <sc-for list="{{ chatList }}" as="c" hint-placeholder-count="4">
+                  <button onClick="{{ c.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="width:44px;height:44px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none">{{ c.ini }}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px"><span style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ c.name }}</span><span style="font-size:12.5px;color:var(--text-muted)">{{ c.time }}</span></div><div style="display:flex;align-items:center;gap:8px;margin-top:2px"><span style="flex:1;font-size:13.5px;color:{{ c.lastFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.last }}</span><sc-if value="{{ c.hasUnread }}" hint-placeholder-val="{{ false }}"><span style="min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:10px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ c.unread }}</span></sc-if></div></div></button>
+                </sc-for>
+                <sc-if value="{{ chatsEmpty }}" hint-placeholder-val="{{ false }}"><div style="background:#fffdf8;padding:40px 24px;text-align:center;font-size:14px;color:var(--text-secondary)">Hozircha xabar yo'q.</div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.chat }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px;padding:8px 16px 0">
+                <div style="align-self:center;font-size:12px;color:var(--text-muted);padding:4px 0 8px">Bugun</div>
+                <sc-for list="{{ chv.msgs }}" as="m" hint-placeholder-count="4">
+                  <div style="display:flex;justify-content:{{ m.jc }}"><div style="max-width:76%;padding:9px 13px;border-radius:18px;background:{{ m.bg }};color:{{ m.fg }};font-size:14.5px;line-height:1.4;border:{{ m.bd }}">{{ m.t }}<div style="font-size:11px;opacity:.7;margin-top:3px;text-align:right">{{ m.time }}</div></div></div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.promos }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:4px 16px 0">
+                <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-muted);padding:0 4px">{{ ic.swipeS }}Chapga suring: yoqish, o'chirish</div>
+                <sc-for list="{{ promoList }}" as="p" hint-placeholder-count="3">
+                  <div style="position:relative;overflow:hidden;border:1px solid var(--border-subtle);border-radius:18px;background:#fffdf8"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ p.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ p.sw.down }}" onPointerMove="{{ p.sw.move }}" onPointerUp="{{ p.sw.up }}" onPointerLeave="{{ p.sw.up }}" onPointerCancel="{{ p.sw.up }}" onClick="{{ p.sw.click }}" style="position:relative;transform:translateX({{ p.sw.x }});transition:{{ p.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px"><div style="display:flex;align-items:center;gap:10px"><span style="font:700 15px var(--font-mono, ui-monospace, monospace);letter-spacing:.04em;color:var(--text-primary);background:var(--surface-inset);border-radius:8px;padding:4px 8px">{{ p.code }}</span><div style="flex:1"></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ p.tone }}" pill="{{ true }}" hint-size="70px,20px">{{ p.stL }}</x-import></div><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ p.val }}</div><div style="height:6px;border-radius:3px;background:var(--surface-inset);overflow:hidden"><div style="height:100%;width:{{ p.pct }};background:var(--accent);border-radius:3px"></div></div><div style="display:flex;justify-content:space-between;font-size:12.5px;color:var(--text-muted);font-variant-numeric:tabular-nums"><span>{{ p.uses }}</span><span>{{ p.till }}</span></div></div></div></div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.push }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:8px 16px 0">
+                <div style="border-radius:22px;background:#2b312d;padding:18px 12px">
+                  <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:12px 14px;display:flex;gap:10px">
+                    <div style="width:36px;height:36px;border-radius:9px;background:#17301f;border:1px solid #c8a24c;display:flex;align-items:center;justify-content:center;color:#d9b45f;font-weight:800;font-size:12px;flex:none;box-sizing:border-box">QT</div>
+                    <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;font-size:13px"><b style="color:#121713">{{ pushV.title }}</b><span style="color:#4f5751">hozir</span></div><div style="font-size:13.5px;line-height:1.4;color:#2b312d;margin-top:2px">{{ pushV.body }}</div></div>
+                  </div>
+                  <div style="text-align:center;font-size:11.5px;color:rgba(255,255,255,.7);margin-top:10px">Qulflangan ekranda ko'rinishi</div>
+                </div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                  <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Sarlavha" required="{{ true }}" value="{{ push.title }}" onChange="{{ onPushTitle }}" hint-size="100%,64px"></x-import>
+                  <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:500;color:var(--text-secondary)">Matn</div><textarea value="{{ push.body }}" onChange="{{ onPushBody }}" rows="3" style="border:1px solid var(--border-default);border-radius:10px;padding:10px 12px;font:400 14.5px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea></div>
+                </div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:0 4px">Kimga</div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                  <sc-for list="{{ audList }}" as="a" hint-placeholder-count="3"><button onClick="{{ a.go }}" style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="flex:1"><div style="font-size:15px;color:var(--text-primary)">{{ a.label }}</div><div style="font-size:12.5px;color:var(--text-muted);font-variant-numeric:tabular-nums">{{ a.n }}</div></div><span style="color:var(--accent);opacity:{{ a.op }}">{{ ic.check }}</span></button></sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.appts }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:4px 16px 0">
+                <div style="display:flex;background:var(--surface-inset);border-radius:12px;padding:3px"><sc-for list="{{ apDays }}" as="r" hint-placeholder-count="3"><button onClick="{{ r.go }}" style="flex:1;height:34px;border:none;border-radius:10px;background:{{ r.bg }};box-shadow:{{ r.sh }};font:600 13px var(--font-sans);color:var(--text-primary);cursor:pointer;white-space:nowrap">{{ r.label }}</button></sc-for></div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><sc-for list="{{ apStats }}" as="s" hint-placeholder-count="3"><div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:12px;text-align:center"><div style="font-size:19px;font-weight:700;color:var(--text-primary)">{{ s.v }}</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">{{ s.k }}</div></div></sc-for></div>
+                <sc-for list="{{ apList }}" as="a" hint-placeholder-count="3">
+                  <button onClick="{{ a.go }}" style="display:flex;gap:14px;align-items:stretch;padding:14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;cursor:pointer;text-align:left;font-family:var(--font-sans)">
+                    <div style="width:56px;flex:none;border-radius:14px;background:{{ a.tbg }};color:{{ a.tfg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px"><div style="font-size:16px;font-weight:800;font-variant-numeric:tabular-nums">{{ a.time }}</div><div style="font-size:11px;opacity:.8">{{ a.dur }}</div></div>
+                    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:15.5px;font-weight:600;color:var(--text-primary);flex:1">{{ a.name }}</span><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ a.tone }}" pill="{{ true }}" hint-size="90px,20px">{{ a.statusL }}</x-import></div><div style="font-size:13.5px;line-height:1.4;color:var(--text-secondary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ a.complaint }}</div><div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-muted)">{{ a.icon }}{{ a.typeL }} · {{ a.age }} yosh</div></div>
+                  </button>
+                </sc-for>
+                <sc-if value="{{ apEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 20px;text-align:center;font-size:14px;color:var(--text-secondary)">Bu kunga qabul yo'q.</div></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.appt }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:8px 16px 0">
+                <div style="border-radius:22px;background:#17301f;padding:18px;color:#fff;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden"><div style="position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;border:1px solid rgba(217,180,95,.25)"></div><div style="display:flex;align-items:center;gap:12px;position:relative"><div style="width:48px;height:48px;border-radius:50%;border:1.5px solid #c8a24c;color:#d9b45f;display:flex;align-items:center;justify-content:center;font-weight:700">{{ apv.ini }}</div><div style="flex:1"><div style="font-size:18px;font-weight:700">{{ apv.name }}</div><div style="font-size:13px;color:rgba(255,255,255,.72)">{{ apv.age }} yosh · {{ apv.phone }}</div></div></div><div style="display:flex;gap:8px;position:relative"><div style="flex:1;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:10px 12px"><div style="font-size:11.5px;color:rgba(255,255,255,.65)">Vaqt</div><div style="font-size:15px;font-weight:700;color:#d9b45f;margin-top:2px">{{ apv.when }}</div></div><div style="flex:1;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:10px 12px"><div style="font-size:11.5px;color:rgba(255,255,255,.65)">Turi</div><div style="font-size:15px;font-weight:700;color:#d9b45f;margin-top:2px">{{ apv.typeL }}</div></div></div></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px"><span style="font-size:13px;color:var(--text-muted)">Holat</span><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ apv.tone }}" pill="{{ true }}" hint-size="100px,20px">{{ apv.statusL }}</x-import></div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Mijoz shikoyati</div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:14px 16px;font-size:15px;line-height:1.55;color:var(--text-body)">{{ apv.complaint }}</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Tabib xulosasi</div>
+                <textarea value="{{ apv.note }}" onChange="{{ onApNote }}" rows="4" placeholder="Tavsiyalar, parhez, qo'llash tartibi" style="border:1px solid var(--border-default);border-radius:14px;padding:12px 14px;font:400 14.5px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Tavsiya etilgan mahsulotlar</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ apv.recs }}" as="r" hint-placeholder-count="4"><button onClick="{{ r.go }}" style="height:34px;padding:0 12px;border-radius:17px;border:1px solid {{ r.bd }};background:{{ r.bg }};color:{{ r.fg }};font:600 13px var(--font-sans);cursor:pointer">{{ r.name }}</button></sc-for></div>
+                <div style="font-size:12.5px;color:var(--text-muted);padding:0 4px">Tanlangan mahsulotlar qabul yakunida mijoz ilovasiga tavsiya sifatida yuboriladi.</div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.articles }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:4px 16px 0">
+                <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-muted);padding:0 4px">{{ ic.swipeS }}Chapga suring: nashr, arxiv yoki o'chirish</div>
+                <sc-for list="{{ artList }}" as="a" hint-placeholder-count="4">
+                  <div style="position:relative;overflow:hidden;border:1px solid var(--border-subtle);border-radius:18px;background:#fffdf8"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ a.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ a.sw.down }}" onPointerMove="{{ a.sw.move }}" onPointerUp="{{ a.sw.up }}" onPointerLeave="{{ a.sw.up }}" onPointerCancel="{{ a.sw.up }}" onClick="{{ a.sw.click }}" style="position:relative;transform:translateX({{ a.sw.x }});transition:{{ a.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;gap:12px;align-items:center;padding:8px"><img src="{{ a.img }}" alt="" draggable="false" style="width:76px;height:76px;border-radius:12px;object-fit:cover;flex:none"><div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#7f5f12;flex:1">{{ a.tag }}</span><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ a.tone }}" pill="{{ true }}" hint-size="70px,20px">{{ a.stL }}</x-import></div><div style="font-size:14.5px;font-weight:600;color:var(--text-primary);line-height:1.3;margin-top:4px">{{ a.title }}</div><div style="font-size:12.5px;color:var(--text-muted);margin-top:3px">{{ a.meta }}</div></div></div></div></div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.article }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:8px 16px 0">
+                <button onClick="{{ adCover }}" style="height:180px;border-radius:20px;border:1.5px dashed {{ adv.coverBd }};background:var(--surface-inset);padding:0;overflow:hidden;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;color:var(--accent-text);font:600 13px var(--font-sans)"><sc-if value="{{ adv.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ adv.imgL }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:absolute;right:10px;bottom:10px;height:30px;padding:0 12px;border-radius:15px;background:rgba(255,253,248,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;color:var(--text-primary)">Muqovani almashtirish</span></sc-if><sc-if value="{{ adv.noImg }}" hint-placeholder-val="{{ false }}"><span>Muqova rasmini qo'shish</span></sc-if></button>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                  <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Sarlavha" required="{{ true }}" placeholder="Masalan, Bo'g'im og'rig'ida 5 odat" value="{{ adv.title }}" onChange="{{ adOn.title }}" error="{{ adv.err }}" hint="{{ adv.errMsg }}" hint-size="100%,64px"></x-import>
+                  <x-import component-from-global-scope="FintruckDesignSystem_557fba.Select" label="Mavzu" options="{{ artTags }}" value="{{ adv.tag }}" onChange="{{ adOn.tag }}" hint-size="100%,64px"></x-import>
+                </div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Qisqa tavsif</div>
+                <textarea value="{{ adv.lead }}" onChange="{{ adOn.lead }}" rows="2" placeholder="Ro'yxatda ko'rinadigan 1–2 jumla" style="border:1px solid var(--border-default);border-radius:14px;padding:12px 14px;font:400 14.5px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Matn</div>
+                <textarea value="{{ adv.body }}" onChange="{{ adOn.body }}" rows="7" placeholder="Maqola matni" style="border:1px solid var(--border-default);border-radius:14px;padding:12px 14px;font:400 14.5px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Bog'langan mahsulotlar</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ adv.recs }}" as="r" hint-placeholder-count="4"><button onClick="{{ r.go }}" style="height:34px;padding:0 12px;border-radius:17px;border:1px solid {{ r.bd }};background:{{ r.bg }};color:{{ r.fg }};font:600 13px var(--font-sans);cursor:pointer">{{ r.name }}</button></sc-for></div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden"><div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fffdf8"><div style="flex:1"><div style="font-size:15px;color:var(--text-primary)">Nashr qilingan</div><div style="font-size:12.5px;color:var(--text-muted)">O'chirilsa, qoralama sifatida saqlanadi</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Switch" checked="{{ adv.published }}" onChange="{{ adOn.pub }}" hint-size="36px,20px"></x-import></div></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.banners }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:4px 16px 0">
+                <div style="font-size:13px;line-height:1.5;color:var(--text-muted);padding:0 4px">Bannerlar bosh sahifada shu tartibda aylanadi. Chapga suring: yoqish yoki o'chirish.</div>
+                <sc-for list="{{ bnList }}" as="b" hint-placeholder-count="3">
+                  <div style="position:relative;overflow:hidden;border:1px solid var(--border-subtle);border-radius:18px;background:#fffdf8"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ b.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ b.sw.down }}" onPointerMove="{{ b.sw.move }}" onPointerUp="{{ b.sw.up }}" onPointerLeave="{{ b.sw.up }}" onPointerCancel="{{ b.sw.up }}" onClick="{{ b.sw.click }}" style="position:relative;transform:translateX({{ b.sw.x }});transition:{{ b.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="position:relative;height:130px"><img src="{{ b.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:{{ b.op }}"><div style="position:absolute;inset:0;background:rgba(14,28,18,.35)"></div><div style="position:absolute;left:14px;right:14px;bottom:12px;color:#fff;font-size:17px;font-weight:700;line-height:1.25">{{ b.title }}</div><span style="position:absolute;top:10px;left:10px;height:24px;padding:0 10px;border-radius:12px;background:rgba(255,253,248,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:12px;font-weight:700;color:var(--text-primary);display:flex;align-items:center">{{ b.pos }}</span></div><div style="display:flex;align-items:center;gap:10px;padding:12px 14px"><div style="flex:1;min-width:0"><div style="font-size:13.5px;color:var(--text-secondary)">{{ b.target }}</div><div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">{{ b.clicksL }}</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ b.tone }}" pill="{{ true }}" hint-size="70px,20px">{{ b.stL }}</x-import><button onClick="{{ b.up }}" aria-label="Yuqoriga" style="width:34px;height:34px;border-radius:10px;border:1px solid var(--border-default);background:#fffdf8;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">{{ ic.upS }}</button><button onClick="{{ b.down }}" aria-label="Pastga" style="width:34px;height:34px;border-radius:10px;border:1px solid var(--border-default);background:#fffdf8;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">{{ ic.downS }}</button></div></div></div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.reviews }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:4px 16px 0">
+                <div style="display:flex;background:var(--surface-inset);border-radius:12px;padding:3px"><sc-for list="{{ rvTabs }}" as="r" hint-placeholder-count="3"><button onClick="{{ r.go }}" style="flex:1;height:34px;border:none;border-radius:10px;background:{{ r.bg }};box-shadow:{{ r.sh }};font:600 13px var(--font-sans);color:var(--text-primary);cursor:pointer;white-space:nowrap">{{ r.label }}</button></sc-for></div>
+                <sc-for list="{{ rvList }}" as="r" hint-placeholder-count="3">
+                  <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;opacity:{{ r.op }}">
+                    <div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">{{ r.ini }}</div><div style="flex:1;min-width:0"><div style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ r.name }}</div><div style="font-size:12px;color:var(--text-muted)">{{ r.product }} · {{ r.date }}</div></div><div style="color:#c8a24c;font-size:14px;letter-spacing:1px">{{ r.starsL }}</div></div>
+                    <div style="font-size:14.5px;line-height:1.5;color:var(--text-body)">{{ r.text }}</div>
+                    <sc-if value="{{ r.hasReply }}" hint-placeholder-val="{{ false }}"><div style="border-radius:12px;background:var(--surface-inset);padding:10px 12px;font-size:13.5px;line-height:1.5;color:var(--text-secondary)"><b style="color:var(--text-primary)">Qahramon Tabib:</b> {{ r.reply }}</div></sc-if>
+                    <div style="display:flex;gap:8px"><button onClick="{{ r.replyGo }}" style="flex:none;white-space:nowrap;height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--border-default);background:#fffdf8;font:600 13px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ r.replyL }}</button><button onClick="{{ r.hide }}" style="flex:none;white-space:nowrap;height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--border-default);background:#fffdf8;font:600 13px var(--font-sans);color:var(--text-secondary);cursor:pointer">{{ r.hideL }}</button></div>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ rvEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 20px;text-align:center;font-size:14px;color:var(--text-secondary)">Bu bo'limda sharh yo'q.</div></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.analytics }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:4px 16px 0">
+                <div style="display:flex;background:var(--surface-inset);border-radius:12px;padding:3px"><sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3"><button onClick="{{ r.go }}" style="flex:1;height:34px;border:none;border-radius:10px;background:{{ r.bg }};box-shadow:{{ r.sh }};font:600 13px var(--font-sans);color:var(--text-primary);cursor:pointer;white-space:nowrap">{{ r.label }}</button></sc-for></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><sc-for list="{{ anKpis }}" as="k" hint-placeholder-count="4"><div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:6px"><div style="font-size:12.5px;color:var(--text-muted)">{{ k.label }}</div><div style="font-size:21px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ k.value }}</div><div style="font-size:12px;font-weight:600;color:var(--success)">{{ k.delta }}</div></div></sc-for></div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Eng ko'p sotilganlar</div><sc-for list="{{ anTop }}" as="t" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;font-size:14px"><span style="color:var(--text-primary)">{{ t.name }}</span><span style="color:var(--text-muted);font-variant-numeric:tabular-nums">{{ t.n }} dona</span></div><div style="height:6px;border-radius:3px;background:var(--surface-inset)"><div style="height:100%;width:{{ t.w }};border-radius:3px;background:var(--accent)"></div></div></div></sc-for></div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Mijozlar qayerdan keladi</div><div style="display:flex;height:12px;border-radius:6px;overflow:hidden;gap:2px"><sc-for list="{{ anCh }}" as="c" hint-placeholder-count="4"><div style="width:{{ c.w }};background:{{ c.c }}"></div></sc-for></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><sc-for list="{{ anCh }}" as="c" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text-secondary)"><span style="width:10px;height:10px;border-radius:3px;background:{{ c.c }}"></span>{{ c.name }} <b style="color:var(--text-primary);margin-left:auto">{{ c.w }}</b></div></sc-for></div></div>
+                <div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Maslahatlar</div><div style="font-size:14px;line-height:1.5;color:var(--text-secondary)">{{ anConsult }}</div></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.categories }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:4px 0 0">
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:0 20px">Mijoz ilovasida ko'rinishi</div>
+                <div style="display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 16px"><sc-for list="{{ catPreview }}" as="c" hint-placeholder-count="5"><div style="flex:none;width:96px;height:118px;border-radius:20px;overflow:hidden;position:relative"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><div style="position:absolute;inset:0;background:rgba(14,28,18,.32)"></div><div style="position:absolute;left:6px;right:6px;bottom:6px;padding:6px 6px;border-radius:12px;background:rgba(255,253,248,.24);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:11.5px;font-weight:700;line-height:1.2;text-align:center">{{ c.name }}</div></div></sc-for></div>
+                <div style="padding:0 16px;display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                    <sc-for list="{{ catRows }}" as="c" hint-placeholder-count="6"><div style="position:relative;overflow:hidden;"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ c.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ c.sw.down }}" onPointerMove="{{ c.sw.move }}" onPointerUp="{{ c.sw.up }}" onPointerLeave="{{ c.sw.up }}" onPointerCancel="{{ c.sw.up }}" onClick="{{ c.sw.click }}" style="position:relative;transform:translateX({{ c.sw.x }});transition:{{ c.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;align-items:center;gap:12px;padding:10px 12px"><img src="{{ c.img }}" alt="" draggable="false" style="width:60px;height:60px;border-radius:14px;object-fit:cover;flex:none;opacity:{{ c.op }}"><div style="flex:1;min-width:0"><div style="font-size:15.5px;font-weight:600;color:var(--text-primary)">{{ c.name }}</div><div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span style="font-size:12.5px;color:var(--text-muted)">{{ c.count }} ta mahsulot</span><sc-if value="{{ c.hidden }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="neutral" hint-size="60px,20px">Yashirin</x-import></sc-if></div></div><sc-if value="{{ catEdit }}" hint-placeholder-val="{{ false }}"><button onClick="{{ c.up }}" aria-label="Yuqoriga" style="width:34px;height:34px;border-radius:10px;border:1px solid var(--border-default);background:#fffdf8;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">{{ ic.upS }}</button><button onClick="{{ c.down }}" aria-label="Pastga" style="width:34px;height:34px;border-radius:10px;border:1px solid var(--border-default);background:#fffdf8;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">{{ ic.downS }}</button></sc-if><sc-if value="{{ catNotEdit }}" hint-placeholder-val="{{ true }}"><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></sc-if></div></div></div></sc-for>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-muted);padding:0 4px">{{ ic.swipeS }}Chapga suring: yashirish, arxivlash yoki o'chirish. Tartib uchun yuqoridagi tugma.</div>
+                  <sc-if value="{{ catHasArch }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:6px 4px 0">Arxiv</div>
+                    <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden"><sc-for list="{{ catArch }}" as="c" hint-placeholder-count="1"><div style="position:relative;overflow:hidden;"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ c.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ c.sw.down }}" onPointerMove="{{ c.sw.move }}" onPointerUp="{{ c.sw.up }}" onPointerLeave="{{ c.sw.up }}" onPointerCancel="{{ c.sw.up }}" onClick="{{ c.sw.click }}" style="position:relative;transform:translateX({{ c.sw.x }});transition:{{ c.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;align-items:center;gap:12px;padding:10px 12px"><img src="{{ c.img }}" alt="" draggable="false" style="width:48px;height:48px;border-radius:12px;object-fit:cover;flex:none;filter:grayscale(1);opacity:.6"><div style="flex:1;font-size:15px;color:var(--text-secondary)">{{ c.name }}</div></div></div></div></sc-for></div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ is.staff }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:4px 16px 0"><div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                <sc-for list="{{ staffList }}" as="s" hint-placeholder-count="4"><div style="position:relative;overflow:hidden;"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ s.acts }}" as="act" hint-placeholder-count="3"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ s.sw.down }}" onPointerMove="{{ s.sw.move }}" onPointerUp="{{ s.sw.up }}" onPointerLeave="{{ s.sw.up }}" onPointerCancel="{{ s.sw.up }}" onClick="{{ s.sw.click }}" style="position:relative;transform:translateX({{ s.sw.x }});transition:{{ s.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;align-items:center;gap:12px;padding:12px 14px"><div style="width:40px;height:40px;border-radius:50%;background:{{ s.avBg }};color:{{ s.avFg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none">{{ s.ini }}</div><div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ s.name }}</div><div style="display:flex;align-items:center;gap:6px;margin-top:3px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ s.tone }}" pill="{{ true }}" hint-size="70px,20px">{{ s.role }}</x-import><span style="font-size:12px;color:var(--text-muted)">{{ s.last }}</span></div></div><sc-if value="{{ s.blocked }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="danger" pill="{{ true }}" hint-size="70px,20px">Bloklangan</x-import></sc-if></div></div></div></sc-for>
+              </div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:4px 4px 0">Rol huquqlari</div>
+              <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden"><sc-for list="{{ rolePerms }}" as="r" hint-placeholder-count="3"><div style="padding:12px 16px;background:#fffdf8"><div style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ r.role }}</div><div style="font-size:13px;line-height:1.45;color:var(--text-muted);margin-top:2px">{{ r.perms }}</div></div></sc-for></div></div>
+            </sc-if>
+            <sc-if value="{{ is.couriers }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:4px 16px 0">
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><sc-for list="{{ crStats }}" as="s" hint-placeholder-count="3"><div style="background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px;padding:12px;text-align:center"><div style="font-size:19px;font-weight:700;color:var(--text-primary)">{{ s.v }}</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">{{ s.k }}</div></div></sc-for></div>
+                <sc-for list="{{ crList }}" as="c" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8;border:1px solid var(--border-subtle);border-radius:18px"><div style="position:relative"><div style="width:44px;height:44px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700">{{ c.ini }}</div><span style="position:absolute;right:0;bottom:0;width:12px;height:12px;border-radius:50%;border:2px solid #fffdf8;background:{{ c.dot }}"></span></div><div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ c.name }}</div><div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">{{ c.sub }}</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ c.tone }}" pill="{{ true }}" hint-size="80px,20px">{{ c.statusL }}</x-import><button onClick="{{ c.call }}" aria-label="Qo'ng'iroq" style="width:38px;height:38px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.phoneS }}</button></div></sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.settings }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:4px 16px 0">
+                <sc-for list="{{ setGroups }}" as="g" hint-placeholder-count="4">
+                  <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px">
+                    <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:0 4px">{{ g.title }}</div>
+                    <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden">
+                      <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+                        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fffdf8;min-height:24px"><div style="flex:1;font-size:15px;color:var(--text-primary)">{{ r.label }}</div><sc-if value="{{ r.isVal }}" hint-placeholder-val="{{ true }}"><span style="font-size:14.5px;color:var(--text-muted);text-align:right">{{ r.val }}</span></sc-if><sc-if value="{{ r.isSw }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Switch" checked="{{ r.on }}" onChange="{{ r.toggle }}" hint-size="36px,20px"></x-import></sc-if></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="position:absolute;top:0;left:0;right:0;z-index:10;background:rgba(244,240,230,.72);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(16,24,18,.06)">
+            <sc-if value="{{ isRoot }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 20px 12px;min-height:48px;box-sizing:content-box">
+                <div><div style="font-size:12.5px;color:var(--text-muted);font-weight:500">{{ hdr.kicker }}</div><div style="font-size:30px;font-weight:700;color:var(--text-primary);letter-spacing:-.02em;line-height:1.1">{{ hdr.title }}</div></div>
+                <sc-if value="{{ hdr.hasAction }}" hint-placeholder-val="{{ false }}"><button onClick="{{ hdr.action }}" aria-label="{{ hdr.aria }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.95);box-shadow:0 4px 16px rgba(16,24,18,.10),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;color:var(--accent-text);cursor:pointer">{{ hdr.icon }}</button></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notRoot }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:72px 1fr 72px;align-items:center;height:52px;padding:0 12px">
+                <button onClick="{{ back }}" aria-label="Orqaga" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.95);box-shadow:0 4px 16px rgba(16,24,18,.10),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;color:var(--text-primary);cursor:pointer">{{ ic.back }}</button>
+                <div style="text-align:center;font-size:17px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ hdr.title }}</div>
+                <div style="display:flex;justify-content:flex-end"><sc-if value="{{ hdr.hasAction }}" hint-placeholder-val="{{ false }}"><button onClick="{{ hdr.action }}" aria-label="{{ hdr.aria }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.95);box-shadow:0 4px 16px rgba(16,24,18,.10),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;color:var(--accent-text);cursor:pointer">{{ hdr.icon }}</button></sc-if></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <sc-if value="{{ bar.show }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:0;right:0;bottom:0;z-index:12;padding:12px 16px 34px;background:rgba(255,255,255,.66);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-top:1px solid rgba(255,255,255,.9);box-shadow:0 -8px 30px rgba(16,24,18,.06);display:flex;gap:10px">
+              <sc-if value="{{ bar.hasSecondary }}" hint-placeholder-val="{{ false }}"><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ bar.secondary }}" hint-size="100%,44px">{{ bar.secondaryL }}</x-import></div></sc-if>
+              <sc-if value="{{ bar.hasPrimary }}" hint-placeholder-val="{{ true }}"><div style="flex:1.4;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" onClick="{{ bar.primary }}" hint-size="100%,44px">{{ bar.primaryL }}</x-import></div></sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ is.chat }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:0;right:0;bottom:0;z-index:12;padding:10px 12px 30px;background:rgba(255,255,255,.66);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-top:1px solid rgba(255,255,255,.9);display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
+                <sc-for list="{{ quick }}" as="q" hint-placeholder-count="3"><button onClick="{{ q.go }}" style="flex:none;height:32px;padding:0 12px;border-radius:16px;border:1px solid var(--border-default);background:rgba(255,255,255,.8);font:500 13px var(--font-sans);color:var(--text-primary);cursor:pointer;white-space:nowrap">{{ q.t }}</button></sc-for>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center"><input value="{{ msg }}" onChange="{{ onMsg }}" onKeyDown="{{ onMsgKey }}" placeholder="Xabar yozing" style="flex:1;height:42px;border-radius:21px;border:1px solid var(--border-default);background:#fffdf8;padding:0 16px;font:400 15px var(--font-sans);color:var(--text-primary);outline:none"><button onClick="{{ sendMsg }}" aria-label="Yuborish" style="width:42px;height:42px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.sendS }}</button></div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isRoot }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;left:14px;right:14px;bottom:24px;z-index:12;height:64px;border-radius:32px;padding:5px;box-sizing:border-box;display:flex;gap:2px;background:rgba(255,255,255,.58);backdrop-filter:blur(24px) saturate(190%);-webkit-backdrop-filter:blur(24px) saturate(190%);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 36px rgba(16,24,18,.16),inset 0 1px 0 rgba(255,255,255,.95)">
+              <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.go }}" style="flex:1;border:none;border-radius:27px;background:{{ t.bg }};box-shadow:{{ t.sh }};color:{{ t.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;font:600 10.5px var(--font-sans);position:relative">{{ t.icon }}<span>{{ t.label }}</span><sc-if value="{{ t.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;left:calc(50% + 6px);min-width:16px;height:16px;padding:0 4px;box-sizing:border-box;border-radius:8px;background:var(--danger);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ t.badge }}</span></sc-if></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:40;max-width:340px;padding:10px 16px;border-radius:22px;background:rgba(255,255,255,.75);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.95);box-shadow:0 10px 30px rgba(16,24,18,.16);display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text-primary);animation:ftfade .2s ease-out;white-space:nowrap"><span style="color:var(--accent)">{{ ic.checkS }}</span>{{ toast }}</div>
+        </sc-if>
+
+        <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;z-index:35;background:rgba(16,22,18,.32)"></div>
+          <div style="position:absolute;left:8px;right:8px;bottom:8px;z-index:36;border-radius:34px;padding:8px 18px 26px;background:rgba(255,255,255,.86);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.95);box-shadow:0 20px 50px rgba(16,24,18,.22);animation:ftsheet .22s cubic-bezier(.2,0,.2,1);display:flex;flex-direction:column;gap:14px">
+            <div style="width:38px;height:5px;border-radius:3px;background:var(--border-strong);align-self:center"></div>
+            <div><div style="font-size:19px;font-weight:700;color:var(--text-primary)">{{ sh.title }}</div><div style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-top:4px">{{ sh.sub }}</div></div>
+            <sc-if value="{{ sh.hasOptions }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:16px;overflow:hidden">
+                <sc-for list="{{ sh.options }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.go }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="flex:1"><div style="font-size:15px;color:var(--text-primary)">{{ o.label }}</div><sc-if value="{{ o.hasSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:var(--text-muted)">{{ o.sub }}</div></sc-if></div><span style="color:var(--accent);opacity:{{ o.op }}">{{ ic.check }}</span></button></sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ sh.isReply }}" hint-placeholder-val="{{ false }}"><textarea value="{{ replyText }}" onChange="{{ onReply }}" rows="4" placeholder="Javobingiz" style="border:1px solid var(--border-default);border-radius:14px;padding:12px 14px;font:400 14.5px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea></sc-if>
+            <sc-if value="{{ sh.isInvite }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Telefon raqam" inputmode="numeric" placeholder="90 123 45 67" value="{{ invPhone }}" onChange="{{ onInvPhone }}" hint-size="100%,64px"></x-import></sc-if>
+            <sc-if value="{{ sh.isPromo }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Promokod" required="{{ true }}" placeholder="Masalan, QISH15" value="{{ newPromo.code }}" onChange="{{ onNP.code }}" hint-size="100%,64px"></x-import>
+                <div style="display:flex;gap:10px"><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Chegirma, %" required="{{ true }}" inputmode="numeric" placeholder="10" value="{{ newPromo.val }}" onChange="{{ onNP.val }}" hint-size="100%,64px"></x-import></div><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Limit" inputmode="numeric" placeholder="500" value="{{ newPromo.limit }}" onChange="{{ onNP.limit }}" hint-size="100%,64px"></x-import></div></div>
+              </div>
+            </sc-if>
+            <div style="display:flex;gap:10px">
+              <div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ closeSheet }}" hint-size="100%,44px">Bekor</x-import></div>
+              <div style="flex:1.4;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" disabled="{{ sh.disabled }}" onClick="{{ sh.confirm }}" hint-size="100%,44px">{{ sh.confirmL }}</x-import></div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#17301f;z-index:50"></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;role&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Admin&quot;,&quot;Farmatsevt&quot;,&quot;Qo'llab-quvvatlash&quot;],&quot;default&quot;:&quot;Admin&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;emptyStates&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const P={eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',eyeOff:'M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c6 0 10 7 10 7a17 17 0 0 1-3.2 3.9M6.6 6.6C3.9 8.4 2 12 2 12s4 7 10 7a9.6 9.6 0 0 0 5.4-1.6',archive:'M3 4h18v4H3zM5 8v12h14V8M10 12h4',del:'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13',restore:'M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4',swipe:'M20 12H6M10 8l-4 4 4 4',sort:'M7 4v16M4 7l3-3 3 3M17 20V4M14 17l3 3 3-3',video:'M3 6h12v12H3zM15 10l6-3v10l-6-3',clinic:'M4 21V8l8-5 8 5v13M9 21v-6h6v6M12 8v4M10 10h4',cal:'M4 6h16v15H4zM4 10h16M8 3v4M16 3v4',book:'M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2zM4 21V5',star:'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z',up:'M6 15l6-6 6 6',down:'M6 9l6 6 6-6',chart:'M4 20V10M10 20V4M16 20v-7M2 20h20',flag:'M5 21V4h11l-2 4 2 4H5',shield:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',home:'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z',bag:'M5 7h14l-1 13H6zM9 7a3 3 0 0 1 6 0',box:'M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8',rx:'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h4',grid:'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z',back:'M15 5l-7 7 7 7',chev:'M9 5l7 7-7 7',plus:'M12 5v14M5 12h14',minus:'M5 12h14',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-3.5-3.5',phone:'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',chat:'M4 5h16v11H8l-4 4z',users:'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M17 3a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3',layers:'M12 3 2 8l10 5 10-5zM2 13l10 5 10-5M2 17.5l10 5 10-5',tag:'M3 12V3h9l9 9-9 9zM7.5 7.5h.01',bell:'M6 9a6 6 0 0 1 12 0c0 6 3 7 3 7H3s3-1 3-7M10 20a2 2 0 0 0 4 0',gear:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1',logout:'M15 4h4v16h-4M10 8l-4 4 4 4M6 12h11',check:'M5 12l5 5L20 7',alert:'M12 3 2 20h20zM12 10v4M12 17h.01',truck:'M3 6h11v10H3zM14 9h4l3 3v4h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',image:'M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4M15 9h.01',send:'M4 12 20 4l-6 16-3-7z',ext:'M14 4h6v6M20 4l-9 9M18 14v6H4V6h6',pin:'M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12zM12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',pill:'M10.5 20.5a5 5 0 0 1-7-7l10-10a5 5 0 0 1 7 7zM8.5 8.5l7 7',face:'M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M9 9v1M15 9v1M12 9v4h-1M9 16c1.5 1 4.5 1 6 0'};
+const svg=(n,s=22,w=1.7)=>React.createElement('svg',{width:s,height:s,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:w,strokeLinecap:'round',strokeLinejoin:'round'},React.createElement('path',{d:P[n]}));
+const fmt=n=>String(Math.round(+n||0)).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+" so'm";
+const ini=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('');
+const ST={new:['Yangi','info'],preparing:['Tayyorlanmoqda','warning'],onway:["Yo'lda",'accent'],delivered:['Yetkazildi','success'],cancelled:['Bekor qilindi','neutral']};
+const RXST={pending:['Kutilmoqda','warning'],approved:['Tasdiqlangan','success'],rejected:['Rad etilgan','danger']};
+const it=(n,q,p)=>({n,q,p});
+const ORDERS=[
+{id:'#10482',name:'Aziza Karimova',phone:'+998 90 123 45 67',time:'10:42',status:'new',pay:'Click',addr:"Toshkent, Chilonzor 9-kvartal, 14-uy, 32-xonadon",items:[it("Tog' asali (Zomin)",2,12000),it("Zanjabil-asal aralashmasi",1,48000)]},
+{id:'#10481',name:'Jasur Toshmatov',phone:'+998 93 555 12 09',time:'10:35',status:'new',pay:'Payme',rx:'R-2041',addr:"Toshkent, Yunusobod 4-mavze, 21-uy",items:[it('Amoksitsillin 500 mg',1,36000),it("Oshqozon choyi yig'masi",1,62000)]},
+{id:'#10480',name:'Malika Yusupova',phone:'+998 97 210 44 18',time:'10:12',status:'preparing',pay:'Naqd',addr:"Toshkent, Mirzo Ulug'bek, Buyuk Ipak yo'li 112",items:[it("Bo'g'im moyi «Qahramon»",1,34500),it("Teri malhami",1,89000)]},
+{id:'#10479',name:'Sardor Aliyev',phone:'+998 90 777 31 52',time:'09:58',status:'onway',courier:'Bekzod Rahimov',pay:'Click',addr:"Toshkent, Shayxontohur, Navoiy ko'chasi 30",items:[it("Na'matak damlamasi",2,56000)]},
+{id:'#10478',name:'Dilnoza Rahimova',phone:'+998 99 401 22 70',time:'09:20',status:'delivered',courier:'Sherzod Qodirov',pay:'Payme',addr:"Toshkent, Sergeli 7-mavze, 5-uy",items:[it("Soch uchun o'simlik moyi",1,74000),it("Tinchlantiruvchi choy",2,20500)]},
+{id:'#10477',name:'Otabek Nazarov',phone:'+998 94 618 90 03',time:'08:47',status:'delivered',courier:'Anvar Tursunov',pay:'Uzcard',addr:"Toshkent, Yakkasaroy, Shota Rustaveli 41",items:[it("Tabiiy parvarish to'plami",1,98000)]},
+{id:'#10476',name:'Nigora Saidova',phone:'+998 91 302 17 45',time:'08:15',status:'cancelled',reason:"Mijoz bekor qildi",pay:'Click',addr:"Toshkent, Olmazor, Qorasaroy 18",items:[it("Zanjabil-asal aralashmasi",1,22000)]},
+{id:'#10475',name:'Kamola Ergasheva',phone:'+998 90 845 66 21',time:'08:02',status:'preparing',pay:'Naqd',addr:"Toshkent, Bektemir, Husayn Boyqaro 7",items:[it("Teri malhami",1,86000),it("Soch uchun o'simlik moyi",1,92000)]}];
+const pr=(id,name,cat,price,stock,o={})=>({id,name,cat,price,stock,old:'',active:true,rx:false,desc:'',...o});
+const PRODUCTS=[pr(1,"Tog' asali (Zomin)",'Asal va aralashmalar',120000,140),pr(2,"Bo'g'im moyi «Qahramon»",'Moy va malhamlar',95000,8),pr(3,'Amoksitsillin 500 mg','Dorixona',36000,22,{rx:true}),pr(4,'Zanjabil-asal aralashmasi','Asal va aralashmalar',85000,65,{old:98000}),pr(5,"Na'matak damlamasi",'Damlamalar',65000,4),pr(6,"Oshqozon choyi yig'masi","O'simlik choylari",48000,31),pr(7,'Tinchlantiruvchi choy',"O'simlik choylari",42000,0),pr(8,'Teri malhami','Moy va malhamlar',78000,17),pr(9,"Soch uchun o'simlik moyi",'Moy va malhamlar',89000,3),pr(10,"Tabiiy parvarish to'plami","To'plamlar",240000,12,{active:false})];
+const RXS=[
+{id:'R-2041',patient:'Jasur Toshmatov',doctor:'Dr. N. Qodirova',clinic:'Shifo Med klinikasi',date:'Bugun, 10:35',order:'#10481',items:['Amoksitsillin 500 mg × 1'],status:'pending'},
+{id:'R-2040',patient:'Feruza Olimova',doctor:'Dr. A. Rasulov',clinic:'3-son oilaviy poliklinika',date:'Bugun, 09:12',items:['Sertralin 50 mg × 1','Gidroksizin 25 mg × 1'],status:'pending'},
+{id:'R-2039',patient:'Bobur Xolmatov',doctor:'Dr. S. Mirzayeva',clinic:'Respublika shoshilinch yordam markazi',date:'Kecha, 18:40',items:['Azitromitsin 500 mg × 1'],status:'pending'},
+{id:'R-2038',patient:'Madina Qosimova',doctor:'Dr. N. Qodirova',clinic:'Shifo Med klinikasi',date:'Kecha, 14:05',items:['Metformin 850 mg × 2'],status:'approved'},
+{id:'R-2037',patient:'Rustam Ahmedov',doctor:'Dr. B. Islomov',clinic:'12-son poliklinika',date:'2 okt, 11:20',items:['Tramadol 50 mg × 1'],status:'rejected',reason:"Retsept muddati o'tgan"}];
+const CUSTOMERS=[{id:1,name:'Aziza Karimova',phone:'+998 90 123 45 67',orders:14,spent:1240000,since:'Mart 2025'},{id:2,name:'Jasur Toshmatov',phone:'+998 93 555 12 09',orders:6,spent:486000,since:'Iyun 2025'},{id:3,name:'Malika Yusupova',phone:'+998 97 210 44 18',orders:22,spent:2310000,since:'Yanvar 2025'},{id:4,name:'Sardor Aliyev',phone:'+998 90 777 31 52',orders:3,spent:198000,since:'Avgust 2026'},{id:5,name:'Dilnoza Rahimova',phone:'+998 99 401 22 70',orders:9,spent:812000,since:'Aprel 2025'},{id:6,name:'Nigora Saidova',phone:'+998 91 302 17 45',orders:2,spent:64000,since:'Sentabr 2026',blocked:true}];
+const CHATS=[
+{id:1,name:'Aziza Karimova',time:'10:44',unread:2,msgs:[{me:false,t:"Assalomu alaykum, #10482 buyurtma berdim.",time:'10:43'},{me:false,t:'Buyurtmam qachon yetib keladi?',time:'10:44'}]},
+{id:2,name:'Jasur Toshmatov',time:'10:36',unread:1,msgs:[{me:false,t:'Retseptni ilovaga yukladim, tekshirib bera olasizmi?',time:'10:36'}]},
+{id:3,name:'Malika Yusupova',time:'09:30',unread:0,msgs:[{me:false,t:"Bo'g'im moyi bormi?",time:'09:28'},{me:true,t:'Ha, omborda bor. Buyurtmangizga qo\'shdik.',time:'09:30'}]},
+{id:4,name:'Sardor Aliyev',time:'Kecha',unread:0,msgs:[{me:false,t:'Rahmat, oldim.',time:'19:02'}]}];
+const PROMOS=[{code:'SHIFO10',val:"10% chegirma",used:412,limit:1000,till:'31.10.2026',active:true},{code:'KUZ25',val:"25 000 so'm chegirma, 200 000 so'mdan",used:87,limit:200,till:'15.11.2026',active:true},{code:'BEPUL',val:"Bepul yetkazib berish",used:1200,limit:1500,till:'30.09.2026',active:false}];
+const COURIERS=[{name:'Bekzod Rahimov',sub:"1 ta faol buyurtma · 1,2 km"},{name:'Sherzod Qodirov',sub:"Bo'sh · 2,8 km"},{name:'Anvar Tursunov',sub:"Bo'sh · 3,5 km"}];
+const CANCEL=["Mahsulot omborda yo'q","Mijoz bilan bog'lanib bo'lmadi","Mijoz bekor qildi","Manzil yetkazish hududidan tashqarida"];
+const REJECT=["Retsept muddati o'tgan","Rasm aniq emas","Shifokor imzosi yoki muhri yo'q","Dori retseptga mos kelmaydi"];
+const KPI={today:{s:4860000,o:38,a:127900,c:9,bars:[2,5,9,7,6,8,4,3],labels:['08','10','12','14','16','18','20','22'],cap:'Bugun soat bo\'yicha',d:['+12%','+8%','+3%','−4%']},week:{s:29400000,o:241,a:122000,c:57,bars:[6,7,5,8,9,10,6],labels:['Du','Se','Ch','Pa','Ju','Sh','Ya'],cap:'Shu hafta',d:['+6%','+5%','+1%','+9%']},month:{s:118700000,o:962,a:123400,c:214,bars:[7,8,9,10],labels:['1-h','2-h','3-h','4-h'],cap:'Oktabr',d:['+14%','+11%','+2%','+18%']}};
+const TABS={dash:['Asosiy','home'],orders:['Buyurtmalar','bag'],products:['Mahsulotlar','box'],rx:['Retseptlar','rx'],inventory:['Ombor','layers'],chats:['Xabarlar','chat'],customers:['Mijozlar','users'],more:["Ko'proq",'grid']};
+const ROLE_TABS={Admin:['dash','orders','products','rx','more'],Farmatsevt:['dash','orders','rx','inventory','more'],"Qo'llab-quvvatlash":['orders','chats','customers','more']};
+const U=(id,w=400,h=400)=>'https://images.unsplash.com/photo-'+id+'?w='+w+'&h='+h+'&fit=crop&q=70';
+const APPTS=[{id:1,day:0,time:'09:00',name:'Sherzod Aliyev',phone:'+998 90 211 40 08',age:31,type:'video',complaint:"Bosh terisi quruqligi va soch to'kilishi, 3 oydan beri",status:'done',note:"Haftada 2 marta o'simlik moyi bilan uqalash. Ko'proq suv ichish, shirinlikni kamaytirish.",recs:[9]},{id:2,day:0,time:'10:00',name:'Aziza Karimova',phone:'+998 90 123 45 67',age:46,type:'video',complaint:"Tizza og'rig'i, 2 oydan beri. Ertalab va zinadan tushganda kuchayadi.",status:'confirmed',note:'',recs:[2]},{id:3,day:0,time:'11:00',name:'Bahodir Usmonov',phone:'+998 93 640 18 22',age:38,type:'clinic',complaint:"Ovqatdan keyin oshqozonda achishish va og'irlik.",status:'new',note:'',recs:[]},{id:4,day:0,time:'14:00',name:'Gulnora Rashidova',phone:'+998 97 105 77 31',age:52,type:'chat',complaint:'Uyqusizlik, kechasi tez-tez uyg\'onish, kunduzi charchoq.',status:'new',note:'',recs:[]},{id:5,day:1,time:'10:00',name:'Malika Yusupova',phone:'+998 97 210 44 18',age:44,type:'clinic',complaint:"Bel og'rig'i, uzoq o'tirgandan keyin kuchayadi.",status:'confirmed',note:'',recs:[]},{id:6,day:1,time:'15:00',name:'Javohir Qodirov',phone:'+998 99 330 12 64',age:27,type:'video',complaint:'Tez-tez shamollash, immunitet pastligi.',status:'new',note:'',recs:[]}];
+const APT_T={video:['Video','info','video',30],chat:['Yozma','accent','chat',0],clinic:['Klinika','warning','clinic',45]};
+const APT_S={new:["Yangi so'rov",'info'],confirmed:['Tasdiqlangan','success'],done:['Yakunlangan','neutral']};
+const AP_DAYS=['Bugun','Ertaga','Dush, 6','Sesh, 7'];
+const ART_TAGS=["Bo'g'imlar",'Oshqozon','Immunitet','Asab va uyqu','Teri','Soch'];
+const ARTS=[{id:1,title:"Bo'g'im og'rig'ida uyda qilinadigan 5 odat",tag:"Bo'g'imlar",img:'1515377905703-c4788e51af15',views:'18.2K',date:'2 okt',published:true,lead:"Kundalik harakat, iliq kompress va to'g'ri ovqatlanish bo'g'imlarga yengillik beradi.",body:"Bo'g'im og'rig'i ko'pincha kam harakat, sovuq va ortiqcha yuk bilan kuchayadi.",recs:[2]},{id:2,title:"Oshqozon uchun ertalabki o'simlik choyi",tag:'Oshqozon',img:'1597318181409-cf64d0b5d8a2',views:'11.7K',date:'28 sen',published:true,lead:"Moychechak va yalpizli choy ovqat hazm qilishni yengillashtiradi.",body:"Ertalabki iliq o'simlik choyi oshqozonni kunga tayyorlaydi.",recs:[6]},{id:3,title:"Kuz faslida immunitetni qanday qo'llash kerak",tag:'Immunitet',img:'1556679343-c7306c1976bc',views:'24.9K',date:'24 sen',published:true,lead:"Uyqu, iliq ichimliklar va mavsumiy mevalar.",body:"Kuzda kunlar qisqaradi, organizm ko'proq yuklanadi.",recs:[1,4]},{id:4,title:'Yaxshi uyqu uchun kechki odatlar',tag:'Asab va uyqu',img:'1576092768241-dec231879fc3',views:'9.3K',date:'19 sen',published:true,lead:"Ekran vaqtini kamaytirish va iliq choy uyquni chuqurlashtiradi.",body:"Sifatli uyqu kayfiyat va immunitetga ta'sir qiladi.",recs:[7]},{id:5,title:"Qishda teri parvarishi: 4 ta tabiiy usul",tag:'Teri',img:'1612817288484-6f916006741a',views:'—',date:'Qoralama',published:false,lead:"Sovuq havoda terini quruqlikdan asrash.",body:'',recs:[8]}];
+const BANNERS=[{id:1,title:"Kuzgi immunitet to'plami — 15% chegirma",target:'Havola: Immunitet toifasi',img:'1558642452-9d2a7deb7f62',active:true,clicks:1840},{id:2,title:'Qahramon Tabib bilan onlayn maslahat',target:'Havola: Maslahat sahifasi',img:'1597318181409-cf64d0b5d8a2',active:true,clicks:960},{id:3,title:"300 000 so'mdan bepul yetkazish",target:"Havola: Do'kon",img:'1514733670139-4d87a1941d55',active:false,clicks:0}];
+const REVIEWS=[{id:1,name:'Aziza Karimova',product:"Bo'g'im moyi «Qahramon»",stars:5,date:'Bugun',text:"Ikki haftadan beri ishlataman, ertalabki og'riq ancha kamaydi. Hidi ham yoqimli.",reply:''},{id:2,name:'Dilnoza Rahimova',product:"Tog' asali (Zomin)",stars:5,date:'Kecha',text:'Haqiqiy tog\' asali, bolalarga ham juda yoqdi.',reply:"Rahmat, Dilnoza! Sog'liq tilaymiz."},{id:3,name:'Otabek Nazarov',product:'Tinchlantiruvchi choy',stars:4,date:'2 okt',text:"Yaxshi ta'sir qiladi, lekin paketlar biroz kichik.",reply:''},{id:4,name:'Anonim',product:"Oshqozon choyi yig'masi",stars:2,date:'30 sen',text:'Yetkazish kechikdi.',reply:'',hidden:true}];
+const CATS=[{name:'Asal va aralashmalar',img:'1471943311424-646960669fbc',active:true},{name:'Moy va malhamlar',img:'1515377905703-c4788e51af15',active:true},{name:"O'simlik choylari",img:'1576092768241-dec231879fc3',active:true},{name:'Damlamalar',img:'1608571423902-eed4a5ad8108',active:true},{name:"To'plamlar",img:'1612817288484-6f916006741a',active:true},{name:'Dorixona',img:'1584017911766-d451b3d0e843',active:true}];
+const STAFF=[{name:'Dilshod Rasulov',role:'Admin',last:'Hozir onlayn',active:true},{name:'Nilufar Tursunova',role:'Farmatsevt',last:'12 daqiqa oldin',active:true},{name:'Sevara Ahmedova',role:"Qo'llab-quvvatlash",last:'1 soat oldin',active:true},{name:"Ulug'bek Karimov",role:'Farmatsevt',last:'3 kun oldin',active:false}];
+const COURIERS2=[{name:'Bekzod Rahimov',status:'busy',today:6,rating:4.9,where:"#10479 · Shayxontohur"},{name:'Sherzod Qodirov',status:'free',today:4,rating:4.8,where:'Chilonzor filiali yonida'},{name:'Anvar Tursunov',status:'free',today:5,rating:4.9,where:'Yunusobod'},{name:'Rustam Nazarov',status:'off',today:0,rating:4.7,where:'Bugun dam olish kuni'}];
+const CR_S={busy:['Yetkazmoqda','accent','#2f5a40'],free:["Bo'sh",'success','#3f9a5f'],off:['Offline','neutral','#bfb49c']};
+const PIMG={1:'1471943311424-646960669fbc',2:'1515377905703-c4788e51af15',3:'1584017911766-d451b3d0e843',4:'1558642452-9d2a7deb7f62',5:'1608571423902-eed4a5ad8108',6:'1563822249548-9a72b6353cd1',7:'1576092768241-dec231879fc3',8:'1620916566398-39f1143ab7be',9:'1624454002302-36b824d7bd0a',10:'1612817288484-6f916006741a'};
+const ROLES=['Admin','Farmatsevt',"Qo'llab-quvvatlash"];
+const ROLE_MORE={Admin:['appts','chats','articles','reviews','inventory','categories','couriers','customers','promos','banners','push','analytics','staff','settings'],Farmatsevt:['appts','products','categories','chats','reviews','settings'],"Qo'llab-quvvatlash":['appts','rx','reviews','couriers','settings']};
+const MORE_GROUPS=[['Tabib',['appts','chats','articles','reviews']],['Savdo',['products','rx','inventory','categories','couriers','customers']],['Marketing',['promos','banners','push','analytics']],['Tizim',['staff','settings']]];
+const META={appts:['Qabullar','cal','Maslahat va qabul jadvali'],articles:['Maqolalar','book','Tabib maslahatlari'],reviews:['Sharhlar','star','Mahsulot baholari'],categories:['Toifalar','layers',"Do'kon tartibi"],couriers:['Kuryerlar','truck','Holat va yetkazishlar'],banners:['Bannerlar','image','Bosh sahifa slayderi'],analytics:['Analitika','chart','Savdo va trafik'],staff:['Xodimlar va rollar','shield','Kirish huquqlari'],inventory:['Ombor','layers','Qoldiqni boshqarish'],customers:['Mijozlar','users',"Profil va buyurtmalar tarixi"],chats:['Xabarlar','chat','Mijozlar bilan yozishma'],promos:['Aksiyalar va promokodlar','tag','Chegirmalarni boshqarish'],push:['Push-bildirishnoma','bell','Mijozlarga xabar yuborish'],settings:['Sozlamalar','gear',"Dorixona, to'lov, yetkazish"],products:['Mahsulotlar','box','Katalog va narxlar'],rx:['Retseptlar','rx','Tekshiruv navbati']};
+const TITLES={appts:'Qabullar',appt:'Qabul',articles:'Maqolalar',article:'Maqola',reviews:'Sharhlar',categories:'Toifalar',couriers:'Kuryerlar',banners:'Bannerlar',analytics:'Analitika',staff:'Xodimlar',dash:'Tabib Admin',orders:'Buyurtmalar',products:'Mahsulotlar',rx:'Retseptlar',more:"Ko'proq",inventory:'Ombor',customers:'Mijozlar',chats:'Xabarlar',promos:'Aksiyalar',push:'Bildirishnoma',settings:'Sozlamalar'};
+const AUD=[['Barcha mijozlar','12 480 qabul qiluvchi'],["So'nggi 30 kunda faol",'4 215 qabul qiluvchi'],["60 kundan beri xarid qilmagan",'2 960 qabul qiluvchi']];
+
+class Component extends DCLogic {
+  scrollRef = React.createRef();
+  state = {swKey:null,dragKey:null,dragX:0,catEdit:false,appts:APPTS,apptId:2,apDay:0,arts:ARTS,artDraft:null,artTried:false,banners:BANNERS,reviews:REVIEWS,rvFilter:'all',replyId:null,replyText:'',cats:CATS,staff:STAFF,invPhone:'',screen:'login',stack:[],range:'today',orders:ORDERS,products:PRODUCTS,rxs:RXS,customers:CUSTOMERS,chats:CHATS,promos:PROMOS,sheet:null,sel:0,toast:null,orderId:null,rxId:null,custId:null,chatId:null,oFilter:'all',oQuery:'',pQuery:'',pCat:'Hammasi',rxFilter:'pending',invFilter:'low',draft:null,tried:false,msg:'',push:{title:'Kuzgi chegirmalar',body:"Barcha vitaminlarga 15% chegirma — faqat shu hafta.",aud:0},set:{allDay:false,delivery:true,cash:true,click:true,payme:true,uzcard:true,nOrders:true,nRx:true,nChat:true,faceid:true},newPromo:{code:'',val:'',limit:''},login:'admin@qahramontabib.uz',pass:'shifo2026',imgs:1};
+  role(){ const r=this.props.role??'Admin'; return ROLE_TABS[r]?r:'Admin'; }
+  tabs(){ return ROLE_TABS[this.role()]; }
+  top(){ const el=this.scrollRef.current; if(el) el.scrollTop=0; }
+  toast(t){ clearTimeout(this._t); this.setState({toast:t}); this._t=setTimeout(()=>this.setState({toast:null}),2200); }
+  go(s,extra={}){ this.setState(st=>({stack:[...st.stack,st.screen],screen:s,sheet:null,...extra}),()=>this.top()); }
+  back=()=>{ this.setState(st=>{const stack=st.stack.slice(0,-1);return {screen:st.stack[st.stack.length-1]||this.tabs()[0],stack,tried:false};},()=>this.top()); };
+  tabTo(t){ this.setState({screen:t,stack:[],sheet:null},()=>this.top()); }
+  openOrder(id){ this.go('order',{orderId:id}); }
+  openProduct(p){ this.go('product',{draft:p?{...p,price:String(p.price),old:p.old?String(p.old):''}:{id:null,name:'',cat:'Asal va aralashmalar',price:'',old:'',stock:0,rx:false,active:true,desc:''},tried:false,imgs:p?1:0}); }
+  openRx(id){ this.go('rxd',{rxId:id}); }
+  openChat(id){ this.setState(st=>({chats:st.chats.map(c=>c.id===id?{...c,unread:0}:c)})); this.go('chat',{chatId:id}); }
+  chatByName(name){ const c=this.state.chats.find(c=>c.name===name); if(c) this.openChat(c.id); else { const id=Date.now(); this.setState(st=>({chats:[{id,name,time:'hozir',unread:0,msgs:[]},...st.chats]}),()=>this.go('chat',{chatId:id})); } }
+  jump(s){
+    const tabs=this.tabs(); const st=this.state; let extra={};
+    if(s==='order') extra.orderId=st.orders[0].id;
+    if(s==='rxd') extra.rxId=st.rxs[0].id;
+    if(s==='customer') extra.custId=st.customers[0].id;
+    if(s==='chat') extra.chatId=st.chats[0].id;
+    if(s==='appt') extra.apptId=2;
+    if(s==='article') extra.artDraft={...st.arts[0]};
+    if(s==='product'){ const p=st.products[0]; extra.draft={...p,price:String(p.price),old:p.old?String(p.old):''}; extra.tried=false; }
+    this.setState({screen:s,stack:(s==='login'||tabs.includes(s))?[]:[tabs[tabs.length-1]],sheet:null,...extra},()=>this.top());
+  }
+  updOrder(id,patch){ this.setState(st=>({orders:st.orders.map(o=>o.id===id?{...o,...patch}:o)})); }
+  updProd(id,patch){ this.setState(st=>({products:st.products.map(p=>p.id===id?{...p,...patch}:p)})); }
+  setD(k,v){ this.setState(st=>({draft:{...st.draft,[k]:v}})); }
+  saveProduct=()=>{
+    const d=this.state.draft;
+    if(!d.name.trim()||!(+d.price>0)){ this.setState({tried:true}); return; }
+    const clean={...d,price:+d.price,old:d.old?+d.old:''};
+    if(d.id) this.setState(st=>({products:st.products.map(p=>p.id===d.id?clean:p)}));
+    else this.setState(st=>({products:[{...clean,id:Date.now()},...st.products]}));
+    this.toast(d.id?'Mahsulot saqlandi':"Mahsulot qo'shildi"); this.back();
+  };
+  sendMsg=()=>{
+    const t=this.state.msg.trim(); if(!t) return;
+    const id=this.state.chatId;
+    this.setState(st=>({msg:'',chats:st.chats.map(c=>c.id===id?{...c,time:'hozir',msgs:[...c.msgs,{me:true,t,time:'10:46'}]}:c)}),()=>{const el=this.scrollRef.current; if(el) el.scrollTop=el.scrollHeight;});
+  };
+  sheetVals(){
+    const st=this.state, s=st.sheet, sel=st.sel; if(!s) return {};
+    const opts=(arr,sub)=>arr.map((o,i)=>({label:typeof o==='string'?o:o.name,sub:o.sub||'',hasSub:!!o.sub,op:i===sel?1:0,go:()=>this.setState({sel:i})}));
+    const close=()=>this.setState({sheet:null});
+    if(s==='courier') return {title:'Kuryerni tanlang',sub:'Buyurtma kuryerga topshiriladi va mijozga xabar yuboriladi.',hasOptions:true,options:opts(COURIERS),confirmL:'Topshirish',confirm:()=>{this.updOrder(st.orderId,{status:'onway',courier:COURIERS[sel].name});close();this.toast("Buyurtma yo'lga chiqdi");}};
+    if(s==='cancel') return {title:'Buyurtmani bekor qilish',sub:"Sababni tanlang. Mijozga xabar va to'lov qaytarilishi haqida bildirishnoma yuboriladi.",hasOptions:true,options:opts(CANCEL),confirmL:'Bekor qilish',confirm:()=>{this.updOrder(st.orderId,{status:'cancelled',reason:CANCEL[sel]});close();this.toast('Buyurtma bekor qilindi');}};
+    if(s==='reject') return {title:'Retseptni rad etish',sub:'Sabab mijozga ilovada ko\'rsatiladi.',hasOptions:true,options:opts(REJECT),confirmL:'Rad etish',confirm:()=>{const id=st.rxId;this.setState(x=>({rxs:x.rxs.map(r=>r.id===id?{...r,status:'rejected',reason:REJECT[sel]}:r),sheet:null}));this.toast('Retsept rad etildi');}};
+    if(s==='delete') return {title:"Mahsulotni o'chirasizmi?",sub:"Mahsulot katalogdan butunlay o'chiriladi. Buni qaytarib bo'lmaydi.",confirmL:"O'chirish",confirm:()=>{const id=st.draft.id;this.setState(x=>({products:x.products.filter(p=>p.id!==id),sheet:null}));this.toast("Mahsulot o'chirildi");this.back();}};
+    if(s==='reschedule'){ const T=[['Bugun 16:00',0,'16:00'],['Bugun 17:00',0,'17:00'],['Ertaga 09:00',1,'09:00'],['Ertaga 12:00',1,'12:00']]; return {title:"Qabulni ko'chirish",sub:'Mijozga yangi vaqt haqida SMS va push yuboriladi.',hasOptions:true,options:opts(T.map(t=>t[0])),confirmL:"Ko'chirish",confirm:()=>{const t=T[sel];this.setState(x=>({appts:x.appts.map(a=>a.id===x.apptId?{...a,day:t[1],time:t[2],status:'confirmed'}:a),sheet:null}));this.toast('Qabul ko\'chirildi');}}; }
+    if(s==='reply') return {title:'Sharhga javob',sub:'Javob mahsulot sahifasida hammaga ko\'rinadi.',isReply:true,disabled:!st.replyText.trim(),confirmL:'Yuborish',confirm:()=>{const id=st.replyId,t=st.replyText.trim();this.setState(x=>({reviews:x.reviews.map(r=>r.id===id?{...r,reply:t}:r),sheet:null,replyText:''}));this.toast('Javob yuborildi');}};
+    if(s==='invite') return {title:'Xodim taklif qilish',sub:'Xodimga ilovaga kirish havolasi SMS orqali yuboriladi.',isInvite:true,hasOptions:true,options:opts(ROLES),disabled:st.invPhone.replace(/\D/g,'').length<9,confirmL:'Taklif yuborish',confirm:()=>{this.setState(x=>({staff:[...x.staff,{name:'+998 '+x.invPhone,role:ROLES[sel],last:'Taklif yuborildi',active:false}],sheet:null,invPhone:''}));this.toast('Taklif yuborildi');}};
+    if(s==='delItem'&&this._del) return {title:this._del.title,sub:this._del.sub,confirmL:"O'chirish",confirm:()=>{const f=this._del.run;this.setState({sheet:null});f();this.toast("O'chirildi");}};
+    if(s==='promo'){ const np=st.newPromo; return {title:'Yangi promokod',sub:'Kod mijoz ilovasida checkout bosqichida ishlaydi.',isPromo:true,disabled:!(np.code.trim()&&+np.val>0),confirmL:'Yaratish',confirm:()=>{this.setState(x=>({promos:[{code:np.code.trim().toUpperCase(),val:`${+np.val}% chegirma`,used:0,limit:+np.limit||0,till:'31.12.2026',active:true},...x.promos],newPromo:{code:'',val:'',limit:''},sheet:null}));this.toast('Promokod yaratildi');}}; }
+    return {};
+  }
+  renderVals(){ return this.enhance(this.baseVals()); }
+  swipe(key,n,onTap){ const st=this.state,W=n*76,open=st.swKey===key,drag=st.dragKey===key; return {x:(drag?st.dragX:(open?-W:0))+'px',tr:drag?'none':'transform .32s cubic-bezier(.2,.8,.2,1)',down:e=>{this._d={key,sx:e.clientX,sy:e.clientY,base:open?-W:0,moved:false};},move:e=>{const d=this._d;if(!d||d.key!==key)return;const dx=e.clientX-d.sx;if(!d.moved){if(Math.abs(dx)<6)return;if(Math.abs(e.clientY-d.sy)>Math.abs(dx)){this._d=null;return;}d.moved=true;}this.setState(s=>({dragKey:key,dragX:Math.max(-W-28,Math.min(0,d.base+dx)),swKey:s.swKey===key?key:null}));},up:()=>{const d=this._d;if(!d||d.key!==key)return;this._d=null;if(!d.moved)return;this._sup=Date.now();const x=this.state.dragX;this.setState({dragKey:null,swKey:x<-W*0.38?key:null});},click:()=>{if(this._sup&&Date.now()-this._sup<350)return;if(this.state.swKey){this.setState({swKey:null});return;}onTap&&onTap();}}; }
+  act(label,icon,bg,fn){ return {label,icon:svg(icon,19),bg,go:e=>{e&&e.stopPropagation();this.setState({swKey:null});fn();}}; }
+  askDel(title,sub,run){ this._del={title,sub,run}; this.setState({sheet:'delItem',swKey:null}); }
+  enhance(r){
+    const st=this.state,A=this.act.bind(this),G='#2f5a40',GR='#8f9488',AR='#b08a2e',RD='#b5403a';
+    const upd=(k,m)=>this.setState(x=>({[k]:m(x[k])}));
+    const nArch=st.products.filter(p=>p.archived).length, onA=st.pCat==='Arxiv';
+    r.pChips=[...r.pChips,{label:'Arxiv '+nArch,bg:onA?'#17301f':'#fffdf8',fg:onA?'#fff':'var(--text-secondary)',bd:onA?'#17301f':'var(--border-default)',go:()=>this.setState({pCat:'Arxiv'})}];
+    r.productList=r.productList.map(p=>({...p,thumb:U(PIMG[p.id]||'1514733670139-4d87a1941d55',120,120),op:p.active&&!p.archived?1:.5,hidden:!p.active,sw:this.swipe('p'+p.id,p.archived?2:3,p.go),acts:p.archived?[A('Tiklash','restore',G,()=>{this.updProd(p.id,{archived:false});this.toast('Arxivdan tiklandi');}),A("O'chirish",'del',RD,()=>this.askDel(p.name+" o'chirilsinmi?","Mahsulot katalogdan butunlay o'chiriladi.",()=>upd('products',a=>a.filter(y=>y.id!==p.id))))]:[A(p.active?'Yashirish':"Ko'rsatish",p.active?'eyeOff':'eye',p.active?GR:G,()=>{this.updProd(p.id,{active:!p.active});this.toast(p.active?'Ilovada yashirildi':"Ilovada ko'rsatildi");}),A('Arxiv','archive',AR,()=>{this.updProd(p.id,{archived:true});this.toast('Arxivga olindi');}),A("O'chirish",'del',RD,()=>this.askDel(p.name+" o'chirilsinmi?","Mahsulot katalogdan butunlay o'chiriladi.",()=>upd('products',a=>a.filter(y=>y.id!==p.id))))]}));
+    const cats=st.cats.map((c,i)=>({...c,i}));const live=cats.filter(c=>!c.archived);
+    const mv=(i,dir)=>upd('cats',a=>{const L=live.map(c=>c.i);const pos=L.indexOf(i),j=L[pos+dir];if(j==null)return a;const b=[...a];[b[i],b[j]]=[b[j],b[i]];return b;});
+    const setC=(i,patch)=>upd('cats',a=>a.map((y,j)=>j===i?{...y,...patch}:y));
+    r.catPreview=live.filter(c=>c.active).map(c=>({name:c.name,img:U(c.img,200,240)}));
+    r.catRows=live.map(c=>({...c,img:U(c.img,140,140),op:c.active?1:.5,hidden:!c.active,count:st.products.filter(p=>p.cat===c.name&&!p.archived).length,up:e=>{e.stopPropagation();mv(c.i,-1);},down:e=>{e.stopPropagation();mv(c.i,1);},sw:this.swipe('c'+c.i,st.catEdit?0:3,()=>{this.setState({pCat:c.name});this.go('products');}),acts:st.catEdit?[]:[A(c.active?'Yashirish':"Ko'rsatish",c.active?'eyeOff':'eye',c.active?GR:G,()=>{setC(c.i,{active:!c.active});this.toast(c.active?'Toifa yashirildi':"Toifa ko'rsatildi");}),A('Arxiv','archive',AR,()=>{setC(c.i,{archived:true});this.toast('Toifa arxivlandi');}),A("O'chirish",'del',RD,()=>this.askDel(c.name+" o'chirilsinmi?","Toifadagi mahsulotlar o'chirilmaydi, toifasiz qoladi.",()=>upd('cats',a=>a.filter((_,j)=>j!==c.i))))]}));
+    r.catArch=cats.filter(c=>c.archived).map(c=>({...c,img:U(c.img,120,120),sw:this.swipe('ca'+c.i,2),acts:[A('Tiklash','restore',G,()=>{setC(c.i,{archived:false});this.toast('Toifa tiklandi');}),A("O'chirish",'del',RD,()=>this.askDel(c.name+" o'chirilsinmi?",'Toifa butunlay o\'chiriladi.',()=>upd('cats',a=>a.filter((_,j)=>j!==c.i))))]}));
+    r.catHasArch=r.catArch.length>0; r.catEdit=!!st.catEdit; r.catNotEdit=!st.catEdit;
+    if(st.screen==='categories') r.hdr={...r.hdr,hasAction:true,icon:svg(st.catEdit?'check':'sort',20),aria:st.catEdit?'Tayyor':'Tartiblash',action:()=>this.setState(s=>({catEdit:!s.catEdit,swKey:null}))};
+    r.artList=st.arts.filter(a=>!a.archived).map(a=>({...a,img:U(a.img,200,200),stL:a.published?'Nashrda':'Qoralama',tone:a.published?'success':'neutral',meta:a.published?a.views+" o'qilgan · "+a.date:'Saqlangan qoralama',sw:this.swipe('a'+a.id,3,()=>this.go('article',{artDraft:{...a},artTried:false})),acts:[A(a.published?'Qoralama':'Nashr',a.published?'eyeOff':'eye',a.published?GR:G,()=>{upd('arts',x=>x.map(y=>y.id===a.id?{...y,published:!y.published}:y));this.toast(a.published?'Nashrdan olindi':'Nashr qilindi');}),A('Arxiv','archive',AR,()=>{upd('arts',x=>x.map(y=>y.id===a.id?{...y,archived:true}:y));this.toast('Maqola arxivlandi');}),A("O'chirish",'del',RD,()=>this.askDel("Maqola o'chirilsinmi?",a.title,()=>upd('arts',x=>x.filter(y=>y.id!==a.id))))]}));
+    r.bnList=r.bnList.map(b=>({...b,stL:b.active?'Faol':'Nofaol',tone:b.active?'success':'neutral',sw:this.swipe('b'+b.id,2),acts:[A(b.active?"O'chirish":'Yoqish',b.active?'eyeOff':'eye',b.active?GR:G,b.toggle),A("O'chirish",'del',RD,()=>this.askDel("Banner o'chirilsinmi?",b.title,()=>upd('banners',x=>x.filter(y=>y.id!==b.id))))]}));
+    r.bnList.forEach(b=>{b.acts[0].label=b.active?'Pauza':'Yoqish';});
+    r.promoList=r.promoList.map((p,i)=>({...p,stL:p.active?'Faol':'Nofaol',tone:p.active?'success':'neutral',sw:this.swipe('pr'+p.code,2),acts:[A(p.active?'Pauza':'Yoqish',p.active?'eyeOff':'eye',p.active?GR:G,()=>{p.toggle();this.toast(p.active?'Promokod to\'xtatildi':'Promokod yoqildi');}),A("O'chirish",'del',RD,()=>this.askDel(p.code+" o'chirilsinmi?",'Promokod endi ishlamaydi.',()=>upd('promos',x=>x.filter(y=>y.code!==p.code))))]}));
+    r.staffList=r.staffList.map((s,i)=>({...s,blocked:!s.active,sw:this.swipe('s'+i,2),acts:[A(s.active?'Bloklash':'Faollashtirish',s.active?'eyeOff':'eye',s.active?GR:G,()=>{s.toggle();this.toast(s.active?'Xodim bloklandi':'Xodim faollashtirildi');}),A("O'chirish",'del',RD,()=>this.askDel(s.name+" o'chirilsinmi?",'Xodim ilovaga kira olmaydi.',()=>upd('staff',x=>x.filter((_,j)=>j!==i))))]}));
+    return r;
+  }
+  baseVals(){
+    const st=this.state, role=this.role(), tabs=this.tabs(), more=ROLE_MORE[role];
+    const allowed=new Set([...tabs,...more]); const empty=!!this.props.emptyStates;
+    const ic={}; Object.keys(P).forEach(k=>{ic[k]=svg(k);ic[k+'S']=svg(k,18);});
+    const isRoot=st.screen!=='login'&&st.stack.length===0;
+    const orders=empty?[]:st.orders, rxs=empty?[]:st.rxs, chats=empty?[]:st.chats;
+    const newCount=orders.filter(o=>o.status==='new').length, rxPending=rxs.filter(r=>r.status==='pending').length, unread=chats.reduce((a,c)=>a+c.unread,0), low=st.products.filter(p=>p.stock<10).length;
+    const apNew=st.appts.filter(a=>a.status==='new').length, rvOpen=st.reviews.filter(r=>!r.reply&&!r.hidden).length;
+    const badgeFor={orders:newCount,rx:rxPending,chats:unread,appts:apNew,reviews:rvOpen};
+    const is={login:st.screen==='login',app:st.screen!=='login'}; ['appts','appt','articles','article','banners','reviews','analytics','categories','staff','couriers','dash','orders','order','products','product','rx','rxd','more','inventory','customers','customer','chats','chat','promos','push','settings'].forEach(k=>is[k]=st.screen===k);
+    const oRow=o=>{const sub=o.items.reduce((a,i)=>a+i.q*i.p,0);return {...o,label:ST[o.status][0],tone:ST[o.status][1],count:o.items.reduce((a,i)=>a+i.q,0),rx:!!o.rx,totalF:fmt(sub+15000),go:()=>this.openOrder(o.id)};};
+    const chip=(on)=>({bg:on?'#17301f':'#fff',fg:on?'#fff':'var(--text-primary)',bd:on?'#17301f':'var(--border-default)'});
+    const seg=(on)=>({bg:on?'#fff':'transparent',sh:on?'0 1px 3px rgba(16,24,18,.12)':'none'});
+    // dashboard
+    const K=KPI[st.range]; const mx=Math.max(...K.bars);
+    const kpis=[["Savdo",fmt(K.s)],['Buyurtmalar',String(K.o)],["O'rtacha chek",fmt(K.a)],['Yangi mijozlar',String(K.c)]].map((k,i)=>({label:k[0],value:k[1],delta:K.d[i]+' oldingi davrga',dc:K.d[i][0]==='+'?'var(--success)':'var(--danger)'}));
+    const bars=K.bars.map((b,i)=>({h:Math.round(b/mx*100)+'px',l:K.labels[i],bg:b===mx?'var(--accent)':'rgba(27,138,85,.22)'}));
+    const attention=[['appts','Bugungi qabullar',st.appts.filter(a=>a.day===0&&a.status!=='done').length,'cal','rgba(200,160,70,.18)','#7f5f12',()=>{this.setState({apDay:0});this.go('appts');}],['orders','Yangi buyurtmalar',newCount,'bag','var(--info-fill)','var(--info)',()=>{this.setState({oFilter:'new'});this.tabTo('orders');}],['rx','Retseptlar kutilmoqda',rxPending,'rx','var(--danger-fill)','var(--danger)',()=>{this.setState({rxFilter:'pending'});allowed.has('rx')&&tabs.includes('rx')?this.tabTo('rx'):this.go('rx');}],['inventory','Kam qolgan mahsulotlar',low,'alert','var(--warning-fill)','var(--warning)',()=>{this.setState({invFilter:'low'});tabs.includes('inventory')?this.tabTo('inventory'):this.go('inventory');}],['chats',"O'qilmagan xabarlar",unread,'chat','var(--accent-fill)','var(--accent-text)',()=>tabs.includes('chats')?this.tabTo('chats'):this.go('chats')]].filter(a=>allowed.has(a[0])).map(a=>({label:a[1],count:a[2],icon:svg(a[3],18),bg:a[4],fg:a[5],go:a[6]}));
+    // orders
+    const q=st.oQuery.toLowerCase();
+    const oFilters=[['all','Hammasi'],['new','Yangi'],['preparing','Tayyorlanmoqda'],['onway',"Yo'lda"],['delivered','Yetkazildi'],['cancelled','Bekor']];
+    const oChips=oFilters.map(([k,l])=>({label:`${l} ${k==='all'?orders.length:orders.filter(o=>o.status===k).length}`,...chip(st.oFilter===k),go:()=>this.setState({oFilter:k})}));
+    const orderList=orders.filter(o=>(st.oFilter==='all'||o.status===st.oFilter)&&(!q||(o.name+o.id+o.phone).toLowerCase().includes(q))).map(oRow);
+    // order detail
+    let ov={}; const o=st.orders.find(x=>x.id===st.orderId);
+    if(o){ const sub=o.items.reduce((a,i)=>a+i.q*i.p,0); const idx={new:0,preparing:1,onway:2,delivered:3}[o.status]; const r=o.rx&&st.rxs.find(x=>x.id===o.rx);
+      ov={...o,ini:ini(o.name),label:ST[o.status][0],tone:ST[o.status][1],cancelled:o.status==='cancelled',notCancelled:o.status!=='cancelled',reason:o.reason||'',hasCourier:!!o.courier,rx:!!o.rx,rxState:r?RXST[r.status][0]:'',rxGo:()=>this.openRx(o.rx),paid:o.pay==='Naqd'?'Qabulda':"To'langan",items:o.items.map(i=>({...i,pF:fmt(i.p),sumF:fmt(i.p*i.q)})),subF:fmt(sub),delF:fmt(15000),totalF:fmt(sub+15000),steps:['Qabul qilindi','Tayyorlanmoqda',"Yo'lda",'Yetkazildi'].map((l,i)=>({l,bg:i<=idx?'var(--accent)':'var(--border-subtle)',fg:i<=idx?'var(--text-primary)':'var(--text-muted)',fw:i===idx?700:500})),call:()=>this.toast(o.phone+' raqamiga qo\'ng\'iroq'),chat:()=>this.chatByName(o.name)}; }
+    // products
+    const cats=['Hammasi',...new Set(st.products.map(p=>p.cat))];
+    const pq=st.pQuery.toLowerCase();
+    const pChips=cats.map(c=>({label:c,...chip(st.pCat===c),go:()=>this.setState({pCat:c})}));
+    const stockOf=p=>p.stock===0?['Tugagan','danger']:p.stock<10?[`Kam: ${p.stock}`,'warning']:[`${p.stock} dona`,'neutral'];
+    const productList=st.products.filter(p=>(st.pCat==='Arxiv'?p.archived:(!p.archived&&(st.pCat==='Hammasi'||p.cat===st.pCat)))&&(!pq||p.name.toLowerCase().includes(pq))).map(p=>({...p,priceF:fmt(p.price),stockL:stockOf(p)[0],stockTone:stockOf(p)[1],nameColor:p.active?'var(--text-primary)':'var(--text-muted)',go:()=>this.openProduct(p),toggle:()=>{this.updProd(p.id,{active:!p.active});this.toast(p.active?'Ilovada yashirildi':"Ilovada ko'rsatildi");}}));
+    const d=st.draft||{};
+    const err={name:st.tried&&!String(d.name||'').trim(),price:st.tried&&!(+d.price>0)}; err.nameMsg=err.name?'Nomini kiriting':''; err.priceMsg=err.price?"Narxni kiriting":'';
+    const on={name:e=>this.setD('name',e.target.value),cat:e=>this.setD('cat',e.target.value),price:e=>this.setD('price',e.target.value.replace(/\D/g,'')),old:e=>this.setD('old',e.target.value.replace(/\D/g,'')),desc:e=>this.setD('desc',e.target.value),rx:()=>this.setD('rx',!d.rx),active:()=>this.setD('active',!d.active),inc:()=>this.setD('stock',(d.stock||0)+1),dec:()=>this.setD('stock',Math.max(0,(d.stock||0)-1))};
+    const imgSlots=[0,1,2].map(i=>{const filled=i<st.imgs;return {bd:filled?'transparent':'var(--border-strong)',bg:filled?'var(--surface-inset)':'#fff',fg:filled?'var(--text-muted)':'var(--accent-text)',icon:svg(filled?'image':'plus',20),label:filled?(i===0?'Asosiy rasm':'Rasm'):"Rasm qo'shish",go:()=>this.setState({imgs:filled?st.imgs:Math.min(3,st.imgs+1)})};});
+    // rx
+    const rxTabs=['pending','approved','rejected'].map(k=>({label:`${RXST[k][0]} ${rxs.filter(r=>r.status===k).length}`,...seg(st.rxFilter===k),go:()=>this.setState({rxFilter:k})}));
+    const rxList=rxs.filter(r=>r.status===st.rxFilter).map(r=>({...r,count:r.items.length,label:RXST[r.status][0],tone:RXST[r.status][1],go:()=>this.openRx(r.id)}));
+    let rv={}; const r=st.rxs.find(x=>x.id===st.rxId);
+    if(r) rv={...r,label:RXST[r.status][0],tone:RXST[r.status][1],rejected:r.status==='rejected',reason:r.reason||'',hasOrder:!!r.order,orderGo:()=>this.openOrder(r.order),rows:[{k:'Bemor',v:r.patient},{k:'Shifokor',v:r.doctor},{k:'Muassasa',v:r.clinic},{k:'Retsept raqami',v:r.id}]};
+    // inventory
+    const invTabs=[['low',`Kam qolgan ${low}`],['all','Hammasi']].map(([k,l])=>({label:l,...seg(st.invFilter===k),go:()=>this.setState({invFilter:k})}));
+    const invList=st.products.filter(p=>st.invFilter==='all'||p.stock<10).sort((a,b)=>a.stock-b.stock).map(p=>({...p,state:p.stock===0?'Tugagan':p.stock<10?'Kam qolgan':'Yetarli',fg:p.stock===0?'var(--danger)':p.stock<10?'var(--warning)':'var(--text-muted)',inc:()=>this.updProd(p.id,{stock:p.stock+1}),dec:()=>this.updProd(p.id,{stock:Math.max(0,p.stock-1)})}));
+    // customers
+    const custList=st.customers.map(c=>({...c,ini:ini(c.name),spentF:fmt(c.spent),blocked:!!c.blocked,avBg:c.blocked?'var(--danger-fill)':'var(--accent-fill)',avFg:c.blocked?'var(--danger)':'var(--accent-text)',go:()=>this.go('customer',{custId:c.id})}));
+    let cv={}; const c=st.customers.find(x=>x.id===st.custId);
+    if(c) cv={...c,ini:ini(c.name),blocked:!!c.blocked,stats:[{k:'Buyurtma',v:String(c.orders)},{k:'Jami xarid',v:fmt(c.spent).replace(" so'm",'')},{k:"O'rtacha chek",v:fmt(c.spent/c.orders).replace(" so'm",'')}],call:()=>this.toast(c.phone+" raqamiga qo'ng'iroq"),chat:()=>this.chatByName(c.name),toggleBlock:()=>{this.setState(x=>({customers:x.customers.map(y=>y.id===c.id?{...y,blocked:!y.blocked}:y)}));this.toast(c.blocked?'Blokdan chiqarildi':'Hisob bloklandi');}};
+    // chats
+    const chatList=chats.map(c=>{const m=c.msgs[c.msgs.length-1];return {...c,ini:ini(c.name),last:m?(m.me?'Siz: ':'')+m.t:'',lastFg:c.unread?'var(--text-primary)':'var(--text-muted)',hasUnread:c.unread>0,go:()=>this.openChat(c.id)};});
+    const ch=st.chats.find(x=>x.id===st.chatId);
+    const chv=ch?{...ch,msgs:ch.msgs.map(m=>({...m,jc:m.me?'flex-end':'flex-start',bg:m.me?'var(--accent)':'#fff',fg:m.me?'#fff':'var(--text-primary)',bd:m.me?'none':'1px solid var(--border-subtle)'}))}:{msgs:[]};
+    const quick=["Buyurtmangiz yo'lda, 20 daqiqada yetib boradi.","Retseptingiz tekshirilmoqda.",'Mahsulot hozir omborda yo\'q.'].map(t=>({t,go:()=>this.setState({msg:t})}));
+    // promos, push, settings
+    const promoList=st.promos.map((p,i)=>({...p,uses:p.limit?`${p.used} / ${p.limit} ishlatilgan`:`${p.used} ishlatilgan`,till:'Muddat: '+p.till,pct:(p.limit?Math.min(100,Math.round(p.used/p.limit*100)):0)+'%',toggle:()=>this.setState(x=>({promos:x.promos.map((y,j)=>j===i?{...y,active:!y.active}:y)}))}));
+    const pushV={title:st.push.title||'Sarlavha',body:st.push.body||'Xabar matni'};
+    const audList=AUD.map((a,i)=>({label:a[0],n:a[1],op:st.push.aud===i?1:0,go:()=>this.setState(x=>({push:{...x.push,aud:i}}))}));
+    const S=st.set, sw=(k,label)=>({label,isSw:true,isVal:false,on:S[k],toggle:()=>this.setState(x=>({set:{...x.set,[k]:!x.set[k]}}))}), val=(label,v)=>({label,val:v,isVal:true,isSw:false});
+    const setGroups=[{title:'Dorixona',rows:[val('Nomi','Qahramon Tabib'),val('Telefon','+998 71 200 30 40'),val('Manzil','Chilonzor, 9-kvartal')]},{title:'Ish vaqti',rows:[sw('allDay','24/7 ishlash'),val('Har kuni',S.allDay?'Kecha-kunduz':'08:00 – 23:00')]},{title:'Yetkazib berish',rows:[sw('delivery','Yetkazib berish faol'),val('Narxi',"15 000 so'm"),val('Bepul',"200 000 so'mdan")]},{title:"To'lov usullari",rows:[sw('cash','Naqd pul'),sw('click','Click'),sw('payme','Payme'),sw('uzcard','Uzcard / Humo')]},{title:'Bildirishnomalar',rows:[sw('nOrders','Yangi buyurtma'),sw('nRx','Yangi retsept'),sw('nChat','Mijoz xabari')]},{title:'Xavfsizlik',rows:[sw('faceid','Face ID bilan kirish'),val('Rol',role)]}];
+    // header
+    const hdr={title:TITLES[st.screen]||'',kicker:st.screen==='dash'?'Shanba, 4 oktabr':'',hasAction:false};
+    if(st.screen==='order'&&o) hdr.title='Buyurtma '+o.id;
+    if(st.screen==='product') hdr.title=d.id?'Tahrirlash':'Yangi mahsulot';
+    if(st.screen==='rxd'&&r) hdr.title='Retsept '+r.id;
+    if(st.screen==='customer'&&c) hdr.title='Mijoz';
+    if(st.screen==='chat'&&ch) hdr.title=ch.name;
+    if(st.screen==='products'){Object.assign(hdr,{hasAction:true,icon:ic.plus,aria:"Mahsulot qo'shish",action:()=>this.openProduct(null)});}
+    if(st.screen==='articles'){Object.assign(hdr,{hasAction:true,icon:ic.plus,aria:'Yangi maqola',action:()=>this.go('article',{artDraft:{id:null,title:'',tag:ART_TAGS[0],img:'',lead:'',body:'',recs:[],published:false},artTried:false})});}
+    if(st.screen==='article') hdr.title=(st.artDraft&&st.artDraft.id)?'Tahrirlash':'Yangi maqola';
+    if(st.screen==='banners'){Object.assign(hdr,{hasAction:true,icon:ic.plus,aria:'Banner qo\'shish',action:()=>{this.setState(x=>({banners:[...x.banners,{id:Date.now(),title:'Yangi banner',target:'Havola tanlanmagan',img:'1514733670139-4d87a1941d55',active:false,clicks:0}]}));this.toast("Qoralama banner qo'shildi");}});}
+    if(st.screen==='staff'){Object.assign(hdr,{hasAction:true,icon:ic.plus,aria:'Xodim taklif qilish',action:()=>this.setState({sheet:'invite',sel:1})});}
+    if(st.screen==='promos'){Object.assign(hdr,{hasAction:true,icon:ic.plus,aria:'Promokod yaratish',action:()=>this.setState({sheet:'promo'})});}
+    if(st.screen==='dash'){Object.assign(hdr,{hasAction:true,icon:ic.bell,aria:'Xabarlar',action:()=>allowed.has('chats')?(tabs.includes('chats')?this.tabTo('chats'):this.go('chats')):this.tabTo('orders')});}
+    if(st.screen==='chat'&&ch){Object.assign(hdr,{hasAction:true,icon:ic.phoneS,aria:"Qo'ng'iroq",action:()=>this.toast("Qo'ng'iroq qilinmoqda")});}
+    // bottom bar
+    let bar={show:false};
+    if(st.screen==='order'&&o){ const next={new:['Tayyorlashni boshlash',()=>{this.updOrder(o.id,{status:'preparing'});this.toast('Buyurtma tayyorlanmoqda');}],preparing:['Kuryerga topshirish',()=>this.setState({sheet:'courier',sel:1})],onway:['Yetkazildi deb belgilash',()=>{this.updOrder(o.id,{status:'delivered'});this.toast('Buyurtma yetkazildi');}]}[o.status];
+      if(next) bar={show:true,hasPrimary:true,primaryL:next[0],primary:next[1],hasSecondary:['new','preparing'].includes(o.status),secondaryL:'Bekor qilish',secondary:()=>this.setState({sheet:'cancel',sel:0})}; }
+    if(st.screen==='product') bar={show:true,hasPrimary:true,primaryL:d.id?'Saqlash':"Qo'shish",primary:this.saveProduct};
+    if(st.screen==='rxd'&&r&&r.status==='pending') bar={show:true,hasPrimary:true,primaryL:'Tasdiqlash',primary:()=>{this.setState(x=>({rxs:x.rxs.map(y=>y.id===r.id?{...y,status:'approved'}:y)}));this.toast('Retsept tasdiqlandi');},hasSecondary:true,secondaryL:'Rad etish',secondary:()=>this.setState({sheet:'reject',sel:0})};
+    if(st.screen==='push') bar={show:true,hasPrimary:true,primaryL:'Yuborish',primary:()=>this.toast('Yuborildi · '+AUD[st.push.aud][1].replace(' qabul qiluvchi',' kishi'))};
+    const ap=st.appts.find(a=>a.id===st.apptId);
+    if(st.screen==='appt'&&ap){ if(ap.status==='new') bar={show:true,hasPrimary:true,primaryL:'Tasdiqlash',primary:()=>{this.setState(x=>({appts:x.appts.map(a=>a.id===ap.id?{...a,status:'confirmed'}:a)}));this.toast('Qabul tasdiqlandi');},hasSecondary:true,secondaryL:"Ko'chirish",secondary:()=>this.setState({sheet:'reschedule',sel:0})}; else if(ap.status==='confirmed') bar={show:true,hasPrimary:true,primaryL:'Yakunlash va yuborish',primary:()=>{this.setState(x=>({appts:x.appts.map(a=>a.id===ap.id?{...a,status:'done'}:a)}));this.toast('Xulosa mijozga yuborildi');},hasSecondary:true,secondaryL:ap.type==='video'?"Video qo'ng'iroq":"Qo'ng'iroq",secondary:()=>this.toast("Qo'ng'iroq boshlanmoqda")}; }
+    if(st.screen==='article'&&st.artDraft) bar={show:true,hasPrimary:true,primaryL:'Saqlash',primary:()=>{const d=st.artDraft; if(!d.title.trim()){this.setState({artTried:true});return;} this.setState(x=>({arts:d.id?x.arts.map(a=>a.id===d.id?d:a):[{...d,id:Date.now(),views:'—',date:d.published?'Bugun':'Qoralama'},...x.arts]}));this.toast(d.published?'Maqola nashr qilindi':'Qoralama saqlandi');this.back();}};
+    const padBot=(is.chat?150:(isRoot||bar.show)?120:40)+'px';
+    // tabs
+    const tabVals=tabs.map(t=>{const on=st.screen===t;const b=badgeFor[t]||0;return {label:TABS[t][0],icon:svg(TABS[t][1],22,on?2:1.7),bg:on?'rgba(255,255,255,.95)':'transparent',sh:on?'0 2px 10px rgba(16,24,18,.10)':'none',fg:on?'var(--accent-text)':'var(--text-secondary)',hasBadge:b>0,badge:String(b),go:()=>this.tabTo(t)};});
+    const moreRows=more.map(k=>{const b=badgeFor[k]||(k==='inventory'?low:0);return {label:META[k][0],icon:svg(META[k][1],18),sub:META[k][2],hasBadge:b>0,badge:String(b),go:()=>this.go(k)};});
+    const navItem=(s,label)=>({label,bg:st.screen===s?'#fff':'transparent',color:st.screen===s?'var(--text-primary)':'var(--text-secondary)',go:()=>this.jump(s)});
+    const detail=[['appt','Qabul tafsiloti','appts'],['article','Maqola muharriri','articles'],['order','Buyurtma tafsiloti','orders'],['product','Mahsulot tahriri','products'],['rxd','Retsept tekshiruvi','rx'],['customer','Mijoz profili','customers'],['chat','Suhbat','chats']].filter(x=>allowed.has(x[2]));
+    const navGroups=[{title:'Kirish',items:[navItem('login','Kirish ekrani')]},{title:'Tab bar',items:tabs.map(t=>navItem(t,TABS[t][0]))},{title:"Ko'proq",items:more.map(k=>navItem(k,META[k][0]))},{title:'Batafsil',items:detail.map(x=>navItem(x[0],x[1]))}];
+    const sh=this.sheetVals();
+    const segX=(on)=>({bg:on?'#fffdf8':'transparent',sh:on?'0 1px 3px rgba(24,36,28,.12)':'none'});
+    const recChips=(sel,toggle)=>st.products.filter(p=>!p.rx).slice(0,8).map(p=>{const on=sel.includes(p.id);return {name:p.name,bg:on?'#17301f':'#fffdf8',fg:on?'#fff':'var(--text-primary)',bd:on?'#17301f':'var(--border-default)',go:()=>toggle(p.id)};});
+    const dayAp=st.appts.filter(a=>a.day===st.apDay).sort((a,b)=>a.time.localeCompare(b.time));
+    const apRow=a=>({...a,typeL:APT_T[a.type][0],icon:svg(APT_T[a.type][2],14),dur:APT_T[a.type][3]?APT_T[a.type][3]+' daq':'yozma',statusL:APT_S[a.status][0],tone:APT_S[a.status][1],tbg:a.status==='done'?'var(--surface-inset)':'#17301f',tfg:a.status==='done'?'var(--text-muted)':'#d9b45f',ini:ini(a.name),go:()=>this.go('appt',{apptId:a.id})});
+    const apv=ap?{...apRow(ap),when:(AP_DAYS[ap.day]||'')+', '+ap.time,recs:recChips(ap.recs,(id)=>this.setState(x=>({appts:x.appts.map(a=>a.id===ap.id?{...a,recs:a.recs.includes(id)?a.recs.filter(r=>r!==id):[...a.recs,id]}:a)})))}:{recs:[]};
+    const ad=st.artDraft||{recs:[]};
+    const setAd=(k,v)=>this.setState(x=>({artDraft:{...x.artDraft,[k]:v}}));
+    const sold=[412,336,268,201,175];
+    const extraV={
+      apDays:AP_DAYS.map((d,i)=>({label:d,...segX(st.apDay===i),go:()=>this.setState({apDay:i})})),apStats:[{k:'Qabul',v:String(dayAp.length)},{k:'Yangi',v:String(dayAp.filter(a=>a.status==='new').length)},{k:'Onlayn',v:String(dayAp.filter(a=>a.type!=='clinic').length)}],apList:dayAp.map(apRow),apEmpty:dayAp.length===0,apv,onApNote:e=>{const v=e.target.value;this.setState(x=>({appts:x.appts.map(a=>a.id===x.apptId?{...a,note:v}:a)}));},
+      artList:st.arts.map(a=>({...a,img:U(a.img,200,200),meta:a.published?a.views+" o'qilgan · "+a.date:'Qoralama',go:()=>this.go('article',{artDraft:{...a},artTried:false}),toggle:()=>{this.setState(x=>({arts:x.arts.map(y=>y.id===a.id?{...y,published:!y.published}:y)}));this.toast(a.published?'Nashrdan olindi':'Nashr qilindi');}})),
+      artTags:ART_TAGS,adv:{...ad,imgL:ad.img?U(ad.img,800,400):'',hasImg:!!ad.img,noImg:!ad.img,coverBd:ad.img?'transparent':'var(--border-strong)',err:st.artTried&&!String(ad.title||'').trim(),errMsg:st.artTried&&!String(ad.title||'').trim()?'Sarlavhani kiriting':'',recs:recChips(ad.recs||[],(id)=>setAd('recs',(ad.recs||[]).includes(id)?ad.recs.filter(r=>r!==id):[...(ad.recs||[]),id]))},
+      adCover:()=>{const pool=['1514733670139-4d87a1941d55','1612817288484-6f916006741a','1597318181409-cf64d0b5d8a2','1558642452-9d2a7deb7f62'];const i=(pool.indexOf(ad.img)+1)%pool.length;setAd('img',pool[i]);},
+      adOn:{title:e=>setAd('title',e.target.value),tag:e=>setAd('tag',e.target.value),lead:e=>setAd('lead',e.target.value),body:e=>setAd('body',e.target.value),pub:()=>setAd('published',!ad.published)},
+      bnList:st.banners.map((b,i,arr)=>({...b,img:U(b.img,800,320),op:b.active?1:.55,pos:(i+1)+'-slayd',clicksL:b.active?b.clicks+' marta bosilgan':'Faol emas',toggle:()=>this.setState(x=>({banners:x.banners.map(y=>y.id===b.id?{...y,active:!y.active}:y)})),up:()=>i>0&&this.setState(x=>{const a=[...x.banners];[a[i-1],a[i]]=[a[i],a[i-1]];return {banners:a};}),down:()=>i<arr.length-1&&this.setState(x=>{const a=[...x.banners];[a[i+1],a[i]]=[a[i],a[i+1]];return {banners:a};})})),
+      rvTabs:[['all','Hammasi'],['open','Javobsiz'],['hidden','Yashirilgan']].map(([k,l])=>({label:k==='open'?l+' '+rvOpen:l,...segX(st.rvFilter===k),go:()=>this.setState({rvFilter:k})})),
+      rvList:st.reviews.filter(r=>st.rvFilter==='all'?true:st.rvFilter==='open'?(!r.reply&&!r.hidden):!!r.hidden).map(r=>({...r,ini:ini(r.name),starsL:'★'.repeat(r.stars)+'☆'.repeat(5-r.stars),hasReply:!!r.reply,op:r.hidden?.6:1,replyL:r.reply?'Javobni tahrirlash':'Javob berish',hideL:r.hidden?"Ko'rsatish":'Yashirish',replyGo:()=>this.setState({sheet:'reply',replyId:r.id,replyText:r.reply||''}),hide:()=>{this.setState(x=>({reviews:x.reviews.map(y=>y.id===r.id?{...y,hidden:!y.hidden}:y)}));this.toast(r.hidden?"Sharh ko'rsatildi":'Sharh yashirildi');}})),
+      rvEmpty:false,replyText:st.replyText,onReply:e=>this.setState({replyText:e.target.value}),
+      anKpis:[['Konversiya',{today:'3.8%',week:'4.1%',month:'4.4%'}[st.range],'+0.4 p.p.'],['Qaytgan mijozlar','41%','+6%'],["Maslahatdan xarid",'62%','+9%'],['Ilova reytingi','4.9','+0.1']].map(k=>({label:k[0],value:k[1],delta:k[2]})),
+      anTop:[1,2,4,6,9].map((id,i)=>{const p=st.products.find(x=>x.id===id)||{name:''};return {name:p.name,n:sold[i],w:Math.round(sold[i]/sold[0]*100)+'%'};}),
+      anCh:[['Instagram',46,'#2f5a40'],['Ilova',28,'#c8a24c'],['Telegram',18,'#6f9a7c'],["To'g'ridan",8,'#d8cfbb']].map(c=>({name:c[0],w:c[1]+'%',c:c[2]})),
+      anConsult:{today:"Bugun 4 ta qabul, 2 tasi yakunlangan. Maslahatdan keyin o'rtacha xarid — 186 000 so'm.",week:"Shu hafta 27 ta qabul: 16 video, 6 yozma, 5 klinikada. Daromad 3 150 000 so'm.",month:"Oktabrda 104 ta qabul. Daromad 11 900 000 so'm, mijozlarning 62% i keyin xarid qilgan."}[st.range],
+      catList:st.cats.map((c,i,arr)=>({...c,img:U(c.img,120,120),op:c.active?1:.5,count:st.products.filter(p=>p.cat===c.name).length,toggle:()=>this.setState(x=>({cats:x.cats.map((y,j)=>j===i?{...y,active:!y.active}:y)})),up:()=>i>0&&this.setState(x=>{const a=[...x.cats];[a[i-1],a[i]]=[a[i],a[i-1]];return {cats:a};}),down:()=>i<arr.length-1&&this.setState(x=>{const a=[...x.cats];[a[i+1],a[i]]=[a[i],a[i+1]];return {cats:a};})})),
+      staffList:st.staff.map((s,i)=>({...s,ini:ini(s.name.replace('+998 ','')),tone:s.role==='Admin'?'accent':s.role==='Farmatsevt'?'info':'warning',avBg:s.active?'var(--accent-fill)':'var(--surface-inset)',avFg:s.active?'var(--accent-text)':'var(--text-muted)',toggle:()=>this.setState(x=>({staff:x.staff.map((y,j)=>j===i?{...y,active:!y.active}:y)}))})),
+      rolePerms:[{role:'Admin',perms:"Hamma bo'limlar, xodimlar, sozlamalar va analitika"},{role:'Farmatsevt',perms:'Buyurtmalar, retseptlar, ombor, mahsulotlar, qabullar'},{role:"Qo'llab-quvvatlash",perms:'Buyurtmalar, xabarlar, mijozlar, sharhlar'}],
+      invPhone:st.invPhone,onInvPhone:e=>this.setState({invPhone:e.target.value.replace(/[^\d ]/g,'').slice(0,12)}),
+      crStats:[{k:'Faol',v:String(COURIERS2.filter(c=>c.status!=='off').length)},{k:'Yetkazmoqda',v:String(COURIERS2.filter(c=>c.status==='busy').length)},{k:'Bugun',v:String(COURIERS2.reduce((a,c)=>a+c.today,0))}],
+      crList:COURIERS2.map(c=>({...c,ini:ini(c.name),statusL:CR_S[c.status][0],tone:CR_S[c.status][1],dot:CR_S[c.status][2],sub:c.where+' · ★ '+c.rating+' · bugun '+c.today,call:()=>this.toast(c.name+"ga qo'ng'iroq")})),
+      moreGroups:MORE_GROUPS.map(([title,keys])=>({title,rows:keys.filter(k=>more.includes(k)).map(k=>moreRows[more.indexOf(k)])})).filter(g=>g.rows.length)
+    };
+    return {...extraV,is,ic,roleName:role,navGroups,isRoot,notRoot:st.screen!=='login'&&!isRoot,hdr,bar,padTop:(isRoot?72:56)+'px',padBot,scrollRef:this.scrollRef,tabs:tabVals,
+      login:st.login,pass:st.pass,onLogin:e=>this.setState({login:e.target.value}),onPass:e=>this.setState({pass:e.target.value}),doLogin:()=>this.tabTo(tabs[0]),logout:()=>this.setState({screen:'login',stack:[]}),back:this.back,
+      ranges:[['today','Bugun'],['week','Hafta'],['month','Oy']].map(([k,l])=>({label:l,...seg(st.range===k),go:()=>this.setState({range:k})})),kpis,bars,chartCap:K.cap+' · '+fmt(K.s),attention,recent:orders.slice(0,3).map(oRow),tabOrders:()=>{this.setState({oFilter:'all'});tabs.includes('orders')?this.tabTo('orders'):this.go('orders');},
+      oQuery:st.oQuery,onOQuery:e=>this.setState({oQuery:e.target.value}),oChips,orderList,ordersEmpty:orderList.length===0,ov,
+      pQuery:st.pQuery,onPQuery:e=>this.setState({pQuery:e.target.value}),pChips,productList,stop:e=>e.stopPropagation(),draft:d,err,on,catOptions:cats.slice(1),imgSlots,draftExisting:!!d.id,askDelete:()=>this.setState({sheet:'delete'}),
+      rxTabs,rxList,rxEmpty:rxList.length===0,rv,moreRows,invTabs,invList,custList,cv,chatList,chatsEmpty:chatList.length===0,chv,quick,msg:st.msg,onMsg:e=>this.setState({msg:e.target.value}),onMsgKey:e=>{if(e.key==='Enter')this.sendMsg();},sendMsg:this.sendMsg,
+      promoList,push:st.push,pushV,onPushTitle:e=>{const v=e.target.value;this.setState(x=>({push:{...x.push,title:v}}));},onPushBody:e=>{const v=e.target.value;this.setState(x=>({push:{...x.push,body:v}}));},audList,setGroups,
+      toast:st.toast,sheetOpen:!!st.sheet,sh,closeSheet:()=>this.setState({sheet:null}),newPromo:st.newPromo,onNP:{code:e=>{const v=e.target.value;this.setState(x=>({newPromo:{...x.newPromo,code:v}}));},val:e=>{const v=e.target.value.replace(/\D/g,'');this.setState(x=>({newPromo:{...x.newPromo,val:v}}));},limit:e=>{const v=e.target.value.replace(/\D/g,'');this.setState(x=>({newPromo:{...x.newPromo,limit:v}}));}}};
+  }
+}
+</script>
+</body>
+</html>

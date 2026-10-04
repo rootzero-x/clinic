@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/colors.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/typography.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/tokens/base.css">
+<link rel="stylesheet" href="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/styles.css">
+<script src="_ds/fintruck-design-system-557fbaba-b0e6-40e8-9046-73635e764d07/_ds_bundle.js"></script>
+<style>
+html:root{color-scheme:light;--gray-1000:#faf7f0;--gray-950:#fffdf8;--gray-900:#f4f0e6;--gray-850:#ece6d8;--gray-800:#fffdf8;--gray-750:#efe9dc;--gray-700:#e0d8c6;--gray-650:#d8cfbb;--gray-600:#bfb49c;--gray-500:#6f766c;--gray-400:#858b80;--gray-300:#535c54;--gray-200:#2c362f;--gray-100:#18241c;--surface-page:#f4f0e6;--surface-card:#fffdf8;--surface-inset:#ece6d8;--surface-raised:#efe9dc;--surface-overlay:#fffdf8;--surface-scrim:rgba(18,30,22,.42);--text-primary:#18241c;--text-body:#2c362f;--text-secondary:#535c54;--text-muted:#6f766c;--text-placeholder:#8f9488;--text-on-accent:#ffffff;--border-subtle:#e6dfcf;--border-default:#d8cfbb;--border-strong:#bfb49c;--accent:#2f5a40;--accent-hover:#264b35;--accent-active:#1e3c2a;--accent-fill:rgba(47,90,64,.10);--accent-text:#2a5139;--text-link:#2a5139;--success:#2a6b44;--success-fill:rgba(47,120,72,.11);--danger:#b5403a;--danger-strong:#b5403a;--danger-fill:rgba(181,64,58,.09);--warning:#7f5f12;--warning-fill:rgba(200,160,70,.18);--info:#2d5f9a;--info-fill:rgba(60,110,180,.10);--shadow-popover:0 8px 24px rgba(24,36,28,.14);--shadow-focus:0 0 0 3px rgba(47,90,64,.25)}
+body{margin:0;background:#e6e0d2;color:var(--text-body)}
+a{color:#2a5139}a:hover{color:#1e3c2a}
+*::-webkit-scrollbar{display:none}
+@keyframes qtRing{from{transform:scale(.5);opacity:.55}to{transform:scale(3.2);opacity:0}}
+@keyframes qtDraw{from{stroke-dashoffset:80}to{stroke-dashoffset:0}}
+@keyframes qtUp{from{opacity:0;transform:translateY(16px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes qtPop{0%{transform:scale(.4) rotate(-12deg);opacity:0}60%{transform:scale(1.08) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes qtBar{from{width:0}to{width:100%}}
+@keyframes qtShine{from{transform:translateX(-140%) skewX(-20deg)}to{transform:translateX(260%) skewX(-20deg)}}
+@keyframes qtGlow{0%,100%{opacity:.35}50%{opacity:.7}}
+@keyframes qtSheet{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes qtFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes qtDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-wrap:wrap;gap:28px;justify-content:center;align-items:flex-start;padding:28px 20px;box-sizing:border-box;font-family:var(--font-sans)">
+  <aside style="width:236px;flex:none;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;border-radius:11px;background:#17301f;border:1px solid #c8a24c;display:flex;align-items:center;justify-content:center;color:#d9b45f;font-weight:800;font-size:13px;letter-spacing:.02em;flex:none">QT</div>
+      <div><div style="font-size:15px;font-weight:700;color:var(--text-primary)">Qahramon Tabib</div><div style="font-size:12px;color:var(--text-muted)">Mijoz ilovasi · iOS / Android</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button onClick="{{ replaySplash }}" style="display:flex;align-items:center;justify-content:space-between;background:#17301f;color:#fff;border:none;border-radius:10px;padding:10px 12px;font:600 13px var(--font-sans);cursor:pointer">Splash animatsiyasini qayta ko'rish<span style="color:#d9b45f">↻</span></button>
+      <a href="Qahramon Tabib Admin.dc.html" style="display:flex;align-items:center;justify-content:space-between;background:#fffdf8;border:1px solid var(--border-subtle);color:var(--text-primary);border-radius:10px;padding:10px 12px;font:600 13px var(--font-sans);text-decoration:none">Admin ilovani ochish<span>→</span></a>
+    </div>
+    <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="5">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:0 8px 4px">{{ g.title }}</div>
+        <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="4">
+          <button onClick="{{ n.go }}" style="text-align:left;border:none;background:{{ n.bg }};color:{{ n.color }};font:500 13px var(--font-sans);padding:7px 8px;border-radius:6px;cursor:pointer" style-hover="background:#ddd5c3">{{ n.label }}</button>
+        </sc-for>
+      </div>
+    </sc-for>
+    <div style="font-size:11.5px;line-height:1.5;color:var(--text-muted)">Mahsulotlar, narxlar va rasmlar — namunaviy ma'lumot. Haqiqiy katalog bilan almashtiriladi.</div>
+  </aside>
+
+  <div style="flex:none;padding:12px;background:#1c1c1e;border-radius:62px;box-shadow:0 0 0 2px #3a3a3c,0 40px 80px rgba(30,40,30,.25)">
+    <div style="width:393px;height:852px;border-radius:50px;overflow:hidden;position:relative;background:var(--surface-page);display:flex;flex-direction:column">
+      <div style="position:absolute;top:0;left:0;right:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 32px 0 44px;font-size:16px;font-weight:600;color:{{ sbColor }};z-index:60;pointer-events:none"><span>9:41</span><div style="position:absolute;left:50%;top:11px;transform:translateX(-50%);width:124px;height:36px;border-radius:20px;background:#000"></div><div style="display:flex;gap:6px;align-items:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:3px;height:4px;background:currentColor;border-radius:1px"></div><div style="width:3px;height:6px;background:currentColor;border-radius:1px"></div><div style="width:3px;height:8px;background:currentColor;border-radius:1px"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px"></div></div><div style="width:25px;height:12px;border:1.2px solid currentColor;border-radius:4px;padding:1.5px;box-sizing:border-box"><div style="width:78%;height:100%;background:currentColor;border-radius:1.5px"></div></div></div></div>
+
+      <div style="flex:1;min-height:0;position:relative">
+        <sc-if value="{{ is.splash }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;inset:0;background:#17301f">{{ splash }}</div>
+        </sc-if>
+
+        <sc-if value="{{ is.onb }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;background:#17301f">
+            <img src="{{ onb.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <div style="position:absolute;inset:0;background:rgba(14,26,18,.28)"></div>
+            <button onClick="{{ toLogin }}" style="position:absolute;top:60px;right:18px;height:34px;padding:0 14px;border-radius:17px;background:rgba(255,255,255,.22);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.4);color:#fff;font:600 13px var(--font-sans);cursor:pointer">O'tkazib yuborish</button>
+            <div style="position:absolute;left:12px;right:12px;bottom:28px;border-radius:34px;padding:24px 22px 22px;background:rgba(255,253,248,.72);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,.85);box-shadow:0 20px 50px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.9);display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;gap:6px"><sc-for list="{{ onb.dots }}" as="d" hint-placeholder-count="3"><div style="height:6px;width:{{ d.w }};border-radius:3px;background:{{ d.bg }}"></div></sc-for></div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a6a1f">{{ onb.kicker }}</div>
+              <div style="font-size:26px;font-weight:700;line-height:1.18;color:var(--text-primary);letter-spacing:-.02em;text-wrap:pretty">{{ onb.title }}</div>
+              <div style="font-size:15px;line-height:1.5;color:var(--text-secondary);text-wrap:pretty">{{ onb.body }}</div>
+              <div style="height:4px"></div>
+              <x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" onClick="{{ onb.next }}" hint-size="100%,44px">{{ onb.cta }}</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ is.login }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:78px 24px 40px;gap:14px">
+            <div style="width:64px;height:64px;border-radius:20px;background:#17301f;border:1.5px solid #c8a24c;display:flex;align-items:center;justify-content:center;color:#d9b45f;font-weight:800;font-size:20px">QT</div>
+            <div style="margin-top:8px"><div style="font-size:30px;font-weight:700;color:var(--text-primary);letter-spacing:-.02em">Xush kelibsiz</div><div style="font-size:15px;line-height:1.5;color:var(--text-secondary);margin-top:6px">Telefon raqamingizni kiriting — tasdiqlash kodini SMS orqali yuboramiz.</div></div>
+            <div style="height:4px"></div>
+            <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Telefon raqam" type="tel" inputmode="numeric" placeholder="90 123 45 67" leading-icon="+998" value="{{ phone }}" onChange="{{ onPhone }}" hint-size="100%,64px"></x-import>
+            <sc-if value="{{ otpStep }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px"><div style="font-size:13px;font-weight:500;color:var(--text-secondary)">SMS kod</div><div style="display:flex;gap:10px"><sc-for list="{{ otpCells }}" as="c" hint-placeholder-count="4"><div style="flex:1;height:56px;border-radius:14px;background:#fffdf8;border:1.5px solid {{ c.bd }};display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:var(--text-primary)">{{ c.v }}</div></sc-for></div><div style="font-size:13px;color:var(--text-muted)">Namuna uchun kod avtomatik to'ldirildi · Qayta yuborish 0:42</div></div>
+            </sc-if>
+            <div style="flex:1"></div>
+            <x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" disabled="{{ loginDisabled }}" onClick="{{ loginNext }}" hint-size="100%,44px">{{ loginCta }}</x-import>
+            <button onClick="{{ guest }}" style="border:none;background:none;color:var(--text-secondary);font:600 14px var(--font-sans);padding:10px;cursor:pointer">Mehmon sifatida ko'rish</button>
+            <div style="font-size:12px;line-height:1.5;color:var(--text-muted);text-align:center">Davom etib, <a href="#">Foydalanish shartlari</a> va <a href="#">Maxfiylik siyosati</a>ga rozilik bildirasiz.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ is.app }}" hint-placeholder-val="{{ false }}">
+          <div ref="{{ scrollRef }}" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;padding-top:{{ padTop }};padding-bottom:{{ padBot }};box-sizing:border-box">
+
+            <sc-if value="{{ is.home }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:20px">
+                <div style="position:relative;height:300px">
+                  <img src="{{ heroImg }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+                  <div style="position:absolute;inset:0;background:rgba(14,28,18,.38)"></div>
+                  <div style="position:absolute;top:62px;left:18px;right:18px;display:flex;align-items:center;gap:10px">
+                    <div style="flex:1;color:#fff"><div style="font-size:13px;opacity:.85">Assalomu alaykum,</div><div style="font-size:22px;font-weight:700;letter-spacing:-.01em">{{ userName }}</div></div>
+                    <button onClick="{{ go.notifs }}" aria-label="Bildirishnomalar" style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.45);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative">{{ ic.bell }}<sc-if value="{{ notifUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:8px;right:9px;width:9px;height:9px;border-radius:50%;background:#d9b45f;border:1.5px solid #17301f"></span></sc-if></button>
+                    <button onClick="{{ go.chat }}" aria-label="Savol berish" style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.45);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.chat }}</button>
+                    <button onClick="{{ go.profile }}" aria-label="Profil" style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.45);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font:700 14px var(--font-sans)">{{ userIni }}</button>
+                  </div>
+                  <div style="position:absolute;left:18px;right:18px;top:138px;color:#fff;font-size:27px;font-weight:700;line-height:1.15;letter-spacing:-.02em;text-wrap:pretty">Tabiiy shifo,<br>ishonchli maslahat</div>
+                  <button onClick="{{ go.shopSearch }}" style="position:absolute;left:16px;right:16px;bottom:-24px;height:52px;border-radius:26px;background:rgba(255,253,248,.78);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 30px rgba(24,36,28,.16),inset 0 1px 0 #fff;display:flex;align-items:center;gap:10px;padding:0 18px;color:var(--text-muted);font:400 15px var(--font-sans);cursor:pointer;text-align:left">{{ ic.search }}<span style="flex:1">Mahsulot yoki muammo qidiring</span></button>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px 16px 0">
+                  <sc-for list="{{ quick }}" as="q" hint-placeholder-count="4">
+                    <button onClick="{{ q.go }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 12px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);cursor:pointer;font:600 12px var(--font-sans);color:var(--text-primary)"><div style="width:42px;height:42px;border-radius:14px;background:{{ q.bg }};color:{{ q.fg }};display:flex;align-items:center;justify-content:center">{{ q.icon }}</div>{{ q.label }}</button>
+                  </sc-for>
+                </div>
+                <div style="margin:0 16px;border-radius:24px;background:#17301f;padding:18px;display:flex;gap:14px;align-items:center;position:relative;overflow:hidden">
+                  <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;border:1px solid rgba(217,180,95,.3)"></div>
+                  <div style="position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(217,180,95,.18)"></div>
+                  <div style="flex:1;position:relative"><div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d9b45f">Onlayn maslahat</div><div style="font-size:18px;font-weight:700;color:#fff;margin-top:6px;line-height:1.25">Qahramon Tabib bilan shaxsiy suhbat</div><div style="font-size:13px;color:rgba(255,255,255,.75);margin-top:6px">Bugun 3 ta bo'sh vaqt bor</div></div>
+                  <button onClick="{{ go.consult }}" style="position:relative;height:40px;padding:0 16px;border-radius:20px;border:none;background:#d9b45f;color:#17301f;font:700 14px var(--font-sans);cursor:pointer;flex:none">Yozilish</button>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 20px"><div style="font-size:19px;font-weight:700;color:var(--text-primary);letter-spacing:-.01em">Muammo bo'yicha</div></div>
+                  <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 16px">
+                    <sc-for list="{{ ailHome }}" as="a" hint-placeholder-count="6"><button onClick="{{ a.go }}" style="flex:none;width:108px;height:132px;border-radius:24px;border:none;padding:0;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 8px 20px rgba(24,36,28,.10)"><img src="{{ a.img }}" alt="{{ a.label }}" style="width:100%;height:100%;object-fit:cover;display:block"><div style="position:absolute;inset:0;background:rgba(14,28,18,.28)"></div><div style="position:absolute;left:6px;right:6px;bottom:6px;padding:7px 6px;border-radius:14px;background:rgba(255,253,248,.24);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border:1px solid rgba(255,255,255,.4);color:#fff;font:700 12px/1.2 var(--font-sans);text-align:center">{{ a.label }}</div></button></sc-for>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 20px"><div style="font-size:19px;font-weight:700;color:var(--text-primary);letter-spacing:-.01em">Ommabop mahsulotlar</div><button onClick="{{ go.shop }}" style="border:none;background:none;color:var(--accent-text);font:600 14px var(--font-sans);cursor:pointer">Barchasi</button></div>
+                  <div style="display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:0 16px">
+                    <sc-for list="{{ popular }}" as="p" hint-placeholder-count="4">
+                      <div onClick="{{ p.go }}" style="flex:none;width:156px;border-radius:22px;background:#fffdf8;border:1px solid var(--border-subtle);padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:8px">
+                        <div style="position:relative"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;display:block"><sc-if value="{{ p.hasOld }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:8px;left:8px;height:22px;padding:0 8px;border-radius:11px;background:#d9b45f;color:#17301f;font-size:11.5px;font-weight:700;display:flex;align-items:center">{{ p.off }}</span></sc-if></div>
+                        <div style="padding:0 4px;display:flex;flex-direction:column;gap:2px"><div style="font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3;height:36px;overflow:hidden">{{ p.name }}</div><div style="font-size:12px;color:var(--text-muted)">{{ p.size }}</div></div>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px 2px 4px"><span style="font-size:14.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ p.priceF }}</span><button onClick="{{ p.add }}" aria-label="Savatga" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.plusS }}</button></div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 4px"><div style="font-size:19px;font-weight:700;color:var(--text-primary);letter-spacing:-.01em">Tabib maslahatlari</div><button onClick="{{ go.articles }}" style="border:none;background:none;color:var(--accent-text);font:600 14px var(--font-sans);cursor:pointer">Barchasi</button></div>
+                  <sc-for list="{{ articlesTop }}" as="a" hint-placeholder-count="2">
+                    <button onClick="{{ a.go }}" style="display:flex;gap:12px;align-items:center;padding:8px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-sans)"><img src="{{ a.img }}" alt="" style="width:84px;height:84px;border-radius:14px;object-fit:cover;flex:none"><div style="flex:1;min-width:0;padding-right:6px"><div style="font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a6a1f">{{ a.tag }}</div><div style="font-size:15px;font-weight:600;color:var(--text-primary);line-height:1.3;margin-top:4px">{{ a.title }}</div><div style="font-size:12.5px;color:var(--text-muted);margin-top:4px">{{ a.read }}</div></div></button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.shop }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding-top:4px">
+                <div style="padding:0 16px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" placeholder="Asal, choy, malham..." leading-icon="{{ ic.searchS }}" value="{{ query }}" onChange="{{ onQuery }}" hint-size="100%,40px"></x-import></div>
+                <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 16px">
+                  <sc-for list="{{ ailChips }}" as="c" hint-placeholder-count="6"><button onClick="{{ c.go }}" style="flex:none;width:74px;border:none;background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;font-family:var(--font-sans)"><div style="width:66px;height:66px;border-radius:22px;padding:2px;box-sizing:border-box;border:2px solid {{ c.ring }};transition:border-color .2s"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;border-radius:18px;object-fit:cover;display:block"></div><span style="font-size:11.5px;font-weight:{{ c.fw }};color:{{ c.fc }};line-height:1.2;text-align:center">{{ c.label }}</span></button></sc-for>
+                </div>
+                <div style="font-size:13px;color:var(--text-muted);padding:0 20px">{{ shopCount }}</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px">
+                  <sc-for list="{{ shopList }}" as="p" hint-placeholder-count="6">
+                    <div onClick="{{ p.go }}" style="border-radius:22px;background:#fffdf8;border:1px solid var(--border-subtle);padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-width:0">
+                      <div style="position:relative"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;display:block"><button onClick="{{ p.fav }}" aria-label="Sevimlilarga" style="position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(255,253,248,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);color:{{ p.favFg }};display:flex;align-items:center;justify-content:center;cursor:pointer">{{ p.favIcon }}</button><sc-if value="{{ p.rx }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:8px;left:8px;height:22px;padding:0 8px;border-radius:11px;background:#b5403a;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center">Retsept bilan</span></sc-if><sc-if value="{{ p.hasOld }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:8px;left:8px;height:22px;padding:0 8px;border-radius:11px;background:#d9b45f;color:#17301f;font-size:11.5px;font-weight:700;display:flex;align-items:center">{{ p.off }}</span></sc-if></div>
+                      <div style="padding:0 4px;display:flex;flex-direction:column;gap:2px"><div style="font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3;height:36px;overflow:hidden">{{ p.name }}</div><div style="font-size:12px;color:var(--text-muted)">{{ p.size }} · ★ {{ p.rating }}</div></div>
+                      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px 2px 4px"><span style="font-size:14.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ p.priceF }}</span><button onClick="{{ p.add }}" aria-label="Savatga" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.plusS }}</button></div>
+                    </div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ shopEmpty }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:40px 24px"><div style="width:56px;height:56px;border-radius:18px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.search }}</div><div style="font-size:17px;font-weight:600;color:var(--text-primary)">Hech narsa topilmadi</div><div style="font-size:14px;line-height:1.5;color:var(--text-secondary)">Boshqa so'z bilan qidiring yoki Tabib jamoasidan so'rang.</div><div style="margin-top:8px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" variant="secondary" onClick="{{ go.chat }}" hint-size="140px,40px">Savol berish</x-import></div></div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.product }}" hint-placeholder-val="{{ false }}">
+              <div style="position:relative">
+                <img src="{{ pv.imgL }}" alt="{{ pv.name }}" style="width:100%;height:400px;object-fit:cover;display:block">
+                <div style="position:relative;margin-top:-34px;border-radius:32px 32px 0 0;background:var(--surface-page);padding:22px 20px 0;display:flex;flex-direction:column;gap:16px">
+                  <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pv.tags }}" as="t" hint-placeholder-count="2"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ t.tone }}" pill="{{ true }}" hint-size="70px,22px">{{ t.l }}</x-import></sc-for></div>
+                  <div><div style="font-size:25px;font-weight:700;color:var(--text-primary);letter-spacing:-.02em;line-height:1.2">{{ pv.name }}</div><div style="font-size:14px;color:var(--text-muted);margin-top:6px">{{ pv.size }} · ★ {{ pv.rating }} ({{ pv.reviews }} ta sharh)</div></div>
+                  <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:26px;font-weight:800;color:var(--text-primary);font-variant-numeric:tabular-nums;letter-spacing:-.01em">{{ pv.priceF }}</span><sc-if value="{{ pv.hasOld }}" hint-placeholder-val="{{ false }}"><span style="font-size:16px;color:var(--text-muted);text-decoration:line-through">{{ pv.oldF }}</span></sc-if></div>
+                  <div style="display:flex;background:var(--surface-inset);border-radius:14px;padding:3px">
+                    <sc-for list="{{ pdTabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.go }}" style="flex:1;height:36px;border:none;border-radius:11px;background:{{ t.bg }};box-shadow:{{ t.sh }};font:600 13.5px var(--font-sans);color:var(--text-primary);cursor:pointer">{{ t.label }}</button></sc-for>
+                  </div>
+                  <div style="font-size:15px;line-height:1.6;color:var(--text-body);text-wrap:pretty">{{ pv.tabText }}</div>
+                  <div style="border-radius:20px;background:#17301f;padding:16px;display:flex;gap:12px">
+                    <div style="width:40px;height:40px;border-radius:50%;border:1.5px solid #c8a24c;color:#d9b45f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">QT</div>
+                    <div><div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#d9b45f">Tabib izohi</div><div style="font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.92);margin-top:4px">{{ pv.note }}</div></div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:12px">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:19px;font-weight:700;color:var(--text-primary)">Sharhlar</div><button onClick="{{ openReview }}" style="border:none;background:none;color:var(--accent-text);font:600 14px var(--font-sans);cursor:pointer">Sharh yozish</button></div>
+                    <div style="display:flex;gap:16px;align-items:center;padding:14px 16px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle)"><div style="text-align:center"><div style="font-size:34px;font-weight:800;color:var(--text-primary);line-height:1">{{ pv.rating }}</div><div style="color:#c8a24c;font-size:13px;letter-spacing:1px;margin-top:4px">★★★★★</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">{{ pv.reviews }} ta sharh</div></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><sc-for list="{{ rvDist }}" as="d" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted)"><span style="width:8px">{{ d.s }}</span><div style="flex:1;height:5px;border-radius:3px;background:var(--surface-inset)"><div style="height:100%;width:{{ d.w }};border-radius:3px;background:#c8a24c"></div></div></div></sc-for></div></div>
+                    <sc-for list="{{ pReviews }}" as="r" hint-placeholder-count="2"><div style="padding:14px 16px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px">{{ r.ini }}</div><div style="flex:1"><div style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ r.name }}</div><div style="font-size:12px;color:var(--text-muted)">{{ r.date }}</div></div><span style="color:#c8a24c;font-size:13px;letter-spacing:1px">{{ r.starsL }}</span></div><div style="font-size:14.5px;line-height:1.5;color:var(--text-body)">{{ r.text }}</div><sc-if value="{{ r.hasReply }}" hint-placeholder-val="{{ false }}"><div style="border-radius:12px;background:var(--surface-inset);padding:10px 12px;font-size:13.5px;line-height:1.5;color:var(--text-secondary)"><b style="color:var(--text-primary)">Qahramon Tabib:</b> {{ r.reply }}</div></sc-if></div></sc-for>
+                  </div>
+                  <div style="font-size:12.5px;line-height:1.5;color:var(--text-muted)">Surunkali kasallik, homiladorlik yoki dori qabul qilayotgan bo'lsangiz, avval mutaxassis bilan maslahatlashing.</div>
+                  <sc-if value="{{ pv.rx }}" hint-placeholder-val="{{ false }}"><div style="border-radius:16px;background:var(--danger-fill);padding:12px 14px;font-size:14px;line-height:1.5;color:var(--danger)">{{ pv.rxText }}</div></sc-if>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.consult }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px;padding:4px 16px 0">
+                <div style="border-radius:26px;background:#17301f;padding:20px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden">
+                  <div style="position:absolute;right:-50px;top:-50px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(217,180,95,.25)"></div>
+                  <div style="display:flex;gap:14px;align-items:center;position:relative"><div style="width:64px;height:64px;border-radius:50%;border:2px solid #c8a24c;background:#21402b;color:#d9b45f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px">QT</div><div><div style="font-size:20px;font-weight:700;color:#fff">Qahramon Tabib</div><div style="font-size:13.5px;color:rgba(255,255,255,.75);margin-top:2px">Tabiiy davolash bo'yicha mutaxassis</div></div></div>
+                  <div style="display:flex;gap:8px;position:relative"><sc-for list="{{ tabibStats }}" as="s" hint-placeholder-count="3"><div style="flex:1;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:10px;text-align:center"><div style="font-size:16px;font-weight:700;color:#d9b45f">{{ s.v }}</div><div style="font-size:11.5px;color:rgba(255,255,255,.7);margin-top:2px">{{ s.k }}</div></div></sc-for></div>
+                </div>
+                <div style="font-size:19px;font-weight:700;color:var(--text-primary);padding:0 4px">Maslahat turi</div>
+                <sc-for list="{{ cTypes }}" as="t" hint-placeholder-count="3">
+                  <button onClick="{{ t.go }}" style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:20px;background:#fffdf8;border:1.5px solid {{ t.bd }};cursor:pointer;text-align:left;font-family:var(--font-sans)"><div style="width:44px;height:44px;border-radius:14px;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;flex:none">{{ t.icon }}</div><div style="flex:1"><div style="font-size:15.5px;font-weight:600;color:var(--text-primary)">{{ t.label }}</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px">{{ t.sub }}</div></div><div style="font-size:14.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ t.priceF }}</div></button>
+                </sc-for>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <button onClick="{{ go.chat }}" style="display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-sans)"><span style="color:var(--accent-text)">{{ ic.chat }}</span><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Savol-javob</div><div style="font-size:12.5px;color:var(--text-muted)">Bepul, 15 daqiqada javob</div></button>
+                  <button onClick="{{ go.rx }}" style="display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-sans)"><span style="color:var(--accent-text)">{{ ic.rx }}</span><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Retsept yuklash</div><div style="font-size:12.5px;color:var(--text-muted)">Shifokor retsepti bo'yicha</div></button>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.book }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:18px;padding:8px 16px 0">
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--accent-fill)"><span style="color:var(--accent-text)">{{ bv.icon }}</span><div style="flex:1;font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ bv.type }}</div><div style="font-size:14px;font-weight:700;color:var(--text-primary)">{{ bv.priceF }}</div></div>
+                <div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:17px;font-weight:700;color:var(--text-primary);padding:0 4px">Kun</div>
+                  <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px"><sc-for list="{{ days }}" as="d" hint-placeholder-count="7"><button onClick="{{ d.go }}" style="flex:none;width:58px;height:72px;border-radius:18px;border:1px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-family:var(--font-sans)"><span style="font-size:12px;font-weight:600;opacity:.8">{{ d.w }}</span><span style="font-size:20px;font-weight:700">{{ d.n }}</span></button></sc-for></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:17px;font-weight:700;color:var(--text-primary);padding:0 4px">Vaqt</div>
+                  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"><sc-for list="{{ slots }}" as="s" hint-placeholder-count="8"><button onClick="{{ s.go }}" disabled="{{ s.off }}" style="height:44px;border-radius:14px;border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }};font:600 14px var(--font-sans);cursor:pointer;text-decoration:{{ s.td }}">{{ s.t }}</button></sc-for></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:500;color:var(--text-secondary);padding:0 4px">Muammoni qisqacha yozing</div><textarea value="{{ bookNote }}" onChange="{{ onBookNote }}" rows="3" placeholder="Masalan: tizza og'rig'i, 2 oydan beri" style="border:1px solid var(--border-default);border-radius:16px;padding:12px 14px;font:400 15px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.chat }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px;padding:8px 16px 0">
+                <div style="align-self:center;font-size:12px;color:var(--text-muted);padding:4px 10px;border-radius:10px;background:var(--surface-inset)">Tabib jamoasi odatda 15 daqiqada javob beradi</div>
+                <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="3">
+                  <div style="display:flex;justify-content:{{ m.jc }}"><div style="max-width:78%;padding:10px 14px;border-radius:20px;background:{{ m.bg }};color:{{ m.fg }};font-size:15px;line-height:1.4;border:{{ m.bd }}">{{ m.t }}<div style="font-size:11px;opacity:.65;margin-top:3px;text-align:right">{{ m.time }}</div></div></div>
+                </sc-for>
+                <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}"><div style="display:flex"><div style="padding:12px 16px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle)">{{ typingDots }}</div></div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.articles }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:4px 16px 0">
+                <sc-for list="{{ articleList }}" as="a" hint-placeholder-count="4">
+                  <button onClick="{{ a.go }}" style="display:flex;flex-direction:column;border-radius:24px;background:#fffdf8;border:1px solid var(--border-subtle);overflow:hidden;cursor:pointer;text-align:left;padding:0;font-family:var(--font-sans)"><img src="{{ a.img }}" alt="" style="width:100%;height:170px;object-fit:cover;display:block"><div style="padding:14px 16px 16px"><div style="font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a6a1f">{{ a.tag }} · {{ a.read }}</div><div style="font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-top:6px">{{ a.title }}</div><div style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-top:6px">{{ a.lead }}</div></div></button>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.article }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <img src="{{ av.imgL }}" alt="" style="width:100%;height:320px;object-fit:cover;display:block">
+                <div style="position:relative;margin-top:-30px;border-radius:30px 30px 0 0;background:var(--surface-page);padding:24px 20px 0;display:flex;flex-direction:column;gap:14px">
+                  <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a6a1f">{{ av.tag }} · {{ av.read }}</div>
+                  <div style="font-size:26px;font-weight:700;color:var(--text-primary);line-height:1.2;letter-spacing:-.02em;text-wrap:pretty">{{ av.title }}</div>
+                  <div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:50%;border:1.5px solid #c8a24c;background:#17301f;color:#d9b45f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px">QT</div><div style="font-size:13.5px;color:var(--text-secondary)">Qahramon Tabib · {{ av.date }}</div></div>
+                  <sc-for list="{{ av.body }}" as="para" hint-placeholder-count="2"><div style="font-size:16px;line-height:1.65;color:var(--text-body);text-wrap:pretty">{{ para }}</div></sc-for>
+                  <div style="border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);padding:16px;display:flex;flex-direction:column;gap:10px"><div style="font-size:15px;font-weight:700;color:var(--text-primary)">Amaliy maslahatlar</div><sc-for list="{{ av.tips }}" as="t" hint-placeholder-count="3"><div style="display:flex;gap:10px;font-size:14.5px;line-height:1.5;color:var(--text-body)"><span style="color:var(--accent);flex:none;margin-top:2px">{{ ic.checkS }}</span>{{ t }}</div></sc-for></div>
+                  <div style="font-size:17px;font-weight:700;color:var(--text-primary);margin-top:4px">Maqolaga oid mahsulotlar</div>
+                  <sc-for list="{{ av.related }}" as="p" hint-placeholder-count="2"><button onClick="{{ p.go }}" style="display:flex;gap:12px;align-items:center;padding:8px;border-radius:18px;background:#fffdf8;border:1px solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-sans)"><img src="{{ p.img }}" alt="" style="width:60px;height:60px;border-radius:12px;object-fit:cover"><div style="flex:1"><div style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ p.name }}</div><div style="font-size:13px;color:var(--text-muted)">{{ p.priceF }}</div></div><span style="color:var(--text-placeholder);padding-right:6px">{{ ic.chevS }}</span></button></sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.rx }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:8px 16px 0">
+                <div style="font-size:14.5px;line-height:1.55;color:var(--text-secondary);padding:0 4px">Retsept bilan beriladigan dorilar uchun shifokor retseptining aniq rasmini yuklang. Farmatsevt 30 daqiqa ichida tekshiradi.</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <sc-for list="{{ rxSlots }}" as="s" hint-placeholder-count="2"><button onClick="{{ s.go }}" style="aspect-ratio:3/4;border-radius:20px;border:1.5px dashed {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font:600 13px var(--font-sans);cursor:pointer">{{ s.icon }}{{ s.label }}</button></sc-for>
+                </div>
+                <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Bemor ismi" required="{{ true }}" value="{{ rxName }}" onChange="{{ onRxName }}" hint-size="100%,64px"></x-import>
+                <div style="font-size:17px;font-weight:700;color:var(--text-primary);padding:6px 4px 0">Yuborilgan retseptlar</div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:20px;overflow:hidden">
+                  <sc-for list="{{ rxList }}" as="r" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffdf8"><div style="width:40px;height:48px;border-radius:10px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.rxS }}</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ r.id }} · {{ r.name }}</div><div style="font-size:12.5px;color:var(--text-muted)">{{ r.date }}</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ r.tone }}" pill="{{ true }}" hint-size="80px,20px">{{ r.label }}</x-import></div></sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.cart }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:4px 16px 0">
+                <sc-for list="{{ cartList }}" as="c" hint-placeholder-count="2"><div style="position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--border-subtle);background:#fffdf8"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ c.acts }}" as="act" hint-placeholder-count="2"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ c.sw.down }}" onPointerMove="{{ c.sw.move }}" onPointerUp="{{ c.sw.up }}" onPointerLeave="{{ c.sw.up }}" onPointerCancel="{{ c.sw.up }}" onClick="{{ c.sw.click }}" style="position:relative;transform:translateX({{ c.sw.x }});transition:{{ c.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;gap:12px;align-items:center;padding:8px">
+                    <img draggable="false" src="{{ c.img }}" alt="" style="width:78px;height:78px;border-radius:14px;object-fit:cover;cursor:pointer">
+                    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><div style="font-size:14.5px;font-weight:600;color:var(--text-primary);line-height:1.3">{{ c.name }}</div><div style="font-size:12.5px;color:var(--text-muted)">{{ c.size }}</div><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:15px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ c.sumF }}</span><div style="display:flex;align-items:center;border-radius:16px;background:var(--surface-inset);height:32px"><button onClick="{{ c.dec }}" aria-label="Kamaytirish" style="width:32px;height:32px;border:none;background:none;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer">{{ c.decIcon }}</button><span style="min-width:22px;text-align:center;font-weight:700;font-size:14px">{{ c.q }}</span><button onClick="{{ c.inc }}" aria-label="Ko'paytirish" style="width:32px;height:32px;border:none;background:none;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.plusS }}</button></div></div></div>
+                  </div></div></div></sc-for>
+                <sc-if value="{{ cartHas }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;gap:8px;align-items:flex-end"><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Promokod" placeholder="TABIB10" value="{{ promo }}" onChange="{{ onPromo }}" hint="{{ promoHint }}" hint-size="100%,64px"></x-import></div></div>
+                  <div style="border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);padding:14px 16px;display:flex;flex-direction:column;gap:8px;font-size:14.5px;font-variant-numeric:tabular-nums">
+                    <div style="display:flex;justify-content:space-between;color:var(--text-secondary)"><span>Mahsulotlar</span><span>{{ totals.subF }}</span></div>
+                    <sc-if value="{{ totals.hasDisc }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;color:var(--success)"><span>Chegirma</span><span>−{{ totals.discF }}</span></div></sc-if>
+                    <div style="display:flex;justify-content:space-between;color:var(--text-secondary)"><span>Yetkazib berish</span><span>{{ totals.delF }}</span></div>
+                    <div style="height:1px;background:var(--border-subtle);margin:2px 0"></div>
+                    <div style="display:flex;justify-content:space-between;font-size:17px;font-weight:700;color:var(--text-primary)"><span>Jami</span><span>{{ totals.totalF }}</span></div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:60px 24px"><div style="width:64px;height:64px;border-radius:20px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.bag }}</div><div style="font-size:18px;font-weight:700;color:var(--text-primary)">Savat bo'sh</div><div style="font-size:14.5px;line-height:1.5;color:var(--text-secondary)">Tabiiy mahsulotlarni do'kondan tanlang.</div><div style="margin-top:8px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" onClick="{{ go.shop }}" hint-size="160px,40px">Do'konga o'tish</x-import></div></div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.checkout }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:8px 16px 0">
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:0 4px">Manzil</div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:20px;overflow:hidden"><sc-for list="{{ addrList }}" as="a" hint-placeholder-count="2"><button onClick="{{ a.go }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><span style="color:var(--text-muted)">{{ ic.pinS }}</span><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ a.label }}</div><div style="font-size:13px;color:var(--text-muted)">{{ a.text }}</div></div><span style="color:var(--accent);opacity:{{ a.op }}">{{ ic.check }}</span></button></sc-for></div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:6px 4px 0">Yetkazish vaqti</div>
+                <div style="display:flex;gap:8px"><sc-for list="{{ delivList }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.go }}" style="flex:1;padding:12px 8px;border-radius:16px;border:1.5px solid {{ d.bd }};background:#fffdf8;cursor:pointer;font-family:var(--font-sans);display:flex;flex-direction:column;gap:2px;align-items:center"><span style="font-size:14px;font-weight:600;color:var(--text-primary)">{{ d.label }}</span><span style="font-size:12px;color:var(--text-muted)">{{ d.sub }}</span></button></sc-for></div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;padding:6px 4px 0">To'lov</div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:20px;overflow:hidden"><sc-for list="{{ payList }}" as="p" hint-placeholder-count="4"><button onClick="{{ p.go }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="width:36px;height:26px;border-radius:7px;background:{{ p.bg }};color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">{{ p.short }}</div><div style="flex:1;font-size:15px;color:var(--text-primary)">{{ p.label }}</div><span style="color:var(--accent);opacity:{{ p.op }}">{{ ic.check }}</span></button></sc-for></div>
+                <div style="border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);padding:14px 16px;display:flex;justify-content:space-between;font-size:16px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums"><span>To'lanadi</span><span>{{ totals.totalF }}</span></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.success }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:60px 28px 0">
+                {{ successMark }}
+                <div style="font-size:26px;font-weight:700;color:var(--text-primary);letter-spacing:-.02em;margin-top:12px">Buyurtma qabul qilindi</div>
+                <div style="font-size:15px;line-height:1.5;color:var(--text-secondary)">Buyurtma {{ lastOrder.id }} · {{ lastOrder.totalF }}. Yig'ilishi bilan kuryer siz bilan bog'lanadi.</div>
+                <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:20px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" onClick="{{ lastOrder.track }}" hint-size="100%,44px">Buyurtmani kuzatish</x-import><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ go.homeTab }}" hint-size="100%,44px">Bosh sahifaga</x-import></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.track }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:8px 16px 0">
+                <div style="border-radius:26px;background:#17301f;padding:20px;color:#fff;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden"><div style="position:absolute;right:-40px;bottom:-60px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(217,180,95,.25)"></div><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d9b45f">{{ tv.stepLabel }}</div><div style="font-size:30px;font-weight:800;letter-spacing:-.02em">{{ tv.eta }}</div><div style="font-size:14px;color:rgba(255,255,255,.75)">{{ tv.id }} · {{ tv.totalF }}</div></div>
+                <div style="border-radius:22px;background:#fffdf8;border:1px solid var(--border-subtle);padding:18px 16px;display:flex;flex-direction:column">
+                  <sc-for list="{{ tv.steps }}" as="s" hint-placeholder-count="4">
+                    <div style="display:flex;gap:14px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:26px;height:26px;border-radius:50%;background:{{ s.dot }};color:#fff;display:flex;align-items:center;justify-content:center;border:{{ s.ring }};box-sizing:border-box">{{ s.icon }}</div><div style="width:2px;flex:1;min-height:22px;background:{{ s.line }};display:{{ s.lineD }}"></div></div><div style="padding-bottom:18px"><div style="font-size:15px;font-weight:{{ s.fw }};color:{{ s.fg }}">{{ s.l }}</div><div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">{{ s.t }}</div></div></div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ tv.hasCourier }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle)"><div style="width:44px;height:44px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:700">BR</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">Bekzod Rahimov</div><div style="font-size:13px;color:var(--text-muted)">Kuryer · ★ 4.9</div></div><button onClick="{{ callCourier }}" aria-label="Qo'ng'iroq" style="width:42px;height:42px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.phoneS }}</button></div></sc-if>
+                <div style="border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);padding:6px 14px"><sc-for list="{{ tv.items }}" as="i" hint-placeholder-count="2"><div style="display:flex;justify-content:space-between;gap:10px;padding:10px 0;font-size:14.5px;border-bottom:1px solid var(--border-subtle)"><span style="color:var(--text-primary)">{{ i.name }} × {{ i.q }}</span><span style="color:var(--text-secondary);font-variant-numeric:tabular-nums">{{ i.sumF }}</span></div></sc-for><div style="padding:10px 0;font-size:13.5px;color:var(--text-muted)">{{ tv.addr }}</div></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.profile }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px;padding:4px 16px 0">
+                <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:24px;background:#fffdf8;border:1px solid var(--border-subtle)"><div style="width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px">{{ userIni }}</div><div style="flex:1"><div style="font-size:18px;font-weight:700;color:var(--text-primary)">{{ userName }} Karimova</div><div style="font-size:14px;color:var(--text-muted)">+998 {{ phoneShown }}</div></div></div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><sc-for list="{{ profStats }}" as="s" hint-placeholder-count="3"><div style="border-radius:18px;background:#fffdf8;border:1px solid var(--border-subtle);padding:12px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text-primary)">{{ s.v }}</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">{{ s.k }}</div></div></sc-for></div>
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:20px;overflow:hidden"><sc-for list="{{ profMenu }}" as="m" hint-placeholder-count="5"><button onClick="{{ m.go }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fffdf8;border:none;text-align:left;cursor:pointer;font-family:var(--font-sans)"><div style="width:34px;height:34px;border-radius:10px;background:var(--surface-inset);color:var(--text-primary);display:flex;align-items:center;justify-content:center">{{ m.icon }}</div><div style="flex:1;font-size:15px;color:var(--text-primary)">{{ m.label }}</div><span style="font-size:13.5px;color:var(--text-muted)">{{ m.val }}</span><span style="color:var(--text-placeholder)">{{ ic.chevS }}</span></button></sc-for></div>
+                <button onClick="{{ logout }}" style="height:50px;border-radius:16px;border:1px solid var(--border-subtle);background:#fffdf8;color:var(--danger);font:600 15px var(--font-sans);cursor:pointer">Hisobdan chiqish</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.favs }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:8px 16px 0">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <sc-for list="{{ favList }}" as="p" hint-placeholder-count="2">
+                    <div onClick="{{ p.go }}" style="border-radius:22px;background:#fffdf8;border:1px solid var(--border-subtle);padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-width:0">
+                      <div style="position:relative"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;display:block"><button onClick="{{ p.fav }}" aria-label="Sevimlilardan olish" style="position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(255,253,248,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);color:#b5403a;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ p.favIcon }}</button></div>
+                      <div style="padding:0 4px;font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3;height:36px;overflow:hidden">{{ p.name }}</div>
+                      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px 2px 4px"><span style="font-size:14.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums">{{ p.priceF }}</span><button onClick="{{ p.add }}" aria-label="Savatga" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.plusS }}</button></div>
+                    </div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ favEmpty }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:60px 24px"><div style="width:64px;height:64px;border-radius:20px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.heart }}</div><div style="font-size:18px;font-weight:700;color:var(--text-primary)">Sevimlilar bo'sh</div><div style="font-size:14.5px;line-height:1.5;color:var(--text-secondary)">Yoqqan mahsulotni yurakcha bilan saqlang — keyin tez topasiz.</div><div style="margin-top:8px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" onClick="{{ go.shop }}" hint-size="160px,40px">Do'konga o'tish</x-import></div></div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.addrs }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:8px 16px 0">
+                <div style="display:flex;flex-direction:column;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:20px;overflow:hidden"><sc-for list="{{ addrMgr }}" as="a" hint-placeholder-count="2"><div style="position:relative;overflow:hidden;"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ a.acts }}" as="act" hint-placeholder-count="2"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ a.sw.down }}" onPointerMove="{{ a.sw.move }}" onPointerUp="{{ a.sw.up }}" onPointerLeave="{{ a.sw.up }}" onPointerCancel="{{ a.sw.up }}" onClick="{{ a.sw.click }}" style="position:relative;transform:translateX({{ a.sw.x }});transition:{{ a.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:#fffdf8"><div style="display:flex;align-items:center;gap:12px;padding:13px 14px"><div style="width:38px;height:38px;border-radius:12px;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;flex:none">{{ ic.pinS }}</div><div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ a.label }}</span><sc-if value="{{ a.isMain }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="accent" pill="{{ true }}" hint-size="60px,20px">Asosiy</x-import></sc-if></div><div style="font-size:13px;color:var(--text-muted);margin-top:2px">{{ a.text }}</div></div></div></div></div></sc-for></div>
+                <button onClick="{{ openAddr }}" style="height:52px;border-radius:18px;border:1.5px dashed var(--border-strong);background:transparent;color:var(--accent-text);font:600 15px var(--font-sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">{{ ic.plusS }}Yangi manzil</button>
+                <div style="font-size:12.5px;line-height:1.5;color:var(--text-muted);padding:0 4px">Chapga suring: asosiy qilish yoki o'chirish. Hozircha faqat Toshkent bo'ylab yetkazamiz.</div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.notifs }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px;padding:8px 16px 0">
+                <sc-for list="{{ notifList }}" as="n" hint-placeholder-count="4"><div style="position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--border-subtle)"><div style="position:absolute;top:0;right:0;bottom:0;display:flex"><sc-for list="{{ n.acts }}" as="act" hint-placeholder-count="2"><button onClick="{{ act.go }}" style="width:76px;border:none;background:{{ act.bg }};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:600 11.5px var(--font-sans);cursor:pointer">{{ act.icon }}{{ act.label }}</button></sc-for></div><div onPointerDown="{{ n.sw.down }}" onPointerMove="{{ n.sw.move }}" onPointerUp="{{ n.sw.up }}" onPointerLeave="{{ n.sw.up }}" onPointerCancel="{{ n.sw.up }}" onClick="{{ n.sw.click }}" style="position:relative;transform:translateX({{ n.sw.x }});transition:{{ n.sw.tr }};touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:pointer;background:{{ n.bg }}"><div style="display:flex;gap:12px;align-items:flex-start;padding:14px;text-align:left"><div style="width:40px;height:40px;border-radius:13px;background:{{ n.ibg }};color:{{ n.ifg }};display:flex;align-items:center;justify-content:center;flex:none">{{ n.icon }}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px"><span style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ n.title }}</span><span style="font-size:12px;color:var(--text-muted);flex:none">{{ n.time }}</span></div><div style="font-size:13.5px;line-height:1.45;color:var(--text-secondary);margin-top:3px">{{ n.body }}</div></div><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none;opacity:{{ n.dot }}"></span></div></div></div></sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ is.orders }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:8px 16px 0"><sc-for list="{{ orderList }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.go }}" style="display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-sans)"><div style="display:flex;width:100%;align-items:center"><span style="font-size:13px;font-weight:600;color:var(--text-muted)">{{ o.id }} · {{ o.date }}</span><div style="flex:1"></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="{{ o.tone }}" pill="{{ true }}" dot="{{ true }}" hint-size="90px,20px">{{ o.label }}</x-import></div><div style="display:flex;gap:6px"><sc-for list="{{ o.thumbs }}" as="t" hint-placeholder-count="2"><img src="{{ t }}" alt="" style="width:44px;height:44px;border-radius:10px;object-fit:cover"></sc-for></div><div style="display:flex;width:100%;justify-content:space-between;font-size:14.5px"><span style="color:var(--text-secondary)">{{ o.count }} ta mahsulot</span><b style="color:var(--text-primary);font-variant-numeric:tabular-nums">{{ o.totalF }}</b></div></button></sc-for></div>
+            </sc-if>
+
+            <sc-if value="{{ is.appts }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:8px 16px 0">
+                <sc-for list="{{ apptList }}" as="a" hint-placeholder-count="1"><div style="display:flex;gap:14px;align-items:center;padding:14px;border-radius:20px;background:#fffdf8;border:1px solid var(--border-subtle)"><div style="width:56px;border-radius:14px;background:#17301f;color:#fff;text-align:center;padding:8px 0;flex:none"><div style="font-size:11px;color:#d9b45f;font-weight:700">{{ a.w }}</div><div style="font-size:20px;font-weight:800">{{ a.n }}</div></div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--text-primary)">{{ a.type }}</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px">{{ a.time }} · Qahramon Tabib</div></div><x-import component-from-global-scope="FintruckDesignSystem_557fba.Badge" tone="success" pill="{{ true }}" hint-size="80px,20px">Tasdiqlangan</x-import></div></sc-for>
+                <sc-if value="{{ apptEmpty }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:50px 24px"><div style="width:56px;height:56px;border-radius:18px;background:var(--surface-inset);color:var(--text-muted);display:flex;align-items:center;justify-content:center">{{ ic.cal }}</div><div style="font-size:17px;font-weight:600;color:var(--text-primary)">Qabullar yo'q</div><div style="font-size:14px;color:var(--text-secondary)">Tabib bilan maslahatga yoziling.</div><div style="margin-top:8px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" onClick="{{ go.consultTab }}" hint-size="140px,40px">Yozilish</x-import></div></div></sc-if>
+              </div>
+            </sc-if>
+          </div>
+
+          <sc-if value="{{ hdr.show }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:0;left:0;right:0;z-index:10;padding-top:54px;background:rgba(244,240,230,.72);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(24,36,28,.06)">
+              <sc-if value="{{ hdr.large }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:flex-end;justify-content:space-between;padding:2px 20px 12px;min-height:40px"><div style="font-size:31px;font-weight:700;color:var(--text-primary);letter-spacing:-.02em;line-height:1.1">{{ hdr.title }}</div><sc-if value="{{ hdr.hasAction }}" hint-placeholder-val="{{ false }}"><button onClick="{{ hdr.action }}" aria-label="{{ hdr.aria }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,253,248,.75);border:1px solid rgba(255,255,255,.95);box-shadow:0 4px 16px rgba(24,36,28,.10),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;color:var(--accent-text);cursor:pointer">{{ hdr.icon }}</button></sc-if></div></sc-if>
+              <sc-if value="{{ hdr.small }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:56px 1fr 56px;align-items:center;height:52px;padding:0 12px"><button onClick="{{ back }}" aria-label="Orqaga" style="width:40px;height:40px;border-radius:50%;background:rgba(255,253,248,.75);border:1px solid rgba(255,255,255,.95);box-shadow:0 4px 16px rgba(24,36,28,.10),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;color:var(--text-primary);cursor:pointer">{{ ic.back }}</button><div style="text-align:center;font-size:17px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ hdr.title }}</div><div></div></div></sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ floatBtns }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:58px;left:14px;right:14px;z-index:10;display:flex;justify-content:space-between">
+              <button onClick="{{ back }}" aria-label="Orqaga" style="width:44px;height:44px;border-radius:50%;background:rgba(255,253,248,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.8);box-shadow:0 6px 20px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:var(--text-primary);cursor:pointer">{{ ic.back }}</button>
+              <sc-if value="{{ is.product }}" hint-placeholder-val="{{ false }}"><button onClick="{{ pv.fav }}" aria-label="Sevimlilarga" style="width:44px;height:44px;border-radius:50%;background:rgba(255,253,248,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.8);box-shadow:0 6px 20px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:{{ pv.favFg }};cursor:pointer">{{ pv.favIcon }}</button></sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ bar.show }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:10px;right:10px;bottom:{{ barBottom }};z-index:12;padding:8px;border-radius:30px;background:rgba(255,253,248,.62);backdrop-filter:blur(24px) saturate(190%);-webkit-backdrop-filter:blur(24px) saturate(190%);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 36px rgba(24,36,28,.16),inset 0 1px 0 rgba(255,255,255,.95);display:flex;gap:8px;align-items:center">
+              <sc-if value="{{ bar.qty }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;border-radius:22px;background:rgba(236,230,216,.8);height:44px;flex:none"><button onClick="{{ pdDec }}" aria-label="Kamaytirish" style="width:42px;height:44px;border:none;background:none;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.minusS }}</button><span style="min-width:22px;text-align:center;font-weight:700">{{ pdQty }}</span><button onClick="{{ pdInc }}" aria-label="Ko'paytirish" style="width:42px;height:44px;border:none;background:none;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.plusS }}</button></div></sc-if>
+              <button onClick="{{ bar.primary }}" disabled="{{ bar.disabled }}" style="flex:1;height:48px;border-radius:24px;border:none;background:{{ bar.bg }};color:#fff;font:700 15.5px var(--font-sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden">{{ bar.label }}</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ is.chat }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:10px;right:10px;bottom:24px;z-index:12;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none"><sc-for list="{{ quickQ }}" as="q" hint-placeholder-count="3"><button onClick="{{ q.go }}" style="flex:none;height:34px;padding:0 14px;border-radius:17px;background:rgba(255,253,248,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(24,36,28,.08);font:500 13px var(--font-sans);color:var(--text-primary);cursor:pointer;white-space:nowrap">{{ q.t }}</button></sc-for></div>
+              <div style="display:flex;gap:8px;align-items:center;padding:6px;border-radius:28px;background:rgba(255,253,248,.62);backdrop-filter:blur(24px) saturate(190%);-webkit-backdrop-filter:blur(24px) saturate(190%);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 36px rgba(24,36,28,.14),inset 0 1px 0 #fff"><input value="{{ msg }}" onChange="{{ onMsg }}" onKeyDown="{{ onMsgKey }}" placeholder="Savolingizni yozing" style="flex:1;height:44px;border:none;background:transparent;padding:0 12px;font:400 15px var(--font-sans);color:var(--text-primary);outline:none"><button onClick="{{ sendMsg }}" aria-label="Yuborish" style="width:44px;height:44px;border-radius:50%;border:none;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ic.sendS }}</button></div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isRoot }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;left:14px;right:14px;bottom:24px;z-index:12;height:64px;border-radius:32px;padding:5px;box-sizing:border-box;display:flex;gap:2px;background:rgba(255,253,248,.56);backdrop-filter:blur(24px) saturate(190%);-webkit-backdrop-filter:blur(24px) saturate(190%);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 36px rgba(24,36,28,.16),inset 0 1px 0 rgba(255,255,255,.95)">
+              <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.go }}" style="flex:1;border:none;border-radius:27px;background:{{ t.bg }};box-shadow:{{ t.sh }};color:{{ t.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;font:600 10.5px var(--font-sans);position:relative">{{ t.icon }}<span>{{ t.label }}</span><sc-if value="{{ t.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;left:calc(50% + 6px);min-width:17px;height:17px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:#b5403a;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ t.badge }}</span></sc-if></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:58px;left:50%;transform:translateX(-50%);z-index:70;padding:10px 16px;border-radius:22px;background:rgba(255,253,248,.8);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.95);box-shadow:0 10px 30px rgba(24,36,28,.18);display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text-primary);animation:qtFade .2s ease-out;white-space:nowrap"><span style="color:var(--accent)">{{ ic.checkS }}</span>{{ toast }}</div>
+        </sc-if>
+
+        <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;z-index:65;background:rgba(18,30,22,.34)"></div>
+          <div style="position:absolute;left:8px;right:8px;bottom:8px;z-index:66;border-radius:36px;padding:8px 20px 28px;background:rgba(255,253,248,.88);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.95);box-shadow:0 20px 50px rgba(24,36,28,.24);animation:qtSheet .24s cubic-bezier(.2,0,.2,1);display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+            <div style="width:38px;height:5px;border-radius:3px;background:var(--border-strong)"></div>
+            <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:8px">{{ ic.check }}</div>
+            <div style="font-size:21px;font-weight:700;color:var(--text-primary)">Qabulga yozildingiz</div>
+            <div style="font-size:15px;line-height:1.5;color:var(--text-secondary)">{{ booked.text }}</div>
+            <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:4px"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" onClick="{{ booked.go }}" hint-size="100%,44px">Qabullarim</x-import><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ closeSheet }}" hint-size="100%,44px">Yopish</x-import></div>
+          </div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ formSheet }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;z-index:65;background:rgba(18,30,22,.34)"></div>
+          <div style="position:absolute;left:8px;right:8px;bottom:8px;z-index:66;border-radius:36px;padding:8px 20px 28px;background:rgba(255,253,248,.9);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.95);box-shadow:0 20px 50px rgba(24,36,28,.24);animation:qtSheet .24s cubic-bezier(.2,0,.2,1);display:flex;flex-direction:column;gap:14px">
+            <div style="width:38px;height:5px;border-radius:3px;background:var(--border-strong);align-self:center"></div>
+            <sc-if value="{{ is.addrs }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:20px;font-weight:700;color:var(--text-primary)">Yangi manzil</div>
+              <div style="display:flex;gap:8px"><sc-for list="{{ addrLabels }}" as="l" hint-placeholder-count="3"><button onClick="{{ l.go }}" style="flex:1;height:38px;border-radius:19px;border:1px solid {{ l.bd }};background:{{ l.bg }};color:{{ l.fg }};font:600 13.5px var(--font-sans);cursor:pointer">{{ l.t }}</button></sc-for></div>
+              <x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Ko'cha, uy" required="{{ true }}" placeholder="Masalan, Bobur ko'chasi 12" value="{{ na.street }}" onChange="{{ naOn.street }}" hint-size="100%,64px"></x-import>
+              <div style="display:flex;gap:10px"><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Xonadon" placeholder="32" value="{{ na.flat }}" onChange="{{ naOn.flat }}" hint-size="100%,64px"></x-import></div><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Input" label="Qavat" placeholder="4" value="{{ na.floor }}" onChange="{{ naOn.floor }}" hint-size="100%,64px"></x-import></div></div>
+            </sc-if>
+            <sc-if value="{{ is.product }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:20px;font-weight:700;color:var(--text-primary)">Sharh yozish</div>
+              <div style="font-size:14px;color:var(--text-secondary);margin-top:-8px">{{ pv.name }}</div>
+              <div style="display:flex;gap:6px;justify-content:center"><sc-for list="{{ starPick }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.go }}" aria-label="{{ s.aria }}" style="width:48px;height:48px;border:none;background:none;color:{{ s.c }};cursor:pointer;display:flex;align-items:center;justify-content:center">{{ s.icon }}</button></sc-for></div>
+              <textarea value="{{ rvText }}" onChange="{{ onRvText }}" rows="4" placeholder="Mahsulot sizga qanday yordam berdi?" style="border:1px solid var(--border-default);border-radius:16px;padding:12px 14px;font:400 15px/1.5 var(--font-sans);color:var(--text-primary);background:#fffdf8;resize:none;outline:none"></textarea>
+            </sc-if>
+            <div style="display:flex;gap:10px"><div style="flex:1;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ closeSheet }}" hint-size="100%,44px">Bekor</x-import></div><div style="flex:1.4;min-width:0"><x-import component-from-global-scope="FintruckDesignSystem_557fba.Button" size="lg" full-width="{{ true }}" disabled="{{ fs.disabled }}" onClick="{{ fs.confirm }}" hint-size="100%,44px">{{ fs.label }}</x-import></div></div>
+          </div>
+        </sc-if>
+      <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:{{ homeInd }};z-index:80"></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const P={eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',del:'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13',home:'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z',leaf:'M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8',bag:'M5 7h14l-1 13H6zM9 7a3 3 0 0 1 6 0',user:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',chat:'M4 5h16v11H8l-4 4z',back:'M15 5l-7 7 7 7',chev:'M9 5l7 7-7 7',plus:'M12 5v14M5 12h14',minus:'M5 12h14',trash:'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-3.5-3.5',phone:'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',rx:'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h4',check:'M5 12l5 5L20 7',send:'M4 12 20 4l-6 16-3-7z',pin:'M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12zM12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',heart:'M12 20s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z',video:'M3 6h12v12H3zM15 10l6-3v10l-6-3',clinic:'M4 21V8l8-5 8 5v13M9 21v-6h6v6M12 8v4M10 10h4',cal:'M4 6h16v15H4zM4 10h16M8 3v4M16 3v4',book:'M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2zM4 21V5',camera:'M4 8h3l2-3h6l2 3h3v12H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',box:'M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8',globe:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18',bell:'M6 9a6 6 0 0 1 12 0c0 6 3 7 3 7H3s3-1 3-7M10 20a2 2 0 0 0 4 0',star:'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z',help:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01',truck:'M3 6h11v10H3zM14 9h4l3 3v4h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'};
+const svg=(n,s=22,w=1.7,fill='none')=>React.createElement('svg',{width:s,height:s,viewBox:'0 0 24 24',fill,stroke:'currentColor',strokeWidth:w,strokeLinecap:'round',strokeLinejoin:'round'},React.createElement('path',{d:P[n]}));
+const U=(id,w=600,h=600)=>`https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&q=75`;
+const ini=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('');
+const fmt=n=>String(Math.round(+n||0)).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+" so'm";
+const AIMG={Hammasi:'1514733670139-4d87a1941d55',"Bo'g'imlar":'1515377905703-c4788e51af15',Oshqozon:'1563822249548-9a72b6353cd1',Immunitet:'1558642452-9d2a7deb7f62','Asab va uyqu':'1576092768241-dec231879fc3',Teri:'1620916566398-39f1143ab7be',Soch:'1624454002302-36b824d7bd0a',Dorixona:'1584017911766-d451b3d0e843'};
+const AIL=["Hammasi","Bo'g'imlar","Oshqozon","Immunitet","Asab va uyqu","Teri","Soch","Dorixona"];
+const pr=(id,name,size,price,img,ail,o={})=>({id,name,size,price,img,ail,old:0,rating:4.8,reviews:120,rx:false,...o});
+const PRODUCTS=[
+pr(1,"Tog' asali (Zomin)",'500 g',120000,'1471943311424-646960669fbc','Immunitet',{rating:4.9,reviews:412,desc:"Zomin tog'laridagi asalarichilik xo'jaligidan yig'ilgan tabiiy asal. Qaynatilmagan, shakar qo'shilmagan.",comp:"100% tabiiy gul asali.",use:"Kuniga 1–2 choy qoshiq, iliq (issiq emas) suv yoki choy bilan.",note:"Asalni 40°C dan issiq suvga solmang — foydali xususiyatlari kamayadi."}),
+pr(2,'Zanjabil-asal aralashmasi','250 g',85000,'1558642452-9d2a7deb7f62','Immunitet',{old:98000,reviews:268,desc:"Zanjabil, limon va asal aralashmasi. Kuz-qish mavsumida iliq ichimlik sifatida.",comp:"Asal, zanjabil ildizi, limon po'stlog'i.",use:"1 osh qoshiqni bir stakan iliq suvda eritib iching.",note:"Ertalab och qoringa emas, nonushtadan keyin iching."}),
+pr(3,"Bo'g'im moyi «Qahramon»",'50 ml',95000,'1515377905703-c4788e51af15',"Bo'g'imlar",{rating:4.9,reviews:536,desc:"Bo'g'im va mushaklarni uqalash uchun o'simlik moylari aralashmasi.",comp:"Zaytun moyi, qalampir yalpiz, evkalipt, archa efir moylari.",use:"Kuniga 2 marta og'riyotgan sohaga yengil uqalab surting. Tashqi foydalanish uchun.",note:"Uqalagandan keyin sohani 20 daqiqa iliq tuting."}),
+pr(4,"Na'matak damlamasi",'30 ml',65000,'1608571423902-eed4a5ad8108','Immunitet',{desc:"Na'matak mevasidan tayyorlangan konsentrlangan damlama.",comp:"Na'matak mevasi, tozalangan suv.",use:"Kuniga 2 marta 15 tomchidan, suv bilan.",note:"Kurs 3 hafta, keyin 1 hafta tanaffus qiling."}),
+pr(5,"Oshqozon choyi yig'masi",'100 g',48000,'1563822249548-9a72b6353cd1','Oshqozon',{reviews:301,desc:"Oshqozon va ichak faoliyatini yengillashtirish uchun an'anaviy o'simlik yig'masi.",comp:"Moychechak, yalpiz, zira, qizilmiya ildizi.",use:"1 choy qoshiqni 250 ml qaynoq suvda 10 daqiqa damlang. Kuniga 2 marta.",note:"Ovqatdan 30 daqiqa oldin iching."}),
+pr(6,'Tinchlantiruvchi choy','20 paket',42000,'1576092768241-dec231879fc3','Asab va uyqu',{desc:"Kechki dam olish uchun yengil o'simlik choyi.",comp:"Melissa, lavanda, moychechak, valeriana ildizi.",use:"Uyqudan 1 soat oldin 1 paketni 5 daqiqa damlang.",note:"Kechqurun telefonni chetga qo'yib, sokin muhitda iching."}),
+pr(7,'Shifobaxsh qora choy','100 g',55000,'1564890369478-c89ca6d9cde9','Oshqozon',{desc:"Qora choy, kiyik o'ti va do'lana aralashmasi.",comp:"Qora choy, kiyik o'ti, do'lana mevasi.",use:"1 choy qoshiqni choynakda 5 daqiqa damlang.",note:"Kuniga 3 piyoladan ortiq ichmang."}),
+pr(8,'Teri malhami','75 ml',78000,'1620916566398-39f1143ab7be','Teri',{desc:"Quruq va tirnalgan teri uchun yumshatuvchi malham.",comp:"Shi moyi, kalendula ekstrakti, asal mumi.",use:"Toza teriga kuniga 2 marta yupqa surting.",note:"Ochiq yaraga surtmang."}),
+pr(9,'Soch uchun o\'simlik moyi','30 ml',89000,'1624454002302-36b824d7bd0a','Soch',{reviews:188,desc:"Soch ildizlarini oziqlantirish uchun moylar aralashmasi.",comp:"Kanakunjut, qalampir yalpiz, rozmarin moylari.",use:"Haftada 2 marta bosh terisiga uqalab, 1 soatdan keyin yuving.",note:"Natija uchun kamida 6 hafta muntazam qo'llang."}),
+pr(10,"Zig'ir kukuni",'200 g',39000,'1610725664285-7c57e6eeac3f','Oshqozon',{desc:"Maydalangan zig'ir urug'i — kletchatka manbai.",comp:"100% zig'ir urug'i.",use:"1 osh qoshiqni qatiq yoki bo'tqaga qo'shing.",note:"Kun davomida suvni ko'proq iching."}),
+pr(11,"Tabiiy parvarish to'plami",'4 dona',240000,'1612817288484-6f916006741a','Teri',{old:280000,rating:4.9,reviews:97,desc:"Teri va soch parvarishi uchun to'rtta mahsulotdan iborat sovg'abop to'plam.",comp:"Teri malhami, soch moyi, lab balzami, efir moyi.",use:"Har bir mahsulot qadog'idagi yo'riqnomaga ko'ra.",note:"Sovg'a sifatida chiroyli qutida yetkaziladi."}),
+pr(12,'Amoksitsillin 500 mg','16 kapsula',36000,'1584017911766-d451b3d0e843','Dorixona',{rx:true,rating:4.7,reviews:54,desc:"Antibiotik. Faqat shifokor retsepti bilan beriladi.",comp:"Amoksitsillin trigidrat 500 mg.",use:"Shifokor ko'rsatmasiga ko'ra.",note:"Antibiotiklarni o'zboshimchalik bilan qabul qilmang."})];
+const ARTICLES=[
+{id:1,tag:"Bo'g'imlar",read:'5 daqiqa',img:'1515377905703-c4788e51af15',title:"Bo'g'im og'rig'ida uyda qilinadigan 5 odat",lead:"Kundalik harakat, iliq kompress va to'g'ri ovqatlanish bo'g'imlarga yengillik beradi.",date:'2 oktabr',body:["Bo'g'im og'rig'i ko'pincha kam harakat, sovuq va ortiqcha yuk bilan kuchayadi. Uy sharoitida qilinadigan oddiy odatlar holatni yengillashtirishi mumkin.","Ertalab 10 daqiqa yengil cho'zilish mashqlari, kechqurun esa iliq kompress bo'g'imlarni bo'shashtiradi. Ovqatda baliq, yong'oq va ko'katlarni ko'paytiring."],tips:["Har kuni 20–30 daqiqa piyoda yuring","Og'riyotgan sohani sovuqdan asrang","Og'riq kuchaysa yoki shish paydo bo'lsa, shifokorga murojaat qiling"],rel:[3,10]},
+{id:2,tag:'Oshqozon',read:'4 daqiqa',img:'1597318181409-cf64d0b5d8a2',title:"Oshqozon uchun ertalabki o'simlik choyi",lead:"Moychechak va yalpizli choy ovqat hazm qilishni yengillashtiradi.",date:'28 sentabr',body:["Ertalabki iliq o'simlik choyi oshqozonni kunga tayyorlaydi. Moychechak va yalpiz an'anaviy ravishda hazm qilishni yengillashtirish uchun ishlatiladi.","Choyni juda issiq ichmang va ustiga ko'p shakar qo'shmang. Nonushtani kechiktirmaslik ham muhim."],tips:["Choyni ovqatdan 30 daqiqa oldin iching","Achchiq va yog'li taomlarni kamaytiring","Doimiy og'riqda tekshiruvdan o'ting"],rel:[5,7]},
+{id:3,tag:'Immunitet',read:'6 daqiqa',img:'1556679343-c7306c1976bc',title:"Kuz faslida immunitetni qanday qo'llash kerak",lead:"Uyqu, iliq ichimliklar va mavsumiy mevalar — oddiy, lekin samarali.",date:'24 sentabr',body:["Kuzda kunlar qisqaradi, harorat o'zgaradi va organizm ko'proq yuklanadi. Bu davrda kundalik tartibga e'tibor berish muhim.","Kuniga 7–8 soat uxlash, iliq suyuqliklarni ko'p ichish va ovqatda sabzavot-mevalarni ko'paytirish organizmni qo'llab-quvvatlaydi."],tips:["Har kuni bir stakan zanjabil-asalli iliq ichimlik","Toza havoda kamida 30 daqiqa bo'ling","Isitma 3 kundan oshsa, shifokorga murojaat qiling"],rel:[1,2,4]},
+{id:4,tag:'Asab va uyqu',read:'4 daqiqa',img:'1576092768241-dec231879fc3',title:"Yaxshi uyqu uchun kechki odatlar",lead:"Ekran vaqtini kamaytirish va iliq choy uyquni chuqurlashtiradi.",date:'19 sentabr',body:["Sifatli uyqu kayfiyat, xotira va immunitetga bevosita ta'sir qiladi. Kechki odatlar uyquning sifatini belgilaydi.","Uyqudan bir soat oldin telefon va televizorni chetga qo'ying, xonani shamollating va tinchlantiruvchi o'simlik choyini iching."],tips:["Har kuni bir xil vaqtda yoting","Kechki ovqatni uyqudan 3 soat oldin yeng","Uyqusizlik uzoq davom etsa, mutaxassis bilan gaplashing"],rel:[6]}];
+const CTYPES=[{k:'video',label:'Onlayn video maslahat',sub:'30 daqiqa · Telegram yoki ilova orqali',price:100000,icon:'video'},{k:'chat',label:'Yozma maslahat',sub:'24 soat ichida batafsil javob',price:50000,icon:'chat'},{k:'clinic',label:'Klinikada qabul',sub:'Toshkent · 45 daqiqa',price:150000,icon:'clinic'}];
+const WD=['Du','Se','Ch','Pa','Ju','Sh','Ya'];
+const DAYS=[5,6,7,8,9,10,11].map((n,i)=>({n,w:WD[i]}));
+const SLOTS=['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+const BUSY={0:[1,4],1:[0,2,5],2:[3],3:[1,2,6],4:[0,7],5:[2,3],6:[0,1,2,3,4,5,6,7]};
+const REVS=[{name:'Aziza Karimova',stars:5,date:'Bugun',text:"Ikki haftadan beri ishlataman, natijasi sezilyapti. Tavsiya qilaman.",reply:"Rahmat, Aziza! Sog'liq tilaymiz."},{name:'Otabek Nazarov',stars:4,date:'2 okt',text:"Sifati yaxshi, yetkazish tez bo'ldi. Qadog'i biroz kichik.",reply:''},{name:'Dilnoza Rahimova',stars:5,date:'28 sen',text:'Oilamiz bilan foydalanamiz, tabiiyligi sezilib turadi.',reply:''}];
+const NOTIFS=[{id:1,icon:'truck',title:"Buyurtmangiz yo'lda",body:"#QT-2051 · kuryer Bekzod 25 daqiqada yetib boradi.",time:'10:31',to:'track',kind:'acc'},{id:2,icon:'cal',title:'Qabul eslatmasi',body:"Ertaga 10:00 da Qahramon Tabib bilan video maslahat.",time:'09:00',to:'appts',kind:'gold'},{id:3,icon:'rx',title:'Retsept tasdiqlandi',body:"R-1042 tasdiqlandi — dorini savatga qo'shishingiz mumkin.",time:'Kecha',to:'rx',kind:'acc',read:true},{id:4,icon:'leaf',title:"Kuzgi immunitet to'plami −15%",body:"Zanjabil-asal aralashmasi va na'matak damlamasi chegirmada.",time:'Kecha',to:'shop',kind:'gold',read:true},{id:5,icon:'book',title:'Yangi maqola',body:"Yaxshi uyqu uchun kechki odatlar — 4 daqiqalik o'qish.",time:'2 okt',to:'articles',kind:'acc',read:true}];
+const ADDR=[{label:'Uy',text:"Chilonzor 9-kvartal, 14-uy, 32-xonadon"},{label:'Ish',text:"Amir Temur ko'chasi 107B, 4-qavat"}];
+const DELIV=[{label:'Tezkor',sub:'60–90 daqiqa',fee:20000},{label:'Bugun',sub:'18:00–21:00',fee:15000},{label:'Ertaga',sub:'Bepul',fee:0}];
+const PAY=[{label:'Click',short:'CLICK',bg:'#0a7ac9'},{label:'Payme',short:'PAY',bg:'#1ba3a6'},{label:'Uzcard / Humo',short:'UZ',bg:'#2f5a40'},{label:"Naqd pul",short:"SO'M",bg:'#8a6a1f'}];
+const STEPS=[["Qabul qilindi",'10:42'],["Yig'ilmoqda",'10:50'],["Yo'lda",'11:15'],['Yetkazildi','11:45 taxminan']];
+const OST=[['Qabul qilindi','info'],["Yig'ilmoqda",'warning'],["Yo'lda",'accent'],['Yetkazildi','success']];
+const ONB=[{img:'1597318181409-cf64d0b5d8a2',kicker:'Qahramon Tabib',title:"Tabiatning shifobaxsh kuchi — bir ilovada",body:"Asal, o'simlik choylari, malham va moylar. Har biri Tabib tavsiyasi bilan."},{img:'1471943311424-646960669fbc',kicker:'Shaxsiy maslahat',title:"Tabib bilan onlayn yoki klinikada uchrashing",body:"Qulay vaqtni tanlang — video, yozma yoki yuzma-yuz maslahat."},{img:'1556679343-c7306c1976bc',kicker:'Tez yetkazish',title:"Toshkent bo'ylab 90 daqiqada eshigingizgacha",body:"Buyurtmani real vaqtda kuzating, Click yoki Payme orqali to'lang."}];
+
+class Component extends DCLogic {
+  scrollRef = React.createRef();
+  state = {swKey:null,dragKey:null,dragX:0,addrs:ADDR.map((a,i)=>({...a,id:i+1})),mainAddr:1,na:{label:'Uy',street:'',flat:'',floor:''},notifs:NOTIFS,myRevs:{},rvStars:5,rvText:'',screen:'splash',stack:[],splashKey:0,onb:0,phone:'',otpStep:false,cart:[{id:3,q:1},{id:1,q:2}],favs:[1,3],pdTab:0,pdQty:1,productId:3,articleId:1,ail:'Hammasi',query:'',cType:0,day:0,slot:null,bookNote:'',appts:[],rxs:[{id:'R-1042',name:'Aziza Karimova',date:'28 sentabr',status:'approved'}],rxImgs:0,rxName:'Aziza Karimova',orders:[{id:'#QT-2051',date:'Bugun',step:2,items:[{id:3,q:1},{id:5,q:1}],total:163000},{id:'#QT-2038',date:'21 sentabr',step:3,items:[{id:1,q:1},{id:6,q:2}],total:219000}],orderId:'#QT-2051',msgs:[{me:false,t:"Assalomu alaykum! Qahramon Tabib jamoasi. Savolingizni yozing — tabiiy davolash, mahsulotlar yoki buyurtma bo'yicha.",time:'10:20'}],msg:'',typing:false,sheet:null,toast:null,addr:0,deliv:1,pay:0,promo:'',lastOrderId:null};
+  componentDidMount(){ this.playSplash(); }
+  componentWillUnmount(){ clearTimeout(this._sp); clearTimeout(this._t); clearTimeout(this._ty); }
+  playSplash=()=>{ clearTimeout(this._sp); this.setState(s=>({screen:'splash',stack:[],splashKey:s.splashKey+1,sheet:null})); this._sp=setTimeout(()=>{ if(this.state.screen==='splash') this.setState({screen:'onb',onb:0}); },3600); };
+  top(){ const el=this.scrollRef.current; if(el) el.scrollTop=0; }
+  toast(t){ clearTimeout(this._t); this.setState({toast:t}); this._t=setTimeout(()=>this.setState({toast:null}),2000); }
+  go(s,extra={}){ this.setState(st=>({stack:[...st.stack,st.screen],screen:s,sheet:null,...extra}),()=>this.top()); }
+  back=()=>{ this.setState(st=>({screen:st.stack[st.stack.length-1]||'home',stack:st.stack.slice(0,-1)}),()=>this.top()); };
+  tabTo(t,extra={}){ this.setState({screen:t,stack:[],sheet:null,...extra},()=>this.top()); }
+  addCart(id,q=1){ this.setState(st=>{const ex=st.cart.find(c=>c.id===id);return {cart:ex?st.cart.map(c=>c.id===id?{...c,q:c.q+q}:c):[...st.cart,{id,q}]};}); this.toast("Savatga qo'shildi"); }
+  openProduct(id){ this.go('product',{productId:id,pdTab:0,pdQty:1}); }
+  jump(s){
+    const roots=['home','shop','consult','cart','profile'];
+    if(s==='splash') return this.playSplash();
+    if(['onb','login'].includes(s)) return this.setState({screen:s,stack:[],onb:0,otpStep:false});
+    const parent={favs:'profile',addrs:'profile',notifs:'home',product:'shop',book:'consult',chat:'consult',articles:'home',article:'home',rx:'consult',checkout:'cart',success:'cart',track:'profile',orders:'profile',appts:'profile'}[s];
+    const extra={}; if(s==='success') extra.lastOrderId=this.state.orders[0].id; if(s==='track') extra.orderId=this.state.orders[0].id;
+    this.setState({screen:s,stack:roots.includes(s)?[]:[parent],sheet:null,...extra},()=>this.top());
+  }
+  sendMsg=(text)=>{
+    const t=(typeof text==='string'?text:this.state.msg).trim(); if(!t) return;
+    this.setState(st=>({msg:'',msgs:[...st.msgs,{me:true,t,time:'10:46'}],typing:true}),()=>this.scrollEnd());
+    clearTimeout(this._ty); this._ty=setTimeout(()=>{ this.setState(st=>({typing:false,msgs:[...st.msgs,{me:false,t:"Rahmat, savolingiz qabul qilindi. Tabib yordamchisi tez orada batafsil javob beradi. Shoshilinch holatda 103 ga qo'ng'iroq qiling.",time:'10:47'}]}),()=>this.scrollEnd()); },1600);
+  };
+  scrollEnd(){ const el=this.scrollRef.current; if(el) el.scrollTop=el.scrollHeight; }
+  totals(){
+    const st=this.state; const sub=st.cart.reduce((a,c)=>{const p=PRODUCTS.find(x=>x.id===c.id);return a+p.price*c.q;},0);
+    const disc=st.promo.trim().toUpperCase()==='TABIB10'?Math.round(sub*.1):0; const del=sub>=300000?0:DELIV[st.deliv].fee;
+    return {sub,disc,del,total:sub-disc+del,subF:fmt(sub),discF:fmt(disc),hasDisc:disc>0,delF:del?fmt(del):'Bepul',totalF:fmt(sub-disc+del)};
+  }
+  placeOrder=()=>{
+    const st=this.state, t=this.totals(), id='#QT-'+(2052+st.orders.length-2);
+    this.setState({orders:[{id,date:'Bugun',step:0,items:st.cart.map(c=>({...c})),total:t.total},...st.orders],cart:[],promo:'',lastOrderId:id,screen:'success',stack:[]},()=>this.top());
+  };
+  renderVals(){ return this.enhance(this.baseVals()); }
+  swipe(key,n,onTap){ const st=this.state,W=n*76,open=st.swKey===key,drag=st.dragKey===key; return {x:(drag?st.dragX:(open?-W:0))+'px',tr:drag?'none':'transform .32s cubic-bezier(.2,.8,.2,1)',down:e=>{this._d={key,sx:e.clientX,sy:e.clientY,base:open?-W:0,moved:false};},move:e=>{const d=this._d;if(!d||d.key!==key)return;const dx=e.clientX-d.sx;if(!d.moved){if(Math.abs(dx)<6)return;if(Math.abs(e.clientY-d.sy)>Math.abs(dx)){this._d=null;return;}d.moved=true;}this.setState(s=>({dragKey:key,dragX:Math.max(-W-28,Math.min(0,d.base+dx)),swKey:s.swKey===key?key:null}));},up:()=>{const d=this._d;if(!d||d.key!==key)return;this._d=null;if(!d.moved)return;this._sup=Date.now();const x=this.state.dragX;this.setState({dragKey:null,swKey:x<-W*0.38?key:null});},click:()=>{if(this._sup&&Date.now()-this._sup<350)return;if(this.state.swKey){this.setState({swKey:null});return;}onTap&&onTap();}}; }
+  act(label,icon,bg,fn){ return {label,icon:svg(icon,19),bg,go:e=>{e&&e.stopPropagation();this.setState({swKey:null});fn();}}; }
+  enhance(r){
+    const st=this.state,A=this.act.bind(this);
+    r.ailHome=AIL.slice(1).map(a=>({label:a,img:U(AIMG[a],240,300),go:()=>this.tabTo('shop',{ail:a,query:''})}));
+    r.ailChips=AIL.map(a=>{const on=st.ail===a;return {label:a,img:U(AIMG[a],160,160),ring:on?'var(--accent)':'transparent',fw:on?700:500,fc:on?'var(--accent-text)':'var(--text-secondary)',go:()=>this.setState({ail:a})};});
+    r.cartList=r.cartList.map(c=>({...c,inc:e=>{e&&e.stopPropagation();c.inc();},dec:e=>{e&&e.stopPropagation();c.dec();},sw:this.swipe('ct'+c.id,2,c.go),acts:[A('Sevimli','heart','#b08a2e',()=>{if(!st.favs.includes(c.id))this.setState(s=>({favs:[...s.favs,c.id]}));this.toast("Sevimlilarga qo'shildi");}),A("O'chirish",'del','#b5403a',()=>{this.setState(s=>({cart:s.cart.filter(x=>x.id!==c.id)}));this.toast("Savatdan olindi");})]}));
+    r.addrMgr=r.addrMgr.map(a=>({...a,sw:this.swipe('ad'+a.id,a.isMain?1:2),acts:[...(a.isMain?[]:[A('Asosiy','check','#2f5a40',a.main)]),A("O'chirish",'del','#b5403a',a.del)]}));
+    r.notifList=r.notifList.map(n=>({...n,sw:this.swipe('nt'+n.id,2,n.go),acts:[A(n.read?'Yangi':"O'qildi",'eye','#2f5a40',()=>this.setState(s=>({notifs:s.notifs.map(y=>y.id===n.id?{...y,read:!y.read}:y)}))),A("O'chirish",'del','#b5403a',()=>{this.setState(s=>({notifs:s.notifs.filter(y=>y.id!==n.id)}));this.toast("Bildirishnoma o'chirildi");})]}));
+    return r;
+  }
+  baseVals(){
+    const st=this.state; const roots=['home','shop','consult','cart','profile'];
+    const ic={}; Object.keys(P).forEach(k=>{ic[k]=svg(k);ic[k+'S']=svg(k,18);});
+    const is={app:!['splash','onb','login'].includes(st.screen)}; ['favs','addrs','notifs','splash','onb','login','home','shop','product','consult','book','chat','articles','article','rx','cart','checkout','success','track','profile','orders','appts'].forEach(k=>is[k]=st.screen===k);
+    const isRoot=is.app&&roots.includes(st.screen);
+    const P_=id=>PRODUCTS.find(p=>p.id===id);
+    const fav=id=>st.favs.includes(id);
+    const toggleFav=(id)=>(e)=>{e&&e.stopPropagation();const on=fav(id);this.setState(s=>({favs:on?s.favs.filter(x=>x!==id):[...s.favs,id]}));this.toast(on?'Sevimlilardan olindi':"Sevimlilarga qo'shildi");};
+    const card=p=>({...p,img:U(p.img,400,400),priceF:fmt(p.price),hasOld:!!p.old,off:p.old?'−'+Math.round((1-p.price/p.old)*100)+'%':'',rx:p.rx,go:()=>this.openProduct(p.id),add:(e)=>{e.stopPropagation(); if(p.rx){this.openProduct(p.id);} else this.addCart(p.id);},fav:toggleFav(p.id),favFg:fav(p.id)?'#b5403a':'var(--text-primary)',favIcon:svg('heart',16,1.8,fav(p.id)?'currentColor':'none')});
+    // splash
+    const E=React.createElement; const word='Qahramon Tabib';
+    const splash=E('div',{key:st.splashKey,style:{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',overflow:'hidden'}},
+      E('div',{style:{position:'absolute',width:420,height:420,borderRadius:'50%',background:'radial-gradient(circle, rgba(217,180,95,.22), rgba(217,180,95,0) 65%)',animation:'qtGlow 3s ease-in-out infinite'}}),
+      ...[0,1,2].map(i=>E('div',{key:'r'+i,style:{position:'absolute',width:120,height:120,borderRadius:'50%',border:'1px solid rgba(217,180,95,.55)',animation:`qtRing 2.6s cubic-bezier(.2,.6,.3,1) ${0.2+i*0.55}s infinite`}})),
+      E('div',{style:{position:'relative',width:108,height:108,borderRadius:34,background:'rgba(255,255,255,.08)',backdropFilter:'blur(20px)',WebkitBackdropFilter:'blur(20px)',border:'1px solid rgba(217,180,95,.6)',boxShadow:'inset 0 1px 0 rgba(255,255,255,.25),0 20px 50px rgba(0,0,0,.35)',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden',animation:'qtPop .9s cubic-bezier(.2,.8,.2,1) both'}},
+        E('svg',{width:58,height:58,viewBox:'0 0 24 24',fill:'none',stroke:'#d9b45f',strokeWidth:1.4,strokeLinecap:'round',strokeLinejoin:'round'},E('path',{d:P.leaf,strokeDasharray:80,style:{animation:'qtDraw 1.4s .35s ease-out both'}})),
+        E('div',{style:{position:'absolute',top:0,bottom:0,width:40,background:'rgba(255,255,255,.28)',filter:'blur(6px)',animation:'qtShine 1.2s 1.4s ease-in-out both'}})),
+      E('div',{style:{display:'flex',marginTop:28,fontSize:32,fontWeight:700,letterSpacing:'-.01em',color:'#fff'}},...word.split('').map((ch,i)=>E('span',{key:i,style:{display:'inline-block',whiteSpace:'pre',animation:`qtUp .6s ${0.9+i*0.045}s cubic-bezier(.2,.8,.2,1) both`,color:i>8?'#d9b45f':'#fff'}},ch))),
+      E('div',{style:{marginTop:10,fontSize:13.5,letterSpacing:'.14em',textTransform:'uppercase',color:'rgba(255,255,255,.7)',animation:'qtUp .7s 1.75s ease-out both'}},'Tabiiy shifo · ishonchli maslahat'),
+      E('div',{style:{position:'absolute',bottom:70,width:120,height:3,borderRadius:2,background:'rgba(255,255,255,.12)',overflow:'hidden'}},E('div',{style:{height:'100%',background:'#d9b45f',borderRadius:2,animation:'qtBar 3.2s .2s linear both'}})));
+    const o=ONB[st.onb]; const onb={...o,img:U(o.img,800,1600),dots:ONB.map((_,i)=>({w:i===st.onb?'22px':'6px',bg:i===st.onb?'var(--accent)':'var(--border-strong)'})),cta:st.onb<2?'Davom etish':'Boshlash',next:()=>st.onb<2?this.setState({onb:st.onb+1}):this.setState({screen:'login'})};
+    // login
+    const digits=st.phone.replace(/\D/g,'');
+    const otpCells=['4','8','2','7'].map(v=>({v,bd:'var(--accent)'}));
+    // home
+    const quick=[['Do\'kon','leaf','var(--accent-fill)','var(--accent-text)',()=>this.tabTo('shop')],['Maslahat','video','rgba(200,160,70,.18)','#8a6a1f',()=>this.tabTo('consult')],['Retsept','rx','var(--danger-fill)','var(--danger)',()=>this.go('rx')],['Savol','chat','var(--info-fill)','var(--info)',()=>this.go('chat')]].map(q=>({label:q[0],icon:svg(q[1],20),bg:q[2],fg:q[3],go:q[4]}));
+    const ailHome=AIL.slice(1,7).map(a=>({label:a,go:()=>this.tabTo('shop',{ail:a,query:''})}));
+    const popular=[3,1,2,11,9].map(id=>card(P_(id)));
+    const artCard=a=>({...a,img:U(a.img,400,400),go:()=>this.go('article',{articleId:a.id})});
+    // shop
+    const q=st.query.toLowerCase();
+    const shopFiltered=PRODUCTS.filter(p=>(st.ail==='Hammasi'||p.ail===st.ail)&&(!q||(p.name+p.ail+(p.desc||'')).toLowerCase().includes(q)));
+    const ailChips=AIL.map(a=>({label:a,bg:st.ail===a?'#17301f':'#fffdf8',fg:st.ail===a?'#fff':'var(--text-primary)',bd:st.ail===a?'#17301f':'var(--border-default)',go:()=>this.setState({ail:a})}));
+    // product
+    const p=P_(st.productId)||PRODUCTS[0]; const approved=st.rxs.some(r=>r.status==='approved');
+    const pv={...card(p),imgL:U(p.img,900,900),oldF:fmt(p.old),tabText:[p.desc,p.comp,p.use][st.pdTab],tags:[...(p.rx?[{l:'Retsept bilan',tone:'danger'}]:[{l:'100% tabiiy',tone:'accent'}]),{l:p.ail,tone:'neutral'}],rxText:approved?"Tasdiqlangan retseptingiz bor — savatga qo'shishingiz mumkin.":"Bu dori faqat shifokor retsepti bilan beriladi. Avval retsept rasmini yuklang."};
+    const pdTabs=['Tavsif','Tarkibi',"Qo'llash"].map((l,i)=>({label:l,bg:st.pdTab===i?'#fffdf8':'transparent',sh:st.pdTab===i?'0 1px 3px rgba(24,36,28,.12)':'none',go:()=>this.setState({pdTab:i})}));
+    // consult / book
+    const ct=CTYPES[st.cType];
+    const cTypes=CTYPES.map((t,i)=>({...t,icon:svg(t.icon,20),priceF:fmt(t.price),bd:st.cType===i?'var(--accent)':'var(--border-subtle)',go:()=>this.setState({cType:i})}));
+    const days=DAYS.map((d,i)=>({...d,bg:st.day===i?'#17301f':'#fffdf8',fg:st.day===i?'#fff':'var(--text-primary)',bd:st.day===i?'#17301f':'var(--border-default)',go:()=>this.setState({day:i,slot:null})}));
+    const busy=BUSY[st.day]||[];
+    const slots=SLOTS.map((t,i)=>{const off=busy.includes(i),on=st.slot===i;return {t,off,bg:on?'var(--accent)':off?'var(--surface-inset)':'#fffdf8',fg:on?'#fff':off?'var(--text-placeholder)':'var(--text-primary)',bd:on?'var(--accent)':off?'transparent':'var(--border-default)',td:off?'line-through':'none',go:()=>!off&&this.setState({slot:i})};});
+    // chat
+    const msgs=st.msgs.map(m=>({...m,jc:m.me?'flex-end':'flex-start',bg:m.me?'var(--accent)':'#fffdf8',fg:m.me?'#fff':'var(--text-primary)',bd:m.me?'none':'1px solid var(--border-subtle)'}));
+    const typingDots=E('div',{style:{display:'flex',gap:4}},...[0,1,2].map(i=>E('span',{key:i,style:{width:7,height:7,borderRadius:'50%',background:'var(--text-muted)',animation:`qtDot 1.2s ${i*0.15}s infinite`}})));
+    const quickQ=["Bo'g'im og'rig'iga nima tavsiya qilasiz?","Buyurtmam qayerda?","Homiladorlikda asal mumkinmi?"].map(t=>({t,go:()=>this.sendMsg(t)}));
+    // article
+    const a=ARTICLES.find(x=>x.id===st.articleId)||ARTICLES[0];
+    const av={...a,imgL:U(a.img,900,700),related:a.rel.map(id=>card(P_(id)))};
+    // rx
+    const rxSlots=[0,1].map(i=>{const f=i<st.rxImgs;return {bd:f?'transparent':'var(--border-strong)',bg:f?'var(--surface-inset)':'#fffdf8',fg:f?'var(--text-secondary)':'var(--accent-text)',icon:svg(f?'rx':'camera',26),label:f?`Retsept rasmi ${i+1}`:(i===0?'Rasmga olish':'Galereyadan'),go:()=>this.setState({rxImgs:Math.min(2,st.rxImgs+(f?0:1))})};});
+    const RS={pending:['Tekshirilmoqda','warning'],approved:['Tasdiqlangan','success'],rejected:['Rad etilgan','danger']};
+    const rxList=st.rxs.map(r=>({...r,label:RS[r.status][0],tone:RS[r.status][1]}));
+    // cart
+    const cartList=st.cart.map(c=>{const pp=P_(c.id);return {...pp,q:c.q,img:U(pp.img,300,300),sumF:fmt(pp.price*c.q),go:()=>this.openProduct(pp.id),decIcon:svg(c.q===1?'trash':'minus',16),inc:()=>this.setState(s=>({cart:s.cart.map(x=>x.id===c.id?{...x,q:x.q+1}:x)})),dec:()=>this.setState(s=>({cart:c.q===1?s.cart.filter(x=>x.id!==c.id):s.cart.map(x=>x.id===c.id?{...x,q:x.q-1}:x)}))};});
+    const totals=this.totals();
+    const promoOk=st.promo.trim().toUpperCase()==='TABIB10';
+    // orders / track
+    const orderRow=o=>{const items=o.items.map(i=>({...P_(i.id),q:i.q}));return {...o,label:OST[o.step][0],tone:OST[o.step][1],thumbs:items.map(i=>U(i.img,120,120)),count:items.reduce((s,i)=>s+i.q,0),totalF:fmt(o.total),go:()=>this.go('track',{orderId:o.id})};};
+    const ord=st.orders.find(x=>x.id===st.orderId)||st.orders[0];
+    const tv={...ord,totalF:fmt(ord.total),stepLabel:OST[ord.step][0],eta:ord.step===3?'Yetkazildi':ord.step===2?'~ 25 daqiqa':'~ 70 daqiqa',hasCourier:ord.step>=2,addr:ADDR[0].text,items:ord.items.map(i=>({name:P_(i.id).name,q:i.q,sumF:fmt(P_(i.id).price*i.q)})),steps:STEPS.map((s,i)=>{const done=i<=ord.step,cur=i===ord.step;return {l:s[0],t:done?s[1]:'Kutilmoqda',dot:done?'var(--accent)':'#fffdf8',ring:done?'none':'2px solid var(--border-default)',icon:done?svg('check',14,2.4):null,line:i<ord.step?'var(--accent)':'var(--border-subtle)',lineD:i<3?'block':'none',fw:cur?700:500,fg:done?'var(--text-primary)':'var(--text-muted)'};})};
+    const lo=st.orders.find(x=>x.id===st.lastOrderId)||st.orders[0];
+    const successMark=E('div',{key:'s'+st.lastOrderId,style:{position:'relative',width:110,height:110,display:'flex',alignItems:'center',justifyContent:'center'}},...[0,1].map(i=>E('div',{key:i,style:{position:'absolute',inset:0,borderRadius:'50%',border:'2px solid rgba(47,90,64,.35)',animation:`qtRing 1.8s ${0.3+i*0.5}s ease-out infinite`}})),E('div',{style:{width:96,height:96,borderRadius:'50%',background:'var(--accent)',display:'flex',alignItems:'center',justifyContent:'center',boxShadow:'0 16px 40px rgba(47,90,64,.35)',animation:'qtPop .7s cubic-bezier(.2,.8,.2,1) both'}},E('svg',{width:46,height:46,viewBox:'0 0 24 24',fill:'none',stroke:'#fff',strokeWidth:2.4,strokeLinecap:'round',strokeLinejoin:'round'},E('path',{d:P.check,strokeDasharray:80,style:{animation:'qtDraw .7s .35s ease-out both'}}))));
+    // profile
+    const profStats=[{k:'Buyurtma',v:String(st.orders.length)},{k:'Qabul',v:String(st.appts.length)},{k:'Bonus',v:'12 400'}];
+    const profMenu=[['Buyurtmalarim','box',String(st.orders.length),()=>this.go('orders')],['Qabullarim','cal',String(st.appts.length),()=>this.go('appts')],['Retseptlarim','rx',String(st.rxs.length),()=>this.go('rx')],['Sevimlilar','heart',String(st.favs.length),()=>this.go('favs')],['Manzillar','pin',String(st.addrs.length),()=>this.go('addrs')],['Savol-javob','chat','',()=>this.go('chat')],['Til','globe',"O'zbekcha",()=>this.toast('Til: O\'zbekcha')],['Bildirishnomalar','bell',String(st.notifs.filter(n=>!n.read).length||''),()=>this.go('notifs')],['Yordam','help','',()=>this.go('chat')]].map(m=>({label:m[0],icon:svg(m[1],18),val:m[2],go:m[3]}));
+    const apptList=st.appts.map(x=>({...x}));
+    // header & bars
+    const TITLES={shop:"Do'kon",consult:'Maslahat',cart:'Savat',profile:'Profil',book:'Qabulga yozilish',chat:'Tabib jamoasi',articles:'Tabib maslahatlari',rx:'Retsept yuklash',checkout:'Rasmiylashtirish',favs:'Sevimlilar',addrs:'Manzillarim',notifs:'Bildirishnomalar',track:'Buyurtma '+ord.id,orders:'Buyurtmalarim',appts:'Qabullarim'};
+    const noHdr=['home','product','article','success'];
+    const hdr={show:is.app&&!noHdr.includes(st.screen),large:isRoot,small:!isRoot,title:TITLES[st.screen]||'',hasAction:false};
+    if(st.screen==='shop') Object.assign(hdr,{hasAction:true,icon:ic.chat,aria:'Savol berish',action:()=>this.go('chat')});
+    if(st.screen==='notifs'&&st.notifs.some(n=>!n.read)) Object.assign(hdr,{hasAction:true,icon:ic.check,aria:"Hammasini o'qilgan",action:()=>{this.setState(x=>({notifs:x.notifs.map(n=>({...n,read:true}))}));this.toast("Hammasi o'qildi");}});
+    if(st.screen==='cart'&&st.cart.length) Object.assign(hdr,{hasAction:true,icon:ic.trash,aria:'Savatni tozalash',action:()=>{this.setState({cart:[]});this.toast('Savat tozalandi');}});
+    const floatBtns=is.product||is.article;
+    let bar={show:false};
+    if(is.product){ const blocked=p.rx&&!approved; bar={show:true,qty:!blocked,label:blocked?'Retsept yuklash':`Savatga · ${fmt(p.price*st.pdQty)}`,bg:'var(--accent)',primary:()=>blocked?this.go('rx'):this.addCart(p.id,st.pdQty)}; }
+    if(is.book) bar={show:true,label:st.slot==null?'Vaqtni tanlang':`Tasdiqlash · ${fmt(ct.price)}`,bg:st.slot==null?'#9aa59b':'var(--accent)',disabled:st.slot==null,primary:()=>{const d=DAYS[st.day];this.setState(s=>({appts:[{w:d.w,n:d.n,time:SLOTS[s.slot],type:ct.label},...s.appts],sheet:'booked'}));}};
+    if(is.cart&&st.cart.length) bar={show:true,label:`Rasmiylashtirish · ${totals.totalF}`,bg:'var(--accent)',primary:()=>this.go('checkout')};
+    if(is.checkout) bar={show:true,label:`Buyurtma berish · ${totals.totalF}`,bg:'var(--accent)',primary:this.placeOrder};
+    if(is.rx) bar={show:true,label:st.rxImgs?'Retseptni yuborish':'Avval rasm qo\'shing',bg:st.rxImgs&&st.rxName.trim()?'var(--accent)':'#9aa59b',disabled:!st.rxImgs||!st.rxName.trim(),primary:()=>{this.setState(s=>({rxs:[{id:'R-'+(1043+s.rxs.length),name:s.rxName,date:'Bugun, 10:46',status:'pending'},...s.rxs],rxImgs:0}));this.toast('Retsept yuborildi');}};
+    if(is.track&&ord.step<3) bar={show:true,label:'Keyingi holat (namuna)',bg:'#17301f',primary:()=>this.setState(s=>({orders:s.orders.map(x=>x.id===ord.id?{...x,step:Math.min(3,x.step+1)}:x)}))};
+    if(isRoot&&!is.cart) bar.show=false;
+    if(is.cart){ bar.show=bar.show&&true; }
+    const cartCount=st.cart.reduce((s,c)=>s+c.q,0);
+    const TABS=[['home','Asosiy','home'],['shop',"Do'kon",'leaf'],['consult','Maslahat','video'],['cart','Savat','bag'],['profile','Profil','user']];
+    const tabs=TABS.map(([k,l,icn])=>{const on=st.screen===k;return {label:l,icon:svg(icn,22,on?2:1.7),bg:on?'rgba(255,253,248,.95)':'transparent',sh:on?'0 2px 10px rgba(24,36,28,.10)':'none',fg:on?'var(--accent-text)':'var(--text-secondary)',hasBadge:k==='cart'&&cartCount>0,badge:String(cartCount),go:()=>this.tabTo(k)};});
+    // cart bar sits above tab bar
+    const cartBar=is.cart&&st.cart.length;
+    const padTop=hdr.show?(isRoot?112:106)+'px':'0px';
+    const padBot=(is.chat?150:(cartBar?190:(isRoot||bar.show)?120:40))+'px';
+    const navItem=(s,label)=>({label,bg:st.screen===s?'#fffdf8':'transparent',color:st.screen===s?'var(--text-primary)':'var(--text-secondary)',go:()=>this.jump(s)});
+    const navGroups=[{title:'Kirish',items:[navItem('splash','Splash (motion)'),navItem('onb','Onboarding'),navItem('login','Kirish / SMS')]},{title:'Tab bar',items:[navItem('home','Asosiy'),navItem('shop',"Do'kon"),navItem('consult','Maslahat'),navItem('cart','Savat'),navItem('profile','Profil')]},{title:'Xarid',items:[navItem('product','Mahsulot'),navItem('checkout','Rasmiylashtirish'),navItem('success','Buyurtma qabul qilindi'),navItem('track','Buyurtmani kuzatish')]},{title:'Maslahat',items:[navItem('book','Qabulga yozilish'),navItem('chat','Savol-javob'),navItem('articles','Maqolalar'),navItem('article','Maqola'),navItem('rx','Retsept yuklash')]},{title:'Profil',items:[navItem('favs','Sevimlilar'),navItem('addrs','Manzillar'),navItem('notifs','Bildirishnomalar'),navItem('orders','Buyurtmalarim'),navItem('appts','Qabullarim')]}];
+    const rv=(st.myRevs[p.id]||[]).concat(REVS);
+    const NK={acc:['var(--accent-fill)','var(--accent-text)'],gold:['rgba(200,160,70,.18)','#7f5f12']};
+    const na=st.na;
+    const fs=st.sheet==='addr'?{label:'Saqlash',disabled:!na.street.trim(),confirm:()=>{this.setState(x=>({addrs:[...x.addrs,{id:Date.now(),label:na.label,text:[na.street.trim(),na.flat&&na.flat+'-xonadon',na.floor&&na.floor+'-qavat'].filter(Boolean).join(', ')}],sheet:null,na:{label:'Uy',street:'',flat:'',floor:''}}));this.toast("Manzil qo'shildi");}}:{label:'Yuborish',disabled:!st.rvText.trim(),confirm:()=>{const r={name:'Aziza Karimova',stars:st.rvStars,date:'Hozir',text:st.rvText.trim(),reply:''};this.setState(x=>({myRevs:{...x.myRevs,[p.id]:[r,...(x.myRevs[p.id]||[])]},sheet:null,rvText:'',rvStars:5}));this.toast('Sharhingiz uchun rahmat');}};
+    const xv={
+      favList:PRODUCTS.filter(x=>st.favs.includes(x.id)).map(card),favEmpty:st.favs.length===0,
+      addrMgr:st.addrs.map(a=>({...a,isMain:a.id===st.mainAddr,notMain:a.id!==st.mainAddr,main:()=>{this.setState({mainAddr:a.id});this.toast("Asosiy manzil o'zgardi");},del:()=>{this.setState(x=>({addrs:x.addrs.filter(y=>y.id!==a.id)}));this.toast("Manzil o'chirildi");}})),
+      openAddr:()=>this.setState({sheet:'addr'}),addrLabels:['Uy','Ish','Boshqa'].map(t=>({t,bg:na.label===t?'#17301f':'#fffdf8',fg:na.label===t?'#fff':'var(--text-primary)',bd:na.label===t?'#17301f':'var(--border-default)',go:()=>this.setState(x=>({na:{...x.na,label:t}}))})),na,
+      naOn:{street:e=>{const v=e.target.value;this.setState(x=>({na:{...x.na,street:v}}));},flat:e=>{const v=e.target.value;this.setState(x=>({na:{...x.na,flat:v}}));},floor:e=>{const v=e.target.value;this.setState(x=>({na:{...x.na,floor:v}}));}},
+      notifList:st.notifs.map(n=>({...n,icon:svg(n.icon,19),ibg:NK[n.kind][0],ifg:NK[n.kind][1],bg:n.read?'#fffdf8':'rgba(47,90,64,.05)',dot:n.read?0:1,go:()=>{this.setState(x=>({notifs:x.notifs.map(y=>y.id===n.id?{...y,read:true}:y)}));this.jump(n.to);}})),notifUnread:st.notifs.some(n=>!n.read),
+      pReviews:rv.slice(0,3).map(r=>({...r,ini:ini(r.name),starsL:'★'.repeat(r.stars)+'☆'.repeat(5-r.stars),hasReply:!!r.reply})),
+      rvDist:[5,4,3,2,1].map((s,i)=>({s:String(s),w:[78,15,4,2,1][i]+'%'})),openReview:()=>this.setState({sheet:'review',rvStars:5,rvText:''}),
+      starPick:[1,2,3,4,5].map(n=>({aria:n+' yulduz',c:n<=st.rvStars?'#c8a24c':'var(--border-strong)',icon:svg('star',32,1.4,n<=st.rvStars?'currentColor':'none'),go:()=>this.setState({rvStars:n})})),rvText:st.rvText,onRvText:e=>this.setState({rvText:e.target.value}),
+      formSheet:st.sheet==='addr'||st.sheet==='review',fs
+    };
+    const dark=is.splash||is.onb||is.home||is.product||is.article;
+    return {...xv,is,ic,splash,onb,navGroups,replaySplash:this.playSplash,isRoot,hdr,bar,cartBar,barBottom:cartBar?'98px':'24px',floatBtns,padTop,padBot,scrollRef:this.scrollRef,tabs,
+      sbColor:(is.splash||is.onb||is.home||is.product||is.article)?'#fff':'var(--text-primary)',homeInd:(is.splash||is.onb)?'#fff':'#18241c',
+      toLogin:()=>this.setState({screen:'login'}),phone:st.phone,onPhone:e=>this.setState({phone:e.target.value.replace(/[^\d ]/g,'').slice(0,12)}),otpStep:st.otpStep,otpCells,loginDisabled:digits.length<9,loginCta:st.otpStep?'Tasdiqlash':'Kod olish',loginNext:()=>st.otpStep?this.tabTo('home'):this.setState({otpStep:true}),guest:()=>this.tabTo('home'),
+      userName:'Aziza',userIni:'AK',phoneShown:st.phone||'90 123 45 67',heroImg:U('1514733670139-4d87a1941d55',900,700),
+      go:{notifs:()=>this.go('notifs'),chat:()=>this.go('chat'),profile:()=>this.tabTo('profile'),shop:()=>this.tabTo('shop',{ail:'Hammasi'}),shopSearch:()=>this.tabTo('shop',{ail:'Hammasi'}),consult:()=>this.tabTo('consult'),consultTab:()=>this.tabTo('consult'),articles:()=>this.go('articles'),rx:()=>this.go('rx'),homeTab:()=>this.tabTo('home')},
+      quick,ailHome,popular,articlesTop:ARTICLES.slice(0,2).map(artCard),articleList:ARTICLES.map(artCard),
+      query:st.query,onQuery:e=>this.setState({query:e.target.value}),ailChips,shopList:shopFiltered.map(card),shopEmpty:shopFiltered.length===0,shopCount:`${shopFiltered.length} ta mahsulot`,
+      pv,pdTabs,pdQty:st.pdQty,pdInc:()=>this.setState(s=>({pdQty:s.pdQty+1})),pdDec:()=>this.setState(s=>({pdQty:Math.max(1,s.pdQty-1)})),
+      tabibStats:[{k:'Obunachi',v:'130K+'},{k:'Tajriba',v:'15 yil'},{k:'Reyting',v:'4.9'}],cTypes,bv:{type:ct.label,priceF:fmt(ct.price),icon:svg(ct.icon,20)},days,slots,bookNote:st.bookNote,onBookNote:e=>this.setState({bookNote:e.target.value}),
+      msgs,typing:st.typing,typingDots,quickQ,msg:st.msg,onMsg:e=>this.setState({msg:e.target.value}),onMsgKey:e=>{if(e.key==='Enter')this.sendMsg();},sendMsg:()=>this.sendMsg(),
+      av,rxSlots,rxName:st.rxName,onRxName:e=>this.setState({rxName:e.target.value}),rxList,
+      cartList,cartHas:st.cart.length>0,cartEmpty:st.cart.length===0,totals,promo:st.promo,onPromo:e=>this.setState({promo:e.target.value}),promoHint:promoOk?'TABIB10 qo\'llandi — 10% chegirma':'Namuna: TABIB10',
+      addrList:st.addrs.map((x,i)=>({...x,op:st.addr===i?1:0,go:()=>this.setState({addr:i})})),delivList:DELIV.map((x,i)=>({...x,bd:st.deliv===i?'var(--accent)':'var(--border-subtle)',go:()=>this.setState({deliv:i})})),payList:PAY.map((x,i)=>({...x,op:st.pay===i?1:0,go:()=>this.setState({pay:i})})),
+      successMark,lastOrder:{id:lo.id,totalF:fmt(lo.total),track:()=>this.setState({screen:'track',stack:['home'],orderId:lo.id})},
+      tv,callCourier:()=>this.toast("Kuryerga qo'ng'iroq qilinmoqda"),orderList:st.orders.map(orderRow),apptList,apptEmpty:st.appts.length===0,
+      profStats,profMenu,logout:()=>this.setState({screen:'login',stack:[],otpStep:false}),back:this.back,
+      toast:st.toast,sheetOpen:st.sheet==='booked',closeSheet:()=>this.setState({sheet:null}),booked:{text:st.appts[0]?`${st.appts[0].type} · ${st.appts[0].n}-oktabr, ${st.appts[0].time}. Eslatma 1 soat oldin keladi.`:'',go:()=>this.setState({sheet:null,screen:'appts',stack:['profile']})}};
+  }
+}
+</script>
+</body>
+</html>
