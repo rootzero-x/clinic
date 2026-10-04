@@ -62,6 +62,9 @@ export default function Login() {
         <Pressable onPress={guest} style={{ padding: 10, alignItems: 'center' }}>
           <Text style={{ color: colors.secondary, fontSize: 14, fontWeight: '600' }}>Mehmon sifatida ko'rish</Text>
         </Pressable>
+        <Pressable onPress={() => router.push('/admin/login' as never)} style={{ padding: 8, alignItems: 'center' }}>
+          <Text style={{ color: colors.accentText, fontSize: 13.5, fontWeight: '600' }}>Xodimlar uchun kirish</Text>
+        </Pressable>
         <Text style={styles.legal}>
           Davom etib, <Text style={styles.link}>Foydalanish shartlari</Text> va <Text style={styles.link}>Maxfiylik siyosati</Text>ga rozilik bildirasiz.
         </Text>

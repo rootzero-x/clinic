@@ -24,6 +24,7 @@ export default function RootLayout() {
             <Stack.Screen name="index" options={{ animation: 'fade' }} />
             <Stack.Screen name="onboarding" options={{ animation: 'fade' }} />
             <Stack.Screen name="login" options={{ animation: 'fade' }} />
+            <Stack.Screen name="admin" options={{ animation: 'fade', gestureEnabled: false }} />
             <Stack.Screen name="success" options={{ gestureEnabled: false, animation: 'fade' }} />
           </Stack>
         </ToastProvider>
