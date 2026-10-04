@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "customer-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "web", "--prefix", "qahramon-tabib/apps/customer", "--", "--port", "8081"],
+      "port": 8081
+    }
+  ]
+}
